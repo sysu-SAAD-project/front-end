@@ -27,7 +27,7 @@ Page({
                 "category": "teamwork", // teamwork组队, question问答, share分享
                 "user": {
                     "userId": "user1",
-                    "avatar": "https://tse2.mm.bing.net/th?id=OIP.NJrE-D51N9LQGXrY2wTA5ADTEo",
+                    "avatar": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3851622717,1658245915&fm=27&gp=0.jpg",
                     "nickname": "元元"
                 },
                 "postTime": [2017, 8, 11],
@@ -143,7 +143,7 @@ Page({
                 "category": "question", // teamwork组队, question问答, share分享
                 "user": {
                     "userId": "user1",
-                    "avatar": "https://tse2.mm.bing.net/th?id=OIP.NJrE-D51N9LQGXrY2wTA5ADTEo",
+                    "avatar": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3851622717,1658245915&fm=27&gp=0.jpg",
                     "nickname": "元首"
                 },
                 "postTime": [2017, 8, 11],
@@ -184,7 +184,7 @@ Page({
                 "category": "share", // teamwork组队, question问答, share分享
                 "user": {
                     "userId": "user1",
-                    "avatar": "https://tse2.mm.bing.net/th?id=OIP.NJrE-D51N9LQGXrY2wTA5ADTEo",
+                    "avatar": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3851622717,1658245915&fm=27&gp=0.jpg",
                     "nickname": "愤怒的元首"
                 },
                 "postTime": [2017, 8, 11],

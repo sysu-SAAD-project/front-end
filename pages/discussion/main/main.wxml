@@ -6,6 +6,7 @@
     </view>
 </view>
 <view class="divLine"></view>
+
 <view class="topBar-picker" wx:if="{{categorySelVisible}}">
     <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
         <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">

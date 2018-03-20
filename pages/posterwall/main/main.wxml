@@ -33,6 +33,7 @@
     </view>
     <view class="divLine"></view>
 </view>
+
 <view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
     <checkbox-group bindchange="changeCategoryFilter">
         <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
@@ -45,7 +46,7 @@
     <view class="divLine"></view>
 </view>
 
-<!-- <view class="posters-container">
+<view class="posters-container">
     <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{campusSelector[item.campus] && categorySelector[item.category] }}" bindtap="posterTap" data-poster-Id="{{item.id}}">
         <view class="poster-info-left">
             <image class="cover-image" src="{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
@@ -59,8 +60,8 @@
             <view class="poster-info-line poster-mini-text">地点： {{item.location}}</view>
         </view>
     </view>
-</view> -->
-
+</view>
+<!--
 <view class="posters-container">
     <view class="single-poster" wx:for="{{posters}}"  wx:key="{{item.id}}" bindtap="posterTap" wx:if="{{campusSelector[item.campus] && categorySelector[item.type] }}"  data-poster-Id="{{item.id}}" >
         <view class="poster-info-left">
@@ -69,7 +70,7 @@
         <view class="poster-info-right">
             <view class="poster-info-line poster-name">{{item.name}}</view>
             <view class="poster-info-line poster-tags">
-                <!-- <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> -->
+                <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view>
             </view>
             <view class="poster-info-line poster-mini-text">时间： {{item.startTime}}</view>
             <view class="poster-info-line poster-mini-text">地点： {{item.location}}</view>
@@ -78,3 +79,4 @@
         </view>
     </view>
 </view>
+-->

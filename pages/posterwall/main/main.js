@@ -9,17 +9,17 @@ Page({
         campusSelVisible: false,
         categorySelVisible: false,
         campusSelector: {
-            0: true,
-            1: true,
-            2: true,
-            3: true
+            "EAST": true,
+            "SOUTH": true,
+            "NORTH": true,
+            "ZHUHAI": true
             //"SHENZHEN": true
         },
         campusSel: [
-          { "value": 0, "name": "东校区", "checked": true },
-          { "value": 1, "name": "南校区", "checked": true },
-          { "value": 2, "name": "北校区", "checked": true },
-          { "value": 3, "name": "珠海校区", "checked": true }
+          { "value": "EAST", "name": "东校区", "checked": true },
+          { "value": "SOUTH", "name": "南校区", "checked": true },
+          { "value": "NORTH", "name": "北校区", "checked": true },
+          { "value": "ZHUHAI", "name": "珠海校区", "checked": true }
             // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
         ],
         categorySelector: {
