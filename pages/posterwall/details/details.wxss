@@ -1,0 +1,41 @@
+/* details.wxss */
+
+.posterDetails-image {
+    width: 100%;
+    height: 480rpx
+}
+
+.details-container {
+    margin: auto 30rpx;
+}
+
+.line-container {
+    margin: 20rpx auto;
+}
+
+.main-title {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.single-tag {
+    display: inline-block;
+    margin-left: 10rpx;
+}
+
+.entry-text {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.content-text {
+    font-size: 12pt;
+}
+
+.text-bl {
+    margin: 13rpx auto;
+}
+
+.qrcode-img {
+    margin: 30rpx;
+}

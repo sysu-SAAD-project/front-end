@@ -1,0 +1,97 @@
+/* main.wxss */
+
+.list-container {
+    margin: 30rpx;
+}
+
+.single-post {
+    margin: 20rpx 10rpx;
+}
+
+.single-post-topLine {
+    margin: 20rpx 10rpx;
+}
+
+.userInfo-block {
+    display: inline-block;
+}
+
+.user-avatar {
+    float: left;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.nickname,
+.post-time {
+    float: left;
+    margin: auto 15rpx;
+    padding-top: 13rpx;
+    padding-bottom: 13rpx;
+    font-size: 10pt;
+}
+
+.nickname {
+    color: gray;
+}
+
+.post-time {
+    color: black;
+}
+
+.category-block {
+    float: right;
+    background-color: #5074d7;
+    border-radius: 15%;
+    color: white;
+    font-size: 9pt;
+    padding: 10rpx;
+}
+
+.single-post-content {
+    margin: auto 10rpx;
+}
+
+.single-post-text,
+.single-post-pics-container {
+    margin: 25rpx;
+}
+
+.single-post-pic {
+    display: inline-block;
+    margin: 10rpx 20rpx;
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.single-post-bottomLine {
+    margin: 20rpx auto;
+}
+
+.single-post-info {
+    margin: auto 20rpx;
+    display: inline-block;
+    font-size: 9pt;
+    color: grey;
+}
+
+.fixed-button {
+    position: fixed;
+    right: 35rpx;
+    bottom: 35rpx;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    background-color: #5074d7;
+    /*  换成图片之后删除  */
+    color: white;
+    font-weight: bold;
+}
+
+.topBar-cell-d {
+    display: inline-block;
+    width: 30%;
+    margin: 15rpx 12rpx;
+    text-align: center;
+    padding-top: 5rpx;
+}

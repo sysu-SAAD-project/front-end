@@ -1,0 +1,23 @@
+/* newpost.wxss */
+
+.categoryLabel {
+    margin: 15rpx;
+    display: inline-block;
+}
+
+.categoryRadio {
+    display: inline-block;
+}
+
+.categoryText {
+    display: inline-block;
+    font-size: 10pt;
+}
+
+.imme-innerText {
+    color: white
+}
+
+.form-container {
+    margin: 40rpx;
+}

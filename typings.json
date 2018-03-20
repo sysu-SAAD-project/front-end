@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "we-app": "github:Emeryao/typed-we-app"
+  }
+}

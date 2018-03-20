@@ -1,0 +1,3 @@
+/* myenrollments.wxss */
+
+@import '../../posterwall/main/main.wxss';

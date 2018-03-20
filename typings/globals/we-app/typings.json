@@ -1,0 +1,11 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/Emeryao/typed-we-app/master/typings.json",
+    "raw": "github:Emeryao/typed-we-app",
+    "main": "we-app.d.ts",
+    "version": "1.4.3",
+    "global": true,
+    "name": "we-app"
+  }
+}

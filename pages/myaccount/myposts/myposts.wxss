@@ -1,0 +1,3 @@
+/* myposts.wxss */
+
+@import '../../discussion/main/main.wxss';

@@ -1,0 +1,44 @@
+<!--myposts.wxml-->
+<view class="topBar">
+    <view class="topBar-cell">
+        <button type="default" class="topBarButton" size="mini" bindtap="categorySelMenuShow">类型</button>
+    </view>
+</view>
+<view class="divLine"></view>
+<view class="topBar-picker" wx:if="{{categorySelVisible}}">
+    <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
+        <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
+      <view class="single-checkbox">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+      <view class="checkbox-text">{{item.name}}</view>
+    </label>
+    </checkbox-group>
+    <view class="divLine"></view>
+</view>
+
+<view class="list-container">
+    <view class="single-post" wx:for="{{myPosts}}" wx:key="{{item.postId}}" wx:if="{{categorySelector[item.category]}}" bindtap="postTap" data-post-id="{{item.postId}}">
+        <view class="single-post-topLine">
+            <view class="userInfo-block">
+                <image class="user-avatar" src="{{item.user.avatar}}" mode="scaleToFill"></image>
+                <view class="nickname">{{item.user.nickname}}</view>
+                <view class="post-time">{{item.postTime}}</view>
+            </view>
+            <view class="category-block">{{category2Name[item.category]}}</view>
+        </view>
+
+        <view class="single-post-content">
+            <view class="single-post-text">{{item.content.text}}</view>
+            <view class="single-post-pics-container">
+                <image class="single-post-pic" src="{{singleImageUrl}}" mode="aspectFill" wx:if="{{item.content.pics}}" wx:for="{{item.content.pics}}" wx:key="*this" wx:for-item="singleImageUrl" />
+            </view>
+        </view>
+
+        <view class="single-post-bottomLine">
+            <view class="single-post-info">{{item.comments.length}}条评论</view>
+            <view class="single-post-info" wx:if="{{item.content.pics}}">{{item.content.pics.length}}张图片</view>
+        </view>
+        <view class="divLine"></view>
+    </view>
+</view>

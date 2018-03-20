@@ -1,0 +1,80 @@
+<!--main.wxml-->
+<view class="topBar">
+    <view class="topBar-cell">
+        <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image>
+        <label class="posterwall-text">中山大学</label>
+    </view>
+    <view class="topBar-cell">
+        <button type="default" class="topBarButton" size="mini" bindtap="campusSelMenuShow">校区</button>
+    </view>
+    <view class="topBar-cell">
+        <button type="default" class="topBarButton" size="mini" bindtap="categorySelMenuShow">类型</button>
+    </view>
+</view>
+<view class="divLine"></view>
+
+<view class="posterwall-topBarPicker" wx:if="{{campusSelVisible}}">
+    <checkbox-group class="bl-center" bindchange="changeCampusFilter">
+        <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
+      <view class="single-checkbox">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+      <view class="checkbox-text">{{item.name}}</view>
+    </label>
+    </checkbox-group>
+    <!-- <text wx:for="{{campusSel}}" wx:key>selected</text> -->
+    <view >
+      <!-- <label class="campus-notifier" wx:for="{{campusSel}}" wx:key="{{item.value}}">
+        <view wx:if="{{item.checked}}">{{item.name}}
+        </view>
+      </label> -->
+      <!-- <button class='button1' bindtap='showPosters'>Go</button>
+      <button class='button1' bindtap='testFunc' >Reset</button> -->
+    </view>
+    <view class="divLine"></view>
+</view>
+<view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
+    <checkbox-group bindchange="changeCategoryFilter">
+        <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
+      <view class="single-checkbox">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+      </view>
+      <view class="checkbox-text">{{item.name}}</view>
+    </label>
+    </checkbox-group>
+    <view class="divLine"></view>
+</view>
+
+<!-- <view class="posters-container">
+    <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{campusSelector[item.campus] && categorySelector[item.category] }}" bindtap="posterTap" data-poster-Id="{{item.id}}">
+        <view class="poster-info-left">
+            <image class="cover-image" src="{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
+        </view>
+        <view class="poster-info-right">
+            <view class="poster-info-line poster-name">{{item.name}}</view>
+            <view class="poster-info-line poster-tags">
+                 <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> 
+            </view>
+            <view class="poster-info-line poster-mini-text">时间： {{item.startTime}}</view>
+            <view class="poster-info-line poster-mini-text">地点： {{item.location}}</view>
+        </view>
+    </view>
+</view> -->
+
+<view class="posters-container">
+    <view class="single-poster" wx:for="{{posters}}"  wx:key="{{item.id}}" bindtap="posterTap" wx:if="{{campusSelector[item.campus] && categorySelector[item.type] }}"  data-poster-Id="{{item.id}}" >
+        <view class="poster-info-left">
+            <image class="cover-image" src="{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
+        </view>
+        <view class="poster-info-right">
+            <view class="poster-info-line poster-name">{{item.name}}</view>
+            <view class="poster-info-line poster-tags">
+                <!-- <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> -->
+            </view>
+            <view class="poster-info-line poster-mini-text">时间： {{item.startTime}}</view>
+            <view class="poster-info-line poster-mini-text">地点： {{item.location}}</view>
+            <view class="poster-info-line poster-mini-text">校区： {{campusSel[item.campus].name}}</view>
+            <view class="poster-info-line poster-mini-text">类型： {{categorySel[item.type].name}}</view>
+        </view>
+    </view>
+</view>

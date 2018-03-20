@@ -1,0 +1,15 @@
+<!--newpost.wxml-->
+<view class="form-container">
+    <form bindsubmit="postButtonTap">
+        <textarea name="content" placeholder="说点什么..."></textarea>
+        <radio-group name="category" bindchange="radioChange">
+            <label class="categoryLabel" wx:for="{{categoryItems}}" wx:key="{{item.value}}">
+          <view class="categoryRadio">
+            <radio value="{{item.value}}" checked="{{item.checked}}"/>
+          </view>
+          <view class="categoryText">{{item.name}}</view>
+        </label>
+        </radio-group>
+        <button form-type="submit" class="blue-button imme-innerText">发布</button>
+    </form>
+</view>

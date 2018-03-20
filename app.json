@@ -1,0 +1,32 @@
+{
+    "pages": [
+        "pages/posterwall/main/main",
+        "pages/posterwall/enroll/enroll",
+        "pages/posterwall/details/details",
+
+        "pages/discussion/main/main",
+        "pages/discussion/comments/comments",
+        "pages/discussion/newpost/newpost",
+
+        "pages/myaccount/main/main",
+        "pages/myaccount/myenrollments/myenrollments",
+        "pages/myaccount/mynotifications/mynotifications",
+        "pages/myaccount/myposts/myposts",
+        "pages/index/index",
+        "pages/logs/logs"
+    ],
+    
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#5074d7",
+        "navigationBarTitleText": "活动Plus",
+        "navigationBarTextStyle": "white"
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

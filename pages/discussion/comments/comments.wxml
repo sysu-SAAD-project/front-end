@@ -1,0 +1,45 @@
+<!--comments.wxml-->
+<view class="posts-container">
+    <view class="single-post">
+        <view class="single-post-topLine">
+            <view class="userInfo-block">
+                <image class="user-avatar" src="{{currentPost.user.avatar}}" mode="scaleToFill"></image>
+                <view class="black-text nickname">{{currentPost.user.nickname}}</view>
+                <view class="post-time">{{currentPost.postTime}}</view>
+            </view>
+            <view class="category-block">{{category2Name[currentPost.category]}}</view>
+        </view>
+
+        <view class="single-post-content">
+            <view class="single-post-text">{{currentPost.content.text}}</view>
+            <view class="single-post-pics-container">
+                <image class="single-post-pic" src="{{singleImageUrl}}" mode="aspectFill" wx:for="{{currentPost.content.pics}}" wx:key="*this" wx:for-item="singleImageUrl" />
+            </view>
+        </view>
+
+        <view class="single-post-bottomLine">
+            <view class="single-post-info">{{currentPost.comments.length}}条评论</view>
+            <view class="single-post-info" wx:if="{{currentPost.content.pics}}">{{currentPost.content.pics.length}}张图片</view>
+        </view>
+    </view>
+</view>
+
+<view class="list-container">
+    <view class="single-comment" wx:for="{{currentPost.comments}}" wx:key="{{item.commentId}}">
+        <view class="single-comment-topLine">
+            <view class="userInfo-block">
+                <image class="user-avatar" src="{{item.user.avatar}}" mode="scaleToFill"></image>
+                <view class="nickname">{{item.user.nickname}}</view>
+            </view>
+            <view class="post-time-right">{{item.commentTime}}</view>
+        </view>
+        <view class="single-comment-content">{{item.content.text}}</view>
+    </view>
+</view>
+
+<view class="comments-bottomBar">
+    <form class="comment-form" bindsubmit="commentButtonTap">
+        <input name="content" class="inline-bl comment-input" placeholder="我也说一句..." />
+        <button size="mini" form-type="submit" class="inline-bl">发送</button>
+    </form>
+</view>

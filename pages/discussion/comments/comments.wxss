@@ -1,0 +1,42 @@
+/* comments.wxss */
+
+@import "../main/main.wxss";
+.post-time-right {
+    float: right;
+    padding-top: 13rpx;
+    padding-bottom: 13rpx;
+    font-size: 10pt;
+    color: gray;
+}
+
+.comments-bottomBar {
+    position: fixed;
+    background-color: white;
+    bottom: 0rpx;
+    width: 100%;
+}
+
+.comment-input {
+    width: 80%;
+}
+
+.comment-form {
+    margin-left: 2%;
+}
+
+.single-comment {
+    margin: 20rpx auto;
+}
+
+.single-comment-topLine {
+    margin: 10rpx;
+}
+
+.single-comment-content {
+    font-size: 10pt;
+    margin-left: 80rpx;
+}
+
+.black-text {
+    color: black;
+}

@@ -1,0 +1,31 @@
+<!--mynotifications.wxml-->
+<view class="topBar">
+    <view class="topBar-half-cell" bindtap="posterMsgTabTap">
+        <view class="topBar-half-cell-text">活动通知</view>
+        <view class="topBar-half-cell-bottom" wx:if="{{leftTabEnabled}}"></view>
+    </view>
+    <view class="topBar-half-cell" bindtap="discussionMsgTabTap">
+        <view class="topBar-half-cell-text">帖子消息</view>
+        <view class="topBar-half-cell-bottom" wx:if="{{!leftTabEnabled}}"></view>
+    </view>
+</view>
+
+<view class="msg-container" wx:if="{{leftTabEnabled}}">
+    <view class="single-msg" wx:for="{{eventMessages}}" wx:key="{{item.eventMsgId}}" bindtap="posterTap" data-poster-id="{{item.relatedPosterId}}">
+        <view class="single-msg-line msg-title">{{item.eventName}}</view>
+        <view class="single-msg-line msg-time">{{item.msgTime}}</view>
+        <view class="single-msg-line msg-content">{{item.content}}</view>
+        <view class="single-msg-line msg-event-organization">From {{item.organization}}</view>
+        <view class="divLine"></view>
+    </view>
+</view>
+
+
+<view class="msg-container" wx:if="{{!leftTabEnabled}}">
+    <view class="single-msg" wx:for="{{discussionMessages}}" wx:key="{{item.discussionMsgId}}" bindtap="postTap" data-post-id="{{item.relatedPostId}}" data-comment-id="{{item.relatedCommentId}}">
+        <view class="single-msg-line msg-title">您的帖子 " {{item.relatedPostIntro}}... " 收到了1条新评论</view>
+        <view class="single-msg-line msg-time">{{item.replyTime}}</view>
+        <view class="single-msg-line msg-content">{{item.content}}</view>
+        <view class="divLine"></view>
+    </view>
+</view>

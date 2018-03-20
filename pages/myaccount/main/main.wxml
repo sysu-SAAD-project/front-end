@@ -1,0 +1,27 @@
+<!--main.wxml-->
+<view class="account-container">
+    <view class="userInfo">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="scaleToFill" background-size="cover"></image>
+        <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+    </view>
+</view>
+<view class="list-container">
+    <view class="myc-navigate" bindtap="navToEnrollmentsTap">
+        <image class="nav-icon" src="{{icons[0]}}"></image>
+        <view class="nav-text">我报名的</view>
+        <image class="nav-icon-right" src="../../../image/my/more.png" mode="scaleToFill"></image>
+    </view>
+    <view class="divLine"></view>
+    <view class="myc-navigate" bindtap="navToPostsTap">
+        <image class="nav-icon" src="{{icons[1]}}"></image>
+        <view class="nav-text">我的帖子</view>
+        <image class="nav-icon-right" src="../../../image/my/more.png" mode="scaleToFill"></image>
+    </view>
+    <view class="divLine"></view>
+    <view class="myc-navigate" bindtap="navToMessagesTap">
+        <image class="nav-icon" src="{{icons[2]}}"></image>
+        <view class="nav-text">我的消息</view>
+        <image class="nav-icon-right" src="../../../image/my/more.png" mode="scaleToFill"></image>
+    </view>
+    <view class="divLine"></view>
+</view>

@@ -1,0 +1,60 @@
+/* mynotifications.wxss */
+
+.topBar {
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.topBar-half-cell {
+    display: inline-block;
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    margin: auto 18rpx;
+}
+
+.topBar-half-cell-text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13pt;
+}
+
+.topBar-half-cell-bottom {
+    position: absolute;
+    bottom: 0;
+    height: 3rpx;
+    width: 100%;
+    background-color: #5074d7;
+}
+
+.msg-container {
+    margin: 30rpx;
+}
+
+.single-msg {
+    margin: 30rpx auto;
+}
+
+.single-msg-line {
+    margin: 20rpx auto;
+}
+
+.msg-title {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.msg-time {
+    color: grey;
+    font-size: 9pt;
+}
+
+.msg-content {
+    font-size: 12pt;
+}
+
+.msg-event-organization {
+    font-size: 10pt;
+}
