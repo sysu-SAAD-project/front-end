@@ -56,8 +56,8 @@
             <view class="poster-info-line poster-tags">
                  <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> 
             </view>
-            <view class="poster-info-line poster-mini-text">时间： {{item.startTime}}</view>
-            <view class="poster-info-line poster-mini-text">地点： {{item.location}}</view>
+            <view class="poster-info-line poster-mini-text">活动时间： {{item.startTime}}</view>
+            <view class="poster-info-line poster-mini-text">活动地点： {{item.location}}</view>
         </view>
     </view>
 </view>
