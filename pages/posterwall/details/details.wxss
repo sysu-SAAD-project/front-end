@@ -14,7 +14,7 @@
 }
 
 .main-title {
-    font-size: 20pt;
+    font-size: 12pt;
     font-weight: bold;
 }
 
@@ -25,11 +25,13 @@
 
 .entry-text {
     font-weight: bold;
-    font-size: 12pt;
+    font-size: 10pt;
+    color: rgb(100,100,100);
 }
 
 .content-text {
-    font-size: 12pt;
+    font-size: 9pt;
+    color: gray;
 }
 
 .text-bl {
@@ -37,5 +39,9 @@
 }
 
 .qrcode-img {
-    margin: 30rpx;
+    display: inline-block;
+    margin: 0 250rpx;
+    max-width: 200rpx;
+    max-height: 200rpx;
+    text-align: center;
 }
