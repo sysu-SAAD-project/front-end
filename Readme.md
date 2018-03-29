@@ -1,4 +1,4 @@
-# 中大活动-小程序端说明
+# 中大活动-小程序端说明 
 
 ## 文件结构
 typings.json, typings/, jsconfig.json是vscode的插件支持

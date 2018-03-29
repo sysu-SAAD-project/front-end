@@ -2,9 +2,9 @@
 <image src="{{currentPoster.coverImageUrl}}" mode="scaleToFill" class="posterDetails-image"></image>
 <view class="details-container">
     <view class="line-container main-title">{{currentPoster.name}}</view>
-    <!-- <view class="line-container poster-tags">
+    <view class="line-container poster-tags">
         <view class="single-poster-tag" wx:for="{{currentPoster.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> 
-    </view>-->
+    </view>
     <view class="line-container">
         <text class="entry-text">活动时间： </text>
         <text class="content-text">{{currentPoster.startTime}}</text>
@@ -46,14 +46,25 @@
     </view>
     <view class="line-container" wx:if="{{currentPoster.enrollWay}}">
         <view class="entry-text text-bl">报名方式： </view>
-        <view class="content-text text-bl">{{currentPoster.enrollWay}}</view>
+        <view class="content-text text-bl"><text>{{currentPoster.enrollWay}}</text></view>
     </view>
-    <view class="line-container" wx:if="{{currentPoster.enrollEndtime}}">
+    <view class="line-container" wx:if="{{currentPoster.pubEndtime}}">
         <view class="entry-text text-bl">报名截止日期： </view>
         <view class="content-text text-bl">{{currentPoster.enrollEndtime}}</view>
     </view>
+</view> 
+
+<view class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
+    <view class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}
+    </view>
+
 </view>
 
-<!-- <view class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
-    <view class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}</view>
-</view> -->
+<!--<view>
+  <button  class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}"  type="primary" disabled="{{disabled}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
+  
+    <text class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}</text>
+    </button>  
+</view>
+--!>
+ 

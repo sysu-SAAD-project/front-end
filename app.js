@@ -91,22 +91,41 @@ App({
     },
 
     getPosterById: function(posterId, successCb, failCb) {
-        var postersItem = this.globalData.posters;
-        var findOne = false;
-        var currentPosterItem = null;
-        for (var i = 0, lenI = postersItem.length; i < lenI; ++i) {
-            // console.log(postersItem[i]);
-            if (postersItem[i].id == posterId) {
-                currentPosterItem = postersItem[i];
-                findOne = true;
-                break;
+        // var postersItem = this.globalData.posters;
+        // var findOne = false;
+        // var currentPosterItem = null;
+        // for (var i = 0, lenI = postersItem.length; i < lenI; ++i) {
+        //     // console.log(postersItem[i]);
+        //     if (postersItem[i].id == posterId) {
+        //         currentPosterItem = postersItem[i];
+        //         findOne = true;
+        //         break;
+        //     }
+        // };
+        // if (findOne) {
+        //     typeof successCb == "function" && successCb(currentPosterItem);
+        // } else {
+        //     typeof failCb == "function" && failCb("Error Msg: Poster not found");
+        // }
+
+        var url = 'https://sysuactivity.com/act/' + 1
+        wx.request({
+          url,
+          method: 'GET',
+          header: {
+            'content-type': 'application/json'
+          },
+          success: (res) => {
+            if (res.statusCode == 204) {
+              failCb('ERROR')
+            } else {
+              successCb(res.data)
             }
-        };
-        if (findOne) {
-            typeof successCb == "function" && successCb(currentPosterItem);
-        } else {
-            typeof failCb == "function" && failCb("Error Msg: Poster not found");
-        }
+          },
+          fail: (res) => {
+            failCb('ERROR1')
+          }
+        })
 
     },
     
