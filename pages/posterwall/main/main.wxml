@@ -38,14 +38,15 @@
   </view>
 
   <view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
-    <checkbox-group bindchange="changeCategoryFilter">
+    <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
       <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
-      <view class="single-checkbox">
-        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
-      </view>
-      <view class="checkbox-text">{{item.name}}</view>
-    </label>
-    </checkbox-group>
+        <view class="checkbox-text">{{item.name}}</view>
+        <label class="single-checkbox {{item.checked ? 'is_checked':''}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
+          <span>√</span>
+        </label>
+      </label>
+    </checkbox-group> 
     <view class="divLine"></view>
   </view>
 

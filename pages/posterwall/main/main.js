@@ -48,25 +48,39 @@ Page({
 
     setCampus: function () {
       var campusSelItems = this.data.campusSel;
-      this.data.campusString = "";
+      var tmpString = "";
       var flag = false;
       for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
         if (campusSelItems[i].checked == true) {
-          if (flag == true) this.data.campusString += ",";
-          this.data.campusString += campusSelItems[i].name;
+          if (flag == true) tmpString += ",";
+          tmpString += campusSelItems[i].name;
           flag = true;
         }
       }
       this.setData({
         campusSelVisible: !this.data.campusSelVisible,
+        campusString: tmpString
       })
       console.log(this.data.campusString);
     },
     resetCampus: function () {
-      var campusSelItems = this.data.campusSel;
-      for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
-        campusSelItems[i].checked = false;
-      }
+      this.setData({
+        campusString: "校区",
+        campusSelector: {
+          0b1000: true,
+          0b0100: true,
+          0b0010: true,
+          0b0001: true
+          //"SHENZHEN": true
+        },
+        campusSel: [
+          { "value": 0b1000, "name": "东校区", "checked": true },
+          { "value": 0b0100, "name": "南校区", "checked": true },
+          { "value": 0b0010, "name": "北校区", "checked": true },
+          { "value": 0b0001, "name": "珠海校区", "checked": true }
+          // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
+        ]
+      })
       console.log(this.data.campusSel);
     },
     /**

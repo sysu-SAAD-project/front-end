@@ -94,6 +94,16 @@
     width: 200rpx;
     margin: 15rpx;
     border-radius: 0;
+      overflow-x: hidden;/*超出部分隐藏*/
+  white-space: nowrap;/*不换行*/
+  text-overflow:ellipsis;/*超出部分文字以...显示*/
+}
+
+.topBarButton span {
+  width: 150rpx;
+  overflow-x: hidden;/*超出部分隐藏*/
+  white-space: nowrap;/*不换行*/
+  text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 
 .topBarButton-hover {
