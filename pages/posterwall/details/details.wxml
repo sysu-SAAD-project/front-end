@@ -48,11 +48,11 @@
         <view class="entry-text text-bl">报名方式： </view>
         <view class="content-text text-bl"><text>{{currentPoster.enrollWay}}</text></view>
     </view>
-    <view class="line-container" wx:if="{{currentPoster.enrollEndtime}}">
+    <view class="line-container" wx:if="{{currentPoster.pubEndtime}}">
         <view class="entry-text text-bl">报名截止日期： </view>
         <view class="content-text text-bl">{{currentPoster.enrollEndtime}}</view>
     </view>
-</view>
+</view> 
 
 <view class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
     <view class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}

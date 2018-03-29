@@ -13,6 +13,10 @@ Page({
             "报名人数已达上限",
             "已过报名截止时间"
         ],
+        
+        /*currentPoster: {},*/
+        //json后台数据无法接收到，先用测试数据
+        
         currentPoster: {
           coverImageUrl: '../../../image/sysu-icon.jpeg',
           name: '第二届毽球团体赛+趣味挑战赛',
@@ -34,12 +38,14 @@ Page({
           reward: '参与即有5个体育章',
           requirement: '团体赛限3人组队，可加1人替补，限16队；趣味单人赛可以参与，需完成两个挑战，限100人。',
           enrollWay: '步骤一：打开网站（http://actplus.sysuactivity.com/X）或在“活动plus”小程序找到改活动进入报名界面。\n' + '步骤二：填写报名信息并提交。',
-          enrollEndTime: '5月23日 23:59',
+          pubEndTime: '5月23日 23:59',
 
           status: 0,
    
         },
         // test data
+        
+        
     },
     enrollButtonTap: function(e) {
         console.log(e);
@@ -59,8 +65,15 @@ Page({
         app.getPosterById(options.posterId,
             function(thePoster) {
                 that.setData({
-                    currentPoster: thePoster
-                })
+                  currentPoster: thePoster
+                });
+
+                /*let currentPoster = this.currentPoster;
+                currentPoster.startTime = ""
+                this.setData({currentPoster: thePoster});
+                */
+                //毫秒转时间函数。未完成
+
             },
             function(errMsg) {
                 console.log(errMsg);
