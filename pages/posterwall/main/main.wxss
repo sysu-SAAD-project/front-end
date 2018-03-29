@@ -1,19 +1,39 @@
 /* main.wxss */
 
+.topBar {
+  height: 80rpx;
+}
+
+.logo {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
+
 .posterwall-icon {
     height: 50rpx;
     width: 50rpx;
+    padding: 15rpx;
+}
+
+.topBarButton-icon {
+  display: inline-block;
+  vertical-align: top;
+  height: 40rpx;
+  width: 40rpx;
+  margin-top: 8rpx;
 }
 
 .posterwall-text {
     display: inline-block;
-    margin-left: 5rpx;
-    padding-bottom: 25rpx;
-    vertical-align: middle;
+    vertical-align: top;
+    margin-top: 18rpx;
+    font-size: 32rpx;
 }
 
 .posters-container {
     margin: 30rpx;
+    flex: 1;
 }
 
 .single-poster {
@@ -43,11 +63,14 @@
 .poster-name {
     font-weight: bold;
 }
+
 .campus-notifier{
      float: left; 
      margin: 2px;
 }
+
 .button1 {
-  float: right;
-   width: 30%;
+  display: inline-block;
+  width: 50%;
+  border-radius: 0;
 }

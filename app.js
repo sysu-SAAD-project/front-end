@@ -6,7 +6,6 @@ App({
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
     },
-
     getUserInfo: function(cb) {
         var that = this
         if (this.globalData.userInfo) {
@@ -22,26 +21,32 @@ App({
             })
         }
     },
-    testGetMethod: function() {
-      wx.request({
-        url: 'http://119.29.155.194:8080/act?page=0',
-        method:"GET",
-        success(res) {
-          console.log(res.data);
-        }
-      })
-    },
-    testPosters: function() {
-      console.log(this.globalData.posters);
-    },
+    // testGetMethod: function() {
+    //   wx.request({
+    //     url: 'https://sysuactivity.com/act?page=0',
+    //     method:"GET",
+    //     success(res) {
+    //       console.log("testGetMethod" + res.data);
+    //     }
+    //   })
+    // },
+    // testPosters: function() {
+    //   console.log(this.globalData.posters);
+    // },
+    /**
+     * 海报数量为0时请求第0页海报
+     * successCb：请求成功回调函数
+     * failCb：请求失败回调函数
+     */
     getPosters: function(successCb, failCb) {
         var that = this;
         if (that.globalData.posters.length == 0) {
             // send request to Server, get data
           wx.request({
-            url: 'http://119.29.155.194:8080/act?page=0',
+            url: 'http://sysuactivity.com/act?page=0',
             method: "GET",
             success(res) {
+              console.log("getPosters" + res.data);
               let str = res.data.content;
               typeof successCb == "function" && successCb(str);
               that.globalData.posters = str;
@@ -56,15 +61,20 @@ App({
             typeof successCb == "function" && successCb(that.globalData.posters);
         }
     },
-
+    /**
+     * 海报数量为0时请求第0页海报
+     * successCb：请求成功回调函数
+     * failCb：请求失败回调函数
+     */
     getMorePosters: function(successCb, failCb) {
         var that = this;
         if (that.globalData.currentPages < that.globalData.totalPages) {
             // send request to Server, get data
           wx.request({
-            url: 'http://119.29.155.194:8080/act?page=' + that.globalData.currentPages,
+            url: 'http://sysuactivity.com/act?page=' + that.globalData.currentPages,
             method: "GET",
             success(res) {
+              console.log("getMorePosters" + res.data);
               let str = res.data.content;
               for(let item in str) {
                 that.globalData.posters.push(str[item]);
@@ -118,7 +128,8 @@ App({
         })
 
     },
-// 以下是个人信息及讨论区需要用到的函数
+    
+    // 以下是个人信息及讨论区需要用到的函数
     getPostersEnrolledByCurrentUser: function(successCb, failCb) {
         var that = this;
 
@@ -412,353 +423,369 @@ App({
                 ]
             }
         ],
-        posters: [{ // 标准数据格式
-                "id": 1,
-                "name": '活动名称1-666活动',
-                "startTime": '2018-03-03 13:00',
-                "endTime": '2018-03-03 14:00',
-                "location": '中山大学东校区666室',
-                // 后面的都是只在详细信息中出现
-                "campus": 0, // 0"EAST", 2"NORTH", 1"SOUTH", 3"ZHUHAI", "SHENZHEN"
-                "enrollCondition": '活动对象（不明白是什么）',
-                "sponsor": '中大666俱乐部',
-                "type": "666",
-                "pubStartTime": '2018-03-03 13:00',
-                "pubEndTime": '2018-03-03 14:00',
-                "detail":  "（这是活动详情文字说明）这个活动关键在于66666，特别666666",
-                "verified": true,
-                "canEnrolled": false,
-                "email":"",
-                "enrollWay": "（这是报名方式）接收个人、组队报名",
-                //"enrollEndTime": ,
-                "reward": "（活动奖励）冠军可得666衣服一件",
-                "introduction": "（这是活动简介：）是一个66666的活动",
-                "requirement": "只要你足够666就来",
-                "poster": '',
-                "QRcode": ""
-            },  // end of format data
+        posters: [
           {
-                "posterId": 1,
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "EAST", // "EAST", "NORTH", "SOUTH", "ZHUHAI", "SHENZHEN"
-                "category": 0,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 0,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称1-666活动',
-                "tag": ["东校区", "sport"],
-                "date": [2017, 9, 26],
-                "location": '中山大学东校区666室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大666俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于66666，特别666666",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个66666的活动",
-                "enrollment": "（这是报名方式）接收个人、组队报名",
-                "dueDate": [2017, 9, 1],
-                "rewards": "（活动奖励）冠军可得666衣服一件",
-                "requirements": "只要你足够666就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "2",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "SOUTH",
-                "category": 1,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 0,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称2-777活动',
-                "tag": ["南校区", "contest"],
-                "date": [2017, 10, 27],
-                "location": '中山大学南校区777室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大777俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于777777，特别7777777",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个77777的活动",
-                "enrollment": "（这是报名方式）接收个人、组队7777报名",
-                "dueDate": [2017, 9, 14],
-                "rewards": "（活动奖励）冠军可得777衣服一件",
-                "requirements": "只要你足够777就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "3",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "NORTH",
-                "category": 2,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 1,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称3-888活动',
-                "tag": ["北校区", "charity"],
-                "date": [2017, 11, 12],
-                "location": '中山大学北校区888室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大888俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于888888，特别888888",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个888888的活动",
-                "enrollment": "（这是报名方式）接收个人、组队8888报名",
-                "dueDate": [2017, 10, 2],
-                "rewards": "（活动奖励）冠军可得888衣服一件",
-                "requirements": "只要你足够888就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "4",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "ZHUHAI",
-                "category": 3,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 1,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称4-999活动',
-                "tag": ["珠海校区", "show"],
-                "date": [2017, 12, 1],
-                "location": '中山大学珠海校区999室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大999俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于999999，特别999999",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个99999的活动",
-                "enrollment": "（这是报名方式）接收个人、组队9999报名",
-                "dueDate": [2017, 11, 14],
-                "rewards": "（活动奖励）冠军可得999衣服一件",
-                "requirements": "只要你足够999就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "5",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "EAST", // "EAST", "NORTH", "SOUTH", "ZHUHAI", "SHENZHEN"
-                "category": 4,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 2,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称1-666活动',
-                "tag": ["东校区", "leisure"],
-                "date": [2017, 9, 26],
-                "location": '中山大学东校区666室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大666俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于66666，特别666666",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个66666的活动",
-                "enrollment": "（这是报名方式）接收个人、组队报名",
-                "dueDate": [2017, 9, 1],
-                "rewards": "（活动奖励）冠军可得666衣服一件",
-                "requirements": "只要你足够666就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "6",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "SOUTH",
-                "category": 5,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 2,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称2-777活动',
-                "tag": ["南校区", "777"],
-                "date": [2017, 10, 27],
-                "location": '中山大学南校区777室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大777俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于777777，特别7777777",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个77777的活动",
-                "enrollment": "（这是报名方式）接收个人、组队7777报名",
-                "dueDate": [2017, 9, 14],
-                "rewards": "（活动奖励）冠军可得777衣服一件",
-                "requirements": "只要你足够777就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "7",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "NORTH",
-                "category": 6,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 3,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称3-888活动',
-                "tag": ["北校区", "sport"],
-                "date": [2017, 11, 12],
-                "location": '中山大学北校区888室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大888俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于888888，特别888888",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个888888的活动",
-                "enrollment": "（这是报名方式）接收个人、组队8888报名",
-                "dueDate": [2017, 10, 2],
-                "rewards": "（活动奖励）冠军可得888衣服一件",
-                "requirements": "只要你足够888就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            },
-            {
-                "posterId": "8",
-                "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
-                "campus": "ZHUHAI",
-                "category": 7,
-                /**
-                 * status 可报名状态
-                 * 0: 可报名
-                 * 1: 已报名（无需重复报名）
-                 * 2: 报名人数已达上限
-                 * 3: 已过报名截止时间
-                 */
-                "status": 3,
-                // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
-                "name": '活动名称4-999活动',
-                "tag": ["珠海校区", "999"],
-                "date": [2017, 12, 1],
-                "location": '中山大学珠海校区999室',
-                // 后面的都是只在详细信息中出现
-                "orientation": '活动对象（不明白是什么）',
-                "organizer": '中大999俱乐部',
-                "details": {
-                    "text": "（这是活动详情文字说明）这个活动关键在于999999，特别999999",
-                    "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
-                },
-                // 下面部分的内容可以为null，若null则不显示
-                "introduction": "（这是活动简介：）是一个99999的活动",
-                "enrollment": "（这是报名方式）接收个人、组队9999报名",
-                "dueDate": [2017, 11, 14],
-                "rewards": "（活动奖励）冠军可得999衣服一件",
-                "requirements": "只要你足够999就来",
-                // 内部信息
-                // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
-                "enrollingForm": [
-                    { "input": "报名人姓名" },
-                    { "input": "联系电话" },
-                    { "input": "专业" },
-                    { "input": "学号" }
-                ]
-            }
+            "id": 28,
+            "name": "三月义卖1",
+            "startTime": 1521734400000,
+            "endTime": 1521820800000,
+            "campus": 0b0001,
+            "type": 0
+          },
+          {
+            "id": 29,
+            "name": "三月义卖2",
+            "startTime": 1521734400000,
+            "endTime": 1521820800000,
+            "campus": 0b0010,
+            "type": 0
+          }
+        //  { // 标准数据格式
+        //         "id": 1,
+        //         "name": '活动名称1-666活动',
+        //         "startTime": '2018-03-03 13:00',
+        //         "endTime": '2018-03-03 14:00',
+        //         "location": '中山大学东校区666室',
+        //         // 后面的都是只在详细信息中出现
+        //         "campus": 0, // 0"EAST", 2"NORTH", 1"SOUTH", 3"ZHUHAI", "SHENZHEN"
+        //         "enrollCondition": '活动对象（不明白是什么）',
+        //         "sponsor": '中大666俱乐部',
+        //         "type": "666",
+        //         "pubStartTime": '2018-03-03 13:00',
+        //         "pubEndTime": '2018-03-03 14:00',
+        //         "detail":  "（这是活动详情文字说明）这个活动关键在于66666，特别666666",
+        //         "verified": true,
+        //         "canEnrolled": false,
+        //         "email":"",
+        //         "enrollWay": "（这是报名方式）接收个人、组队报名",
+        //         //"enrollEndTime": ,
+        //         "reward": "（活动奖励）冠军可得666衣服一件",
+        //         "introduction": "（这是活动简介：）是一个66666的活动",
+        //         "requirement": "只要你足够666就来",
+        //         "poster": '',
+        //         "QRcode": ""
+        //     },  // end of format data
+        //   {
+        //         "posterId": 1,
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "EAST", // "EAST", "NORTH", "SOUTH", "ZHUHAI", "SHENZHEN"
+        //         "category": 0,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 0,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称1-666活动',
+        //         "tag": ["东校区", "sport"],
+        //         "date": [2017, 9, 26],
+        //         "location": '中山大学东校区666室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大666俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于66666，特别666666",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个66666的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队报名",
+        //         "dueDate": [2017, 9, 1],
+        //         "rewards": "（活动奖励）冠军可得666衣服一件",
+        //         "requirements": "只要你足够666就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "2",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "SOUTH",
+        //         "category": 1,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 0,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称2-777活动',
+        //         "tag": ["南校区", "contest"],
+        //         "date": [2017, 10, 27],
+        //         "location": '中山大学南校区777室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大777俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于777777，特别7777777",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个77777的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队7777报名",
+        //         "dueDate": [2017, 9, 14],
+        //         "rewards": "（活动奖励）冠军可得777衣服一件",
+        //         "requirements": "只要你足够777就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "3",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "NORTH",
+        //         "category": 2,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 1,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称3-888活动',
+        //         "tag": ["北校区", "charity"],
+        //         "date": [2017, 11, 12],
+        //         "location": '中山大学北校区888室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大888俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于888888，特别888888",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个888888的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队8888报名",
+        //         "dueDate": [2017, 10, 2],
+        //         "rewards": "（活动奖励）冠军可得888衣服一件",
+        //         "requirements": "只要你足够888就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "4",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "ZHUHAI",
+        //         "category": 3,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 1,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称4-999活动',
+        //         "tag": ["珠海校区", "show"],
+        //         "date": [2017, 12, 1],
+        //         "location": '中山大学珠海校区999室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大999俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于999999，特别999999",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个99999的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队9999报名",
+        //         "dueDate": [2017, 11, 14],
+        //         "rewards": "（活动奖励）冠军可得999衣服一件",
+        //         "requirements": "只要你足够999就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "5",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "EAST", // "EAST", "NORTH", "SOUTH", "ZHUHAI", "SHENZHEN"
+        //         "category": 4,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 2,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称1-666活动',
+        //         "tag": ["东校区", "leisure"],
+        //         "date": [2017, 9, 26],
+        //         "location": '中山大学东校区666室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大666俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于66666，特别666666",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个66666的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队报名",
+        //         "dueDate": [2017, 9, 1],
+        //         "rewards": "（活动奖励）冠军可得666衣服一件",
+        //         "requirements": "只要你足够666就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "6",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "SOUTH",
+        //         "category": 5,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 2,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称2-777活动',
+        //         "tag": ["南校区", "777"],
+        //         "date": [2017, 10, 27],
+        //         "location": '中山大学南校区777室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大777俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于777777，特别7777777",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个77777的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队7777报名",
+        //         "dueDate": [2017, 9, 14],
+        //         "rewards": "（活动奖励）冠军可得777衣服一件",
+        //         "requirements": "只要你足够777就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "7",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "NORTH",
+        //         "category": 6,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 3,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称3-888活动',
+        //         "tag": ["北校区", "sport"],
+        //         "date": [2017, 11, 12],
+        //         "location": '中山大学北校区888室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大888俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于888888，特别888888",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个888888的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队8888报名",
+        //         "dueDate": [2017, 10, 2],
+        //         "rewards": "（活动奖励）冠军可得888衣服一件",
+        //         "requirements": "只要你足够888就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     },
+        //     {
+        //         "posterId": "8",
+        //         "coverImageUrl": 'https://tse4-mm.cn.bing.net/th?id=OIP.xUXmY7tW__eIdSy-RBBqYAEsDi&pid=15.1',
+        //         "campus": "ZHUHAI",
+        //         "category": 7,
+        //         /**
+        //          * status 可报名状态
+        //          * 0: 可报名
+        //          * 1: 已报名（无需重复报名）
+        //          * 2: 报名人数已达上限
+        //          * 3: 已过报名截止时间
+        //          */
+        //         "status": 3,
+        //         // 下面4个需要显示在活动列表里的简介信息中（详细信息点开也要有）
+        //         "name": '活动名称4-999活动',
+        //         "tag": ["珠海校区", "999"],
+        //         "date": [2017, 12, 1],
+        //         "location": '中山大学珠海校区999室',
+        //         // 后面的都是只在详细信息中出现
+        //         "orientation": '活动对象（不明白是什么）',
+        //         "organizer": '中大999俱乐部',
+        //         "details": {
+        //             "text": "（这是活动详情文字说明）这个活动关键在于999999，特别999999",
+        //             "qrcodeUrl": "https://vignette3.wikia.nocookie.net/zh.uncyclopedia/images/6/6c/2241385239547874665.jpg"
+        //         },
+        //         // 下面部分的内容可以为null，若null则不显示
+        //         "introduction": "（这是活动简介：）是一个99999的活动",
+        //         "enrollment": "（这是报名方式）接收个人、组队9999报名",
+        //         "dueDate": [2017, 11, 14],
+        //         "rewards": "（活动奖励）冠军可得999衣服一件",
+        //         "requirements": "只要你足够999就来",
+        //         // 内部信息
+        //         // 报名表格用一个object数组，key为表单组件类型，value为该表格的描述（待定）
+        //         "enrollingForm": [
+        //             { "input": "报名人姓名" },
+        //             { "input": "联系电话" },
+        //             { "input": "专业" },
+        //             { "input": "学号" }
+        //         ]
+        //     }
         ]
     }
 })
-
 
