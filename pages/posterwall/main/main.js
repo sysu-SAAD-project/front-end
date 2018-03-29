@@ -1,5 +1,6 @@
 // main.js
 var app = getApp();
+var util = require('../../../utils/util.js')
 Page({
 
     /**
@@ -7,20 +8,22 @@ Page({
      */
     data: {
         campusSelVisible: false,
+        campusString: "校区",
         categorySelVisible: false,
+        categoryString: "类型",
         campusSelector: {
-            "EAST": true,
-            "SOUTH": true,
-            "NORTH": true,
-            "ZHUHAI": true
+          0b1000: true,
+          0b0100: true,
+          0b0010: true,
+          0b0001: true
             //"SHENZHEN": true
         },
         campusSel: [
-          { "value": "EAST", "name": "东校区", "checked": true },
-          { "value": "SOUTH", "name": "南校区", "checked": true },
-          { "value": "NORTH", "name": "北校区", "checked": true },
-          { "value": "ZHUHAI", "name": "珠海校区", "checked": true }
-            // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
+          { "value": 0b1000, "name": "东校区", "checked": true },
+          { "value": 0b0100, "name": "南校区", "checked": true },
+          { "value": 0b0010, "name": "北校区", "checked": true },
+          { "value": 0b0001, "name": "珠海校区", "checked": true }
+          // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
         ],
         categorySelector: {
           0: true,
@@ -35,26 +38,49 @@ Page({
           { "value": 0, "name": "体育", "checked": true },
           { "value": 1, "name": "公益", "checked": true },
           { "value": 2, "name": "竞赛", "checked": true },
-            { "value": 3, "name": "演出", "checked": true },
-            { "value": 4, "name": "讲座", "checked": true },
-            { "value": 5, "name": "户外", "checked": true },
-            { "value": 6, "name": "休闲", "checked": true }
+          { "value": 3, "name": "演出", "checked": true },
+          { "value": 4, "name": "讲座", "checked": true },
+          { "value": 5, "name": "户外", "checked": true },
+          { "value": 6, "name": "休闲", "checked": true }
         ],
         posters: []
     },
-    testFunc: function () {
-      app.testGetMethod();
+
+    setCampus: function () {
+      var campusSelItems = this.data.campusSel;
+      this.data.campusString = "";
+      var flag = false;
+      for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
+        if (campusSelItems[i].checked == true) {
+          if (flag == true) this.data.campusString += ",";
+          this.data.campusString += campusSelItems[i].name;
+          flag = true;
+        }
+      }
+      this.setData({
+        campusSelVisible: !this.data.campusSelVisible,
+      })
+      console.log(this.data.campusString);
     },
-    showPosters: function () {
-      console.log(this.posters);
-      //app.testPosters();
+    resetCampus: function () {
+      var campusSelItems = this.data.campusSel;
+      for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
+        campusSelItems[i].checked = false;
+      }
+      console.log(this.data.campusSel);
     },
-    campusSelMenuShow: function() {
+    /**
+     * 点击校区按钮回调事件
+     */
+    campusSelMenuShow: function(e) {
         this.setData({
             campusSelVisible: !this.data.campusSelVisible,
             categorySelVisible: false
         })
     },
+    /**
+     * 点击类型按钮回调事件
+     */
     categorySelMenuShow: function() {
         this.setData({
             categorySelVisible: !this.data.categorySelVisible,
@@ -69,7 +95,6 @@ Page({
             values = e.detail.value;
         for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
             campusSelItems[i].checked = false;
-
             for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
                 if (campusSelItems[i].value == values[j]) {
                     campusSelItems[i].checked = true;
@@ -77,6 +102,7 @@ Page({
                 }
             }
         }
+
         var campusSelectorItems = this.data.campusSelector;
         for (var key in campusSelectorItems) {
             for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
@@ -99,11 +125,10 @@ Page({
             values = e.detail.value;
         for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
             categorySelItems[i].checked = false;
-
             for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
                 if (categorySelItems[i].value == values[j]) {
                     categorySelItems[i].checked = true;
-                    break
+                    break;
                 }
             }
         }
@@ -144,9 +169,12 @@ Page({
             app.getPosters(
                 function(postersData) {
                   //console.log(postersData);
-                    that.setData({
-                        posters : postersData
-                    })
+                  for (var i = 0; i < postersData.length; i++) {
+                    postersData[i].startTime = util.datetimeFormatUtil(postersData[i].startTime);
+                  }
+                  that.setData({
+                    posters: postersData
+                  });
                 },
                 function(errMsg) {
                     console.log(errMsg);
@@ -171,9 +199,12 @@ Page({
         app.getPosters(
           function (postersData) {
             //console.log(postersData);
+            for (var i = 0; i < postersData.length; i++) {
+              postersData[i].startTime = util.datetimeFormatUtil(postersData[i].startTime);
+            }
             that.setData({
               posters: postersData
-            })
+            });
           },
           function (errMsg) {
             console.log(errMsg);
@@ -210,9 +241,12 @@ Page({
         var that = this;
         app.getMorePosters(
             function(nowPosters) {
-                that.setData({
-                    posters: nowPosters
-                })
+              for (var i = 0; i < nowPosters.length; i++) {
+                nowPosters[i].startTime = util.datetimeFormatUtil(nowPosters[i].startTime);
+              }
+              that.setData({
+                posters: nowPosters
+              });
             },
             function(errMsg) {
                 console.log(errMsg);
