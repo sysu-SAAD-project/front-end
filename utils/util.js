@@ -27,7 +27,7 @@ function startTimeFormatUtil(longTypeDate) {
   //dateTypeDate += date.getFullYear();   //年    
   //dateTypeDate += "-" + date.getMonth(); //月     
   dateTypeDate += date.getMonth() + "月"; //月    
-  dateTypeDate += date.getDay() + "日";   //日    
+  dateTypeDate += date.getDate() + "日";   //日    
   dateTypeDate += " " + date.getHours();   //时
   dateTypeDate += ":" + date.getMinutes();     //分  
   //dateTypeDate += ":" + date.getSeconds();     //秒

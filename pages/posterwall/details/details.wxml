@@ -7,7 +7,7 @@
     </view>
     <view class="line-container">
         <text class="entry-text">活动时间： </text>
-        <text class="content-text">{{currentPoster.startTime}}</text>
+        <text class="content-text">{{currentPoster.startTime}} - {{currentPoster.endTime}}</text>
     </view>
     <view class="line-container">
         <text class="entry-text">活动地点： </text>
