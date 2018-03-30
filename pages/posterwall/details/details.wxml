@@ -34,7 +34,7 @@
         <image class="qrcode-img" src="{{currentPoster.QRcode}}" wx:if="{{currentPoster.QRcode}}"></image>
     </view>
 
-    <view class="divLine"></view>
+  <view class="divLine"></view>
 
     <view class="line-container" wx:if="{{currentPoster.reward}}">
         <view class="entry-text text-bl">活动奖励： </view>
@@ -51,9 +51,11 @@
     <view class="line-container" wx:if="{{currentPoster.pubEndtime}}">
         <view class="entry-text text-bl">报名截止日期： </view>
         <view class="content-text text-bl">{{currentPoster.enrollEndtime}}</view>
-    </view>
+  </view>
 </view> 
+<view class="null-line">
 
+</view>
 <view class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
     <view class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}
     </view>

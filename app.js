@@ -90,7 +90,7 @@ App({
         }
     },
 
-    getPosterById: function(posterId, successCb, failCb) {
+    /*getPosterById: function(posterId, successCb, failCb) {
         // var postersItem = this.globalData.posters;
         // var findOne = false;
         // var currentPosterItem = null;
@@ -127,7 +127,7 @@ App({
           }
         })
 
-    },
+},*/
     
     // 以下是个人信息及讨论区需要用到的函数
     getPostersEnrolledByCurrentUser: function(successCb, failCb) {

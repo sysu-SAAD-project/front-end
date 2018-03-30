@@ -58,7 +58,7 @@ Page({
 
     /**
      * 生命周期函数--监听页面加载
-     */
+
     onLoad: function(options) {
         console.log(options)
         var that = this;
@@ -68,10 +68,10 @@ Page({
                   currentPoster: thePoster
                 });
 
-                /*let currentPoster = this.currentPoster;
+                let currentPoster = this.currentPoster;
                 currentPoster.startTime = ""
                 this.setData({currentPoster: thePoster});
-                */
+                
                 //毫秒转时间函数。未完成
 
             },
@@ -80,7 +80,7 @@ Page({
             }
         )
     },
-
+*/
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

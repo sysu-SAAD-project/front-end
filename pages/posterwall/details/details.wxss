@@ -7,7 +7,7 @@
 
 .details-container {
     margin: auto 30rpx;
-    margin-bottom: 100px;
+    margin-bottom: 50rpx;
 }
 
 .line-container {
@@ -45,4 +45,8 @@
     max-width: 200rpx;
     max-height: 200rpx;
     text-align: center;
+}
+
+.null-line {
+    height: 100rpx;
 }

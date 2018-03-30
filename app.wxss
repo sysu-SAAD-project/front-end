@@ -26,6 +26,7 @@
     background-color: #5074d7;
     border-radius: 10px;
     margin: 25rpx auto;
+    margin-bottom: 0rpx;
 }
 
 .grey-button {
@@ -36,7 +37,9 @@
     background-color: #f7f7f7;
     border-radius: 10px;
     margin: 25rpx auto;
+    margin-bottom: 0rpx;
 }
+
 
 .button-innerText {
     padding-top: 20rpx;
