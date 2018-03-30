@@ -1,7 +1,7 @@
 /* main.wxss */
 
 .topBar {
-  height: 80rpx;
+  height: 100rpx;
 }
 
 .logo {
@@ -69,8 +69,24 @@
      margin: 2px;
 }
 
-.button1 {
+.button-gray {
   display: inline-block;
   width: 50%;
-  border-radius: 0;
+  background-color: #f7f7f7;
+  border: 0rpx solid #f7f7f7;
+  border-radius: 0rpx;
+  line-height:80rpx;
+  height: 80rpx;
+  color: black;
+}
+
+.button-blue {
+  display: inline-block;
+  width: 50%;
+  background-color: #5074d7;
+  border: 0rpx solid #5074d7;
+  border-radius: 0rpx;
+  line-height:80rpx;
+  height: 80rpx;
+  color: white;
 }

@@ -71,9 +71,9 @@
 .single-checkbox {
   float: right;
   border: #E0E3DA solid 1px;
-  padding: 2rpx 12rpx;
-  font-size: 12pt;
-  border-radius: 14px;
+  padding: 2rpx 10rpx;
+  font-size: 10pt;
+  border-radius: 12px;
 }
 
 .single-checkbox span {
