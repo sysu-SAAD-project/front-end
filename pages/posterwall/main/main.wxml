@@ -53,16 +53,17 @@
   </view>
 
   <view class="posters-container">
-    <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{campusSelector[item.campus] && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >
+     <!-- <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{campusSelector[item.campus] && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >  -->
+     <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}"  bindtap="posterTap" data-poster-Id="{{item.id}}" >
       <view class="poster-info-left">
-        <image class="cover-image" src="{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
+        <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
       </view>
       <view class="poster-info-right">
         <view class="poster-info-line poster-name">{{item.name}}</view>
         <view class="poster-info-line poster-tags">
           <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> 
         </view>
-        <view class="poster-info-line poster-mini-text">活动时间： {{item.startTime}}</view>
+        <view class="poster-info-line poster-mini-text">活动时间： {{item.startTime}} - {{item.endTime}}</view>
         <view class="poster-info-line poster-mini-text">活动地点： {{item.location}}</view>
       </view>
     </view>

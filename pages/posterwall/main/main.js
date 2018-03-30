@@ -238,16 +238,17 @@ Page({
         if (this.data.posters.length == 0) {
             app.getPosters(
                 function(postersData) {
-                  //console.log(postersData);
+                   console.log(postersData);
                   for (var i = 0; i < postersData.length; i++) {
-                    postersData[i].startTime = util.datetimeFormatUtil(postersData[i].startTime);
+                    postersData[i].startTime = util.startTimeFormatUtil(postersData[i].startTime);
+                    postersData[i].endTime = util.endTimeFormatUtil(postersData[i].endTime);
                   }
                   that.setData({
                     posters: postersData
                   });
                 },
                 function(errMsg) {
-                    console.log(errMsg);
+                  console.log(errMsg);
                 }
             )
         }
@@ -268,9 +269,10 @@ Page({
       if (this.data.posters.length == 0) {
         app.getPosters(
           function (postersData) {
-            //console.log(postersData);
+             console.log(postersData);
             for (var i = 0; i < postersData.length; i++) {
-              postersData[i].startTime = util.datetimeFormatUtil(postersData[i].startTime);
+              postersData[i].startTime = util.startTimeFormatUtil(postersData[i].startTime);
+              postersData[i].endTime = util.endTimeFormatUtil(postersData[i].endTime);
             }
             that.setData({
               posters: postersData
@@ -312,7 +314,8 @@ Page({
         app.getMorePosters(
             function(nowPosters) {
               for (var i = 0; i < nowPosters.length; i++) {
-                nowPosters[i].startTime = util.datetimeFormatUtil(nowPosters[i].startTime);
+                nowPosters[i].startTime = util.startTimeFormatUtil(nowPosters[i].startTime);
+                nowPosters[i].endTime = util.endTimeFormatUtil(nowPosters[i].endTime);
               }
               that.setData({
                 posters: nowPosters

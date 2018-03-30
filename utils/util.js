@@ -18,22 +18,42 @@ function formatNumber(n) {
 
 /*  
  * 时间格式化工具 
- * 把Long类型日期还原yyyy-MM-dd 00:00:00格式日期   
+ * 把Long类型日期还原MM-dd 00:00格式日期   
  */
-function datetimeFormatUtil(longTypeDate) {
+function startTimeFormatUtil(longTypeDate) {
   var dateTypeDate = "";
   var date = new Date();
   date.setTime(longTypeDate);
-  dateTypeDate += date.getFullYear();   //年    
-  dateTypeDate += "-" + date.getMonth(); //月     
-  dateTypeDate += "-" + date.getDay();   //日    
-  dateTypeDate += "  " + date.getHours();   //时    
+  //dateTypeDate += date.getFullYear();   //年    
+  //dateTypeDate += "-" + date.getMonth(); //月     
+  dateTypeDate += date.getMonth() + "月"; //月    
+  dateTypeDate += date.getDay() + "日";   //日    
+  dateTypeDate += " " + date.getHours();   //时
   dateTypeDate += ":" + date.getMinutes();     //分  
   //dateTypeDate += ":" + date.getSeconds();     //秒
   return dateTypeDate;
-}   
+}
+
+/*  
+ * 时间格式化工具 
+ * 把Long类型日期还原00:00格式日期   
+ */
+function endTimeFormatUtil(longTypeDate) {
+  var dateTypeDate = "";
+  var date = new Date();
+  date.setTime(longTypeDate);
+  //dateTypeDate += date.getFullYear();   //年    
+  //dateTypeDate += "-" + date.getMonth(); //月     
+  // dateTypeDate += date.getMonth() + "月"; //月    
+  // dateTypeDate += date.getDay() + "日";   //日    
+  dateTypeDate += date.getHours();   //时
+  dateTypeDate += ":" + date.getMinutes();     //分  
+  //dateTypeDate += ":" + date.getSeconds();     //秒
+  return dateTypeDate;
+}
 
 module.exports = {
   formatTime: formatTime,
-  datetimeFormatUtil: datetimeFormatUtil
+  startTimeFormatUtil: startTimeFormatUtil,
+  endTimeFormatUtil: endTimeFormatUtil
 }
