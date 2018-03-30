@@ -1,5 +1,5 @@
 <!--details.wxml-->
-<image src="{{currentPoster.coverImageUrl}}" mode="scaleToFill" class="posterDetails-image"></image>
+<image src="https://sysuactivity.com/static/{{currentPoster.poster}}" mode="scaleToFill" class="posterDetails-image"></image>
 <view class="details-container">
     <view class="line-container main-title">{{currentPoster.name}}</view>
     <view class="line-container poster-tags">
@@ -31,7 +31,7 @@
     <view class="line-container" wx:if="{{currentPoster.detail}}">
         <view class="entry-text text-bl">活动详情： </view>
         <view class="content-text text-bl">{{currentPoster.detail}}</view>
-        <image class="qrcode-img" src="{{currentPoster.QRcode}}" wx:if="{{currentPoster.QRcode}}"></image>
+        <image class="qrcode-img" src="https://sysuactivity.com/static/{{currentPoster.qrcode}}" wx:if="{{currentPoster.qrcode}}"></image>
     </view>
 
   <view class="divLine"></view>
