@@ -90,7 +90,7 @@ App({
         }
     },
 
-    /*getPosterById: function(posterId, successCb, failCb) {
+    getPosterById: function(posterId, successCb, failCb) {
         // var postersItem = this.globalData.posters;
         // var findOne = false;
         // var currentPosterItem = null;
@@ -109,6 +109,8 @@ App({
         // }
 
         var url = 'https://sysuactivity.com/act/' + 1
+        //var url = 'https://sysuactivity.com/act/' + posterId  
+        //测试数据库中ID只有为1，为了看到数据json是否传入，使用ID=1测试
         wx.request({
           url,
           method: 'GET',
@@ -127,7 +129,7 @@ App({
           }
         })
 
-},*/
+},
     
     // 以下是个人信息及讨论区需要用到的函数
     getPostersEnrolledByCurrentUser: function(successCb, failCb) {

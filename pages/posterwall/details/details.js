@@ -1,4 +1,6 @@
 // details.js
+var util = require('../../../utils/util.js')
+
 var app = getApp();
 Page({
 
@@ -14,10 +16,11 @@ Page({
             "已过报名截止时间"
         ],
         
-        /*currentPoster: {},*/
+        currentPoster: {},
+
         //json后台数据无法接收到，先用测试数据
         
-        currentPoster: {
+        /*currentPoster: {
           coverImageUrl: '../../../image/sysu-icon.jpeg',
           name: '第二届毽球团体赛+趣味挑战赛',
           tag: [
@@ -45,8 +48,9 @@ Page({
         },
         // test data
         
-        
+     */
     },
+    
     enrollButtonTap: function(e) {
         console.log(e);
         var detailsUrl = '../enroll/enroll?posterId=' + e.currentTarget.dataset.posterId;
@@ -55,24 +59,18 @@ Page({
         })
     },
 
-
-    /**
-     * 生命周期函数--监听页面加载
+    
+     // 生命周期函数--监听页面加载
 
     onLoad: function(options) {
         console.log(options)
         var that = this;
         app.getPosterById(options.posterId,
             function(thePoster) {
+                thePoster.startTime = util.datetimeFormatUtil(thePoster.startTime);
                 that.setData({
                   currentPoster: thePoster
                 });
-
-                let currentPoster = this.currentPoster;
-                currentPoster.startTime = ""
-                this.setData({currentPoster: thePoster});
-                
-                //毫秒转时间函数。未完成
 
             },
             function(errMsg) {
@@ -80,7 +78,7 @@ Page({
             }
         )
     },
-*/
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -129,4 +127,4 @@ Page({
     onShareAppMessage: function() {
 
     }
-})
+  })
