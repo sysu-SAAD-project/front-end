@@ -138,7 +138,8 @@ Page({
       this.setData({
           campusSelVisible: !this.data.campusSelVisible,
           categorySelVisible: false,
-          campusImg: tmpImg
+          campusImg: tmpImg,
+          categoryImg: "down.png"
       })
     },
     /**
@@ -152,7 +153,8 @@ Page({
       this.setData({
           categorySelVisible: !this.data.categorySelVisible,
           campusSelVisible: false,
-          categoryImg: tmpImg
+          categoryImg: tmpImg,
+          campusImg: "down.png"
       })
     },
 
