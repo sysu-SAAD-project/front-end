@@ -68,6 +68,7 @@ Page({
         app.getPosterById(options.posterId,
             function(thePoster) {
               thePoster.startTime = util.startTimeFormatUtil(thePoster.startTime);
+              thePoster.endTime = util.endTimeFormatUtil(thePoster.endTime);
                 that.setData({
                   currentPoster: thePoster
                 });
