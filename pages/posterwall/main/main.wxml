@@ -53,8 +53,7 @@
   </view>
 
   <view class="posters-container">
-     <!-- <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{campusSelector[item.campus] && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >  -->
-     <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}"  bindtap="posterTap" data-poster-Id="{{item.id}}" >
+    <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{ (campusSelector[item.campus & 1] || campusSelector[item.campus & 2] || campusSelector[item.campus & 4] || campusSelector[item.campus & 8]) && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >
       <view class="poster-info-left">
         <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
       </view>
