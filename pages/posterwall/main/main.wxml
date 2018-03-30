@@ -9,13 +9,13 @@
     <view class="topBar-cell">
       <button class="topBarButton" hover-class="topBarButton-hover" size="mini" bindtap="campusSelMenuShow">
         <span>{{campusString}}</span> 
-        <image class="topBarButton-icon" src="../../../image/down.png" mode="aspectFill"></image>
+        <image class="topBarButton-icon" src="../../../image/{{campusImg}}" mode="aspectFill"></image>
       </button>
     </view>
     <view class="topBar-cell">
       <button class="topBarButton" hover-class="topBarButton-hover" size="mini" bindtap="categorySelMenuShow">
         <span>{{categoryString}}</span> 
-        <image class="topBarButton-icon" src="../../../image/down.png" mode="aspectFill"></image>
+        <image class="topBarButton-icon" src="../../../image/{{categoryImg}}" mode="aspectFill"></image>
       </button>
     </view>
   </view>
@@ -33,20 +33,23 @@
       </label>
     </checkbox-group> 
     <view class="divLine"></view>
-    <button class='button1' bindtap='resetCampus'>重置</button>
-    <button class='button1' bindtap='setCampus' >确认</button>  
+    <button class='button-gray' bindtap='resetCampus'>重置</button>
+    <button class='button-blue' bindtap='setCampus' >确认</button>  
   </view>
 
   <view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
-    <checkbox-group bindchange="changeCategoryFilter">
+    <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
       <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
-      <view class="single-checkbox">
-        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
-      </view>
-      <view class="checkbox-text">{{item.name}}</view>
-    </label>
-    </checkbox-group>
+        <view class="checkbox-text">{{item.name}}</view>
+        <label class="single-checkbox {{item.checked ? 'is_checked':''}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
+          <span>√</span>
+        </label>
+      </label>
+    </checkbox-group> 
     <view class="divLine"></view>
+    <button class='button-gray' bindtap='resetCategory'>重置</button>
+    <button class='button-blue' bindtap='setCategory' >确认</button>  
   </view>
 
   <view class="posters-container">

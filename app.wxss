@@ -74,9 +74,9 @@
 .single-checkbox {
   float: right;
   border: #E0E3DA solid 1px;
-  padding: 2rpx 12rpx;
-  font-size: 12pt;
-  border-radius: 14px;
+  padding: 2rpx 10rpx;
+  font-size: 10pt;
+  border-radius: 12px;
 }
 
 .single-checkbox span {
@@ -103,6 +103,16 @@
     width: 200rpx;
     margin: 15rpx;
     border-radius: 0;
+      overflow-x: hidden;/*超出部分隐藏*/
+  white-space: nowrap;/*不换行*/
+  text-overflow:ellipsis;/*超出部分文字以...显示*/
+}
+
+.topBarButton span {
+  width: 150rpx;
+  overflow-x: hidden;/*超出部分隐藏*/
+  white-space: nowrap;/*不换行*/
+  text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 
 .topBarButton-hover {

@@ -9,8 +9,10 @@ Page({
     data: {
         campusSelVisible: false,
         campusString: "校区",
+        campusImg: "down.png",
         categorySelVisible: false,
         categoryString: "类型",
+        categoryImg: "down.png",
         campusSelector: {
           0b1000: true,
           0b0100: true,
@@ -48,44 +50,112 @@ Page({
 
     setCampus: function () {
       var campusSelItems = this.data.campusSel;
-      this.data.campusString = "";
+      var tmpString = "";
       var flag = false;
       for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
         if (campusSelItems[i].checked == true) {
-          if (flag == true) this.data.campusString += ",";
-          this.data.campusString += campusSelItems[i].name;
+          if (flag == true) tmpString += ",";
+          tmpString += campusSelItems[i].name;
           flag = true;
         }
       }
       this.setData({
         campusSelVisible: !this.data.campusSelVisible,
+        campusString: tmpString
       })
       console.log(this.data.campusString);
     },
     resetCampus: function () {
-      var campusSelItems = this.data.campusSel;
-      for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
-        campusSelItems[i].checked = false;
-      }
+      this.setData({
+        campusString: "校区",
+        categoryImg: "up.png",
+        campusSelector: {
+          0b1000: true,
+          0b0100: true,
+          0b0010: true,
+          0b0001: true
+          //"SHENZHEN": true
+        },
+        campusSel: [
+          { "value": 0b1000, "name": "东校区", "checked": true },
+          { "value": 0b0100, "name": "南校区", "checked": true },
+          { "value": 0b0010, "name": "北校区", "checked": true },
+          { "value": 0b0001, "name": "珠海校区", "checked": true }
+          // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
+        ]
+      })
       console.log(this.data.campusSel);
+    },
+    setCategory: function() {
+      var categorySelItems = this.data.categorySel;
+      var tmpString = "";
+      var flag = false;
+      for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
+        if (categorySelItems[i].checked == true) {
+          if (flag == true) tmpString += ",";
+          tmpString += categorySelItems[i].name;
+          flag = true;
+        }
+      }
+      this.setData({
+        categorySelVisible: !this.data.categorySelVisible,
+        categoryString: tmpString
+      })
+      console.log(this.data.categoryString);
+    },
+    resetCategory: function() {
+      this.setData({
+        categoryString: "类型",
+        categoryImg: "up.png",
+        categorySelector: {
+          0: true,
+          1: true,
+          2: true,
+          3: true,
+          4: true,
+          5: true,
+          6: true,
+        },
+        categorySel: [
+          { "value": 0, "name": "体育", "checked": true },
+          { "value": 1, "name": "公益", "checked": true },
+          { "value": 2, "name": "竞赛", "checked": true },
+          { "value": 3, "name": "演出", "checked": true },
+          { "value": 4, "name": "讲座", "checked": true },
+          { "value": 5, "name": "户外", "checked": true },
+          { "value": 6, "name": "休闲", "checked": true }
+        ]
+      })
     },
     /**
      * 点击校区按钮回调事件
      */
     campusSelMenuShow: function(e) {
-        this.setData({
-            campusSelVisible: !this.data.campusSelVisible,
-            categorySelVisible: false
-        })
+      var tmpImg;
+      if (this.data.campusImg == "down.png") tmpImg = "up.png";
+      else tmpImg = "down.png";
+
+      this.setData({
+          campusSelVisible: !this.data.campusSelVisible,
+          categorySelVisible: false,
+          campusImg: tmpImg,
+          categoryImg: "down.png"
+      })
     },
     /**
      * 点击类型按钮回调事件
      */
     categorySelMenuShow: function() {
-        this.setData({
-            categorySelVisible: !this.data.categorySelVisible,
-            campusSelVisible: false
-        })
+      var tmpImg;
+      if (this.data.categoryImg == "down.png") tmpImg = "up.png";
+      else tmpImg = "down.png";
+
+      this.setData({
+          categorySelVisible: !this.data.categorySelVisible,
+          campusSelVisible: false,
+          categoryImg: tmpImg,
+          campusImg: "down.png"
+      })
     },
 
     changeCampusFilter: function(e) {

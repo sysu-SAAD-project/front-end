@@ -43,7 +43,7 @@ App({
         if (that.globalData.posters.length == 0) {
             // send request to Server, get data
           wx.request({
-            url: 'http://sysuactivity.com/act?page=0',
+            url: 'https://sysuactivity.com/act?page=0',
             method: "GET",
             success(res) {
               console.log("getPosters" + res.data);
@@ -71,7 +71,7 @@ App({
         if (that.globalData.currentPages < that.globalData.totalPages) {
             // send request to Server, get data
           wx.request({
-            url: 'http://sysuactivity.com/act?page=' + that.globalData.currentPages,
+            url: 'https://sysuactivity.com/act?page=' + that.globalData.currentPages,
             method: "GET",
             success(res) {
               console.log("getMorePosters" + res.data);
