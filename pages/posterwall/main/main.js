@@ -68,7 +68,7 @@ Page({
     resetCampus: function () {
       this.setData({
         campusString: "校区",
-        categoryImg: "up.png",
+        campusImg: "up.png",
         campusSelector: {
           0b1000: true,
           0b0100: true,
