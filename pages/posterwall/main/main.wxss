@@ -2,18 +2,22 @@
 
 .topBar {
   height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .logo {
-  display: inline-block;
+  display: table-column;
   width: 30%;
   text-align: center;
+  padding-bottom: 25rpx;
 }
 
 .posterwall-icon {
     height: 50rpx;
     width: 50rpx;
-    padding: 15rpx;
+    padding: 25rpx 10rpx 0 20rpx;
 }
 
 .topBarButton-icon {
@@ -26,9 +30,10 @@
 
 .posterwall-text {
     display: inline-block;
-    vertical-align: top;
-    margin-top: 18rpx;
-    font-size: 32rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 36rpx;
 }
 
 .posters-container {

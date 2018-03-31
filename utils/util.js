@@ -29,8 +29,15 @@ function startTimeFormatUtil(longTypeDate) {
   //dateTypeDate += "-" + date.getMonth(); //月     
   dateTypeDate += date.getMonth() + 1 + "月"; //月    
   dateTypeDate += date.getDate() + "日";   //日    
-  dateTypeDate += " " + date.getHours();   //时
-  dateTypeDate += ":" + date.getMinutes();     //分  
+  var tmp = "";
+  if (date.getHours() < 10) tmp = "0";
+  dateTypeDate += tmp;   
+  dateTypeDate += date.getHours();//时
+  tmp = "";
+  if (date.getMinutes() < 10) tmp = "0";
+  dateTypeDate += ":";
+  dateTypeDate += tmp;
+  dateTypeDate += date.getMinutes();//分
   //dateTypeDate += ":" + date.getSeconds();     //秒
   return dateTypeDate;
 }
@@ -48,8 +55,17 @@ function endTimeFormatUtil(longTypeDate) {
   //dateTypeDate += "-" + date.getMonth(); //月     
   // dateTypeDate += date.getMonth() + "月"; //月    
   // dateTypeDate += date.getDay() + "日";   //日    
-  dateTypeDate += date.getHours();   //时
-  dateTypeDate += ":" + date.getMinutes();     //分  
+  // dateTypeDate += date.getHours();   //时
+  // dateTypeDate += ":" + date.getMinutes();     //分  
+  var tmp = "";
+  if (date.getHours() < 10) tmp = "0";
+  dateTypeDate += tmp;
+  dateTypeDate += date.getHours();//时
+  tmp = "";
+  if (date.getMinutes() < 10) tmp = "0";
+  dateTypeDate += ":";
+  dateTypeDate += tmp;
+  dateTypeDate += date.getMinutes();//分
   //dateTypeDate += ":" + date.getSeconds();     //秒
   return dateTypeDate;
 }

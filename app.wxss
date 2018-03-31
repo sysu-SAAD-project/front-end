@@ -64,23 +64,27 @@
 }
 
 .verticalLine {
-  display: inline-block;
+  display: table-column;
   background: #E0E3DA;
   width: 2rpx;
-  height: 80rpx;
+  height: 100rpx;
   margin: 0 10rpx;
 }
 
 .single-checkbox {
   float: right;
   border: #E0E3DA solid 1px;
-  padding: 2rpx 10rpx;
-  font-size: 10pt;
-  border-radius: 12px;
+  padding: 2rpx 2rpx;
+  border-radius: 18px;
+  height: 36rpx;
+  width: 36rpx;
+  text-align:center; 
 }
 
-.single-checkbox span {
+.single-checkbox image {
   visibility: hidden;
+  height: 36rpx;
+  width: 36rpx;
 }
 
 .checkbox-text {
@@ -100,9 +104,9 @@
 }
 
 .topBarButton {
+  display: table-column;
   width: 200rpx;
   height: 80rpx;
-  line-height: 80rpx;
   margin: 15rpx;
   border-radius: 0;
   overflow-x: hidden;/*超出部分隐藏*/
@@ -110,15 +114,17 @@
   text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 
-.topBarButton span {
-  width: 150rpx;
-  overflow-x: hidden;/*超出部分隐藏*/
-  white-space: nowrap;/*不换行*/
-  text-overflow:ellipsis;/*超出部分文字以...显示*/
+.topBarButton view {
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
 }
 
 .topBarButton-hover {
     border-radius: 0;
+    border: none;
 }
 
 button[class="topBarButton"]::after {
@@ -131,12 +137,14 @@ button[class="topBarButton"]::after {
   border: #5074d7 solid 1px;
 }
 
-.is_checked span {
+.is_checked image {
   visibility: visible;
+  height: 36rpx;
+  width: 36rpx;
 }
 
 .topBar-cell {
-    display: inline-block;
+    display: table-column;
     width: 33%;
     text-align: center;
 }
