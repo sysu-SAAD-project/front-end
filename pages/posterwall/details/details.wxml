@@ -1,5 +1,5 @@
 <!--details.wxml-->
-<image src="https://sysuactivity.com/static/{{currentPoster.poster}}" mode="scaleToFill" class="posterDetails-image"></image>
+<image src="https://sysuactivity.com/static/{{currentPoster.poster}}" mode="aspectFill" class="posterDetails-image"></image>
 <view class="details-container">
     <view class="line-container main-title">{{currentPoster.name}}</view>
     <view class="line-container poster-tags">

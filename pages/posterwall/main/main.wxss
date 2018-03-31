@@ -10,14 +10,16 @@
 .logo {
   display: table-column;
   width: 30%;
-  text-align: center;
-  padding-bottom: 25rpx;
+  height: 100rpx;
+  margin: 10rpx;
 }
 
 .posterwall-icon {
-    height: 50rpx;
-    width: 50rpx;
-    padding: 25rpx 10rpx 0 20rpx;
+  display: inline-block;
+  vertical-align: top;
+  height: 50rpx;
+  width: 50rpx;
+  margin: 15rpx 10rpx 0 10rpx;
 }
 
 .topBarButton-icon {
@@ -30,8 +32,8 @@
 
 .posterwall-text {
     display: inline-block;
-    height: 100rpx;
-    line-height: 100rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     text-align: center;
     font-size: 36rpx;
 }
@@ -52,7 +54,7 @@
 
 .cover-image {
     height: 200rpx;
-    width: 180rpx;
+    width: 200rpx;
 }
 
 .poster-info-right {

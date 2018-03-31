@@ -2,8 +2,8 @@
 <view class="grid-box">
   <view class="topBar">
     <view class="logo">
-      <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image>
-      <view class="posterwall-text"><text>中山大学</text></view>
+      <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image> 
+      <view class="posterwall-text">中山大学</view>
     </view>
     <view class="verticalLine"></view>
     <view class="topBar-cell">
@@ -26,10 +26,10 @@
      <checkbox-group class="bl-center" bindchange="changeCampusFilter">
       <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
         <view class="checkbox-text">{{item.name}}</view>
-        <label class="single-checkbox {{item.checked ? 'is_checked':''}}">
+        <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
           <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
           <image src="../../../image/check.png" mode="aspectFill"></image>
-        </label>
+        </view>
       </label>
     </checkbox-group> 
     <view class="divLine"></view>
@@ -55,7 +55,7 @@
   <view class="posters-container">
     <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{ (campusSelector[item.campus & 1] || campusSelector[item.campus & 2] || campusSelector[item.campus & 4] || campusSelector[item.campus & 8]) && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >
       <view class="poster-info-left">
-        <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
+        <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="aspectFill" binderror="loadImageErrCallback"></image>
       </view>
       <view class="poster-info-right">
         <view class="poster-info-line poster-name">{{item.name}}</view>
