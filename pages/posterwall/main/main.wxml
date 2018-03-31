@@ -3,7 +3,7 @@
   <view class="topBar">
     <view class="logo">
       <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image>
-      <label class="posterwall-text">中山大学</label>
+      <span class="posterwall-text">中山大学</span>
     </view>
     <view class="verticalLine"></view>
     <view class="topBar-cell">

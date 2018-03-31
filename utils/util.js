@@ -21,12 +21,13 @@ function formatNumber(n) {
  * 把Long类型日期还原MM-dd 00:00格式日期   
  */
 function startTimeFormatUtil(longTypeDate) {
+  longTypeDate -= 8 * 60 * 60 * 1000;
   var dateTypeDate = "";
   var date = new Date();
   date.setTime(longTypeDate);
   //dateTypeDate += date.getFullYear();   //年    
   //dateTypeDate += "-" + date.getMonth(); //月     
-  dateTypeDate += date.getMonth() + "月"; //月    
+  dateTypeDate += date.getMonth() + 1 + "月"; //月    
   dateTypeDate += date.getDate() + "日";   //日    
   dateTypeDate += " " + date.getHours();   //时
   dateTypeDate += ":" + date.getMinutes();     //分  
@@ -39,6 +40,7 @@ function startTimeFormatUtil(longTypeDate) {
  * 把Long类型日期还原00:00格式日期   
  */
 function endTimeFormatUtil(longTypeDate) {
+  longTypeDate -= 8 * 60 * 60 * 1000;
   var dateTypeDate = "";
   var date = new Date();
   date.setTime(longTypeDate);

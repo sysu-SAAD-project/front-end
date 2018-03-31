@@ -21,7 +21,7 @@
   vertical-align: top;
   height: 40rpx;
   width: 40rpx;
-  margin-top: 8rpx;
+  margin-top: 18rpx;
 }
 
 .posterwall-text {
