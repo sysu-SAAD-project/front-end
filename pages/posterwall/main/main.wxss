@@ -74,6 +74,7 @@
     font-size: 14pt;
     height: 50rpx;
     line-height: 50rpx;
+    color: #444444;
 }
 
 .poster-tags {
@@ -90,22 +91,23 @@
   display: inline-block;
   width: 50%;
   background-color: #f7f7f7;
-  border: 0rpx solid #f7f7f7;
   border-radius: 0rpx;
-  line-height:60rpx;
-  height: 60rpx;
-  color: black;
+  line-height:80rpx;
+  height: 80rpx;
+  color: grey;
   font-size: 10pt;
+  text-align: center;
 }
 
 .button-blue {
   display: inline-block;
   width: 50%;
   background-color: #5074d7;
-  border: 0rpx solid #5074d7;
+  border: none;
   border-radius: 0rpx;
-  line-height:60rpx;
-  height: 60rpx;
+  line-height: 80rpx;
+  height: 80rpx;
   color: white;
   font-size: 10pt;
+  text-align: center;
 }

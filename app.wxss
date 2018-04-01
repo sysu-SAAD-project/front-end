@@ -67,25 +67,33 @@
   margin: 0 10rpx;
 }
 
+.checkbox-line {
+  float: right;
+  background: #E0E3DA;
+  width: 2rpx;
+  height: 60rpx;
+}
+
 .single-checkbox {
   float: right;
   border: #E0E3DA solid 1px;
-  padding: 2rpx 2rpx;
-  border-radius: 18px;
-  height: 36rpx;
-  width: 36rpx;
+  padding: 2rpx;
+  margin: 16rpx;
+  border-radius: 14px;
+  height: 28rpx;
+  width: 28rpx;
   text-align:center; 
 }
 
 .single-checkbox image {
   visibility: hidden;
-  height: 36rpx;
-  width: 36rpx;
 }
 
  .checkbox-box {
    /* display: inline-block; */
-  padding: 10rpx 20rpx;
+  padding: 10rpx 0 10rpx 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 } 
 
 .checkbox-text {
@@ -95,7 +103,7 @@
 .checkbox-label {
     display: inline-block;
     width: 50%;
-    height: 60rpx;
+    height: 80rpx;
     font-size: 12pt;
 }
 
@@ -131,12 +139,6 @@
   text-overflow: ellipsis;
 }
 
- /* .topBarButton text {
-  overflow: hidden;超出部分隐藏   
-   white-space: nowrap;不换行 
-  text-overflow: ellipsis;超出部分文字以...显示   
-}  */
-
 .blueView view {
   display: inline-block;
   height: 60rpx;
@@ -161,7 +163,7 @@
 
 button[class="topBarButton"]::after {
     border: none;
-} 
+}
 
 .is_checked {
   color: white;
@@ -171,8 +173,9 @@ button[class="topBarButton"]::after {
 
 .is_checked image {
   visibility: visible;
-  height: 36rpx;
-  width: 36rpx;
+  height: 28rpx;
+  width: 28rpx;
+  margin-bottom: 24rpx;
 }
 
 .topBar-cell {
@@ -197,3 +200,16 @@ button[class="topBarButton"]::after {
     border-radius: 8rpx;
 }
 
+.posterwall-topBarPicker {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 80rpx;
+  left: 0px;
+  z-index: 999;
+  background-color:rgba(0,0,0,0.5);
+}
+
+.bl-center {
+  background-color: white;
+}

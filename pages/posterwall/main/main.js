@@ -62,10 +62,22 @@ Page({
         }
       }
       if (tmpString == "") tmpString = "未选中校区";
+
+      var campusSelectorItems = this.data.campusSelector;
+      for (var key in campusSelectorItems) {
+        for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
+          if (campusSelItems[i].value == key) {
+            campusSelectorItems[key] = campusSelItems[i].checked;
+            break;
+          }
+        }
+      }
+
       this.setData({
         campusSelVisible: !this.data.campusSelVisible,
         campusString: tmpString,
-        isCampusSet: true
+        isCampusSet: true,
+        campusSelector: campusSelectorItems
       })
       console.log(this.data.campusString);
     },
@@ -103,10 +115,22 @@ Page({
         }
       }
       if (tmpString == "") tmpString = "未选中类型";
+
+      var categorySelectorItems = this.data.categorySelector;
+      for (var key in categorySelectorItems) {
+        for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
+          if (categorySelItems[i].value == key) {
+            categorySelectorItems[key] = categorySelItems[i].checked;
+            break;
+          }
+        }
+      }
+
       this.setData({
         categorySelVisible: !this.data.categorySelVisible,
         categoryString: tmpString,
-        isCategorySet: true
+        isCategorySet: true,
+        categorySelector: categorySelectorItems
       })
       console.log(this.data.categoryString);
     },
@@ -181,19 +205,19 @@ Page({
             }
         }
 
-        var campusSelectorItems = this.data.campusSelector;
-        for (var key in campusSelectorItems) {
-            for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
-                if (campusSelItems[i].value == key) {
-                    campusSelectorItems[key] = campusSelItems[i].checked;
-                    break;
-                }
-            }
-        }
+        // var campusSelectorItems = this.data.campusSelector;
+        // for (var key in campusSelectorItems) {
+        //     for (var i = 0, lenI = campusSelItems.length; i < lenI; ++i) {
+        //         if (campusSelItems[i].value == key) {
+        //             campusSelectorItems[key] = campusSelItems[i].checked;
+        //             break;
+        //         }
+        //     }
+        // }
 
         this.setData({
             campusSel: campusSelItems,
-            campusSelector: campusSelectorItems
+            // campusSelector: campusSelectorItems
         })
     },
     changeCategoryFilter: function(e) {
@@ -210,19 +234,19 @@ Page({
                 }
             }
         }
-        var categorySelectorItems = this.data.categorySelector;
-        for (var key in categorySelectorItems) {
-            for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
-                if (categorySelItems[i].value == key) {
-                    categorySelectorItems[key] = categorySelItems[i].checked;
-                    break;
-                }
-            }
-        }
+        // var categorySelectorItems = this.data.categorySelector;
+        // for (var key in categorySelectorItems) {
+        //     for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
+        //         if (categorySelItems[i].value == key) {
+        //             categorySelectorItems[key] = categorySelItems[i].checked;
+        //             break;
+        //         }
+        //     }
+        // }
 
         this.setData({
             categorySel: categorySelItems,
-            categorySelector: categorySelectorItems
+            // categorySelector: categorySelectorItems
         })
     },
 
