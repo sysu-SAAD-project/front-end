@@ -26,7 +26,7 @@
   vertical-align: top;
   height: 40rpx;
   width: 40rpx;
-  margin-top: 14rpx;
+  margin-top: 10rpx;
 }
 
 .posterwall-text {
@@ -34,7 +34,7 @@
     height: 80rpx;
     line-height: 80rpx;
     text-align: center;
-    font-size: 32rpx;
+    font-size: 10pt;
 }
 
 .posters-container {
@@ -65,13 +65,13 @@
   color: grey;
   height: 35rpx;
   line-height: 35rpx;
-  font-size: 28rpx;
+  font-size: 9pt;
   margin: 15rpx 15rpx 15rpx 0; 
 }
 
 .poster-name {
     font-weight: bold;
-    font-size: 32rpx;
+    font-size: 14pt;
     height: 50rpx;
     line-height: 50rpx;
 }
@@ -95,7 +95,7 @@
   line-height:60rpx;
   height: 60rpx;
   color: black;
-  font-size: 32rpx;
+  font-size: 10pt;
 }
 
 .button-blue {
@@ -107,5 +107,5 @@
   line-height:60rpx;
   height: 60rpx;
   color: white;
-  font-size: 32rpx;
+  font-size: 10pt;
 }
