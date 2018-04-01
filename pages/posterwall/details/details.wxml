@@ -32,6 +32,7 @@
         <view class="entry-text text-bl">活动详情： </view>
         <view class="content-text text-bl">{{currentPoster.detail}}</view>
         <image class="qrcode-img" src="https://sysuactivity.com/static/{{currentPoster.qrcode}}" wx:if="{{currentPoster.qrcode}}"></image>
+        
     </view>
 
   <view class="divLine"></view>
