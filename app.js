@@ -108,8 +108,8 @@ App({
         //     typeof failCb == "function" && failCb("Error Msg: Poster not found");
         // }
 
-        var url = 'https://sysuactivity.com/act/' + 1
-        //var url = 'https://sysuactivity.com/act/' + posterId  
+        //var url = 'https://sysuactivity.com/act/' + 1
+        var url = 'https://sysuactivity.com/act/' + posterId  
         //测试数据库中ID只有为1，为了看到数据json是否传入，使用ID=1测试
         wx.request({
           url,
