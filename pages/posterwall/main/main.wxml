@@ -7,13 +7,13 @@
     </view>
     <view class="verticalLine"></view>
     <view class="topBar-cell">
-      <button class="topBarButton {{isCampusSet ? 'blueView' : ''}}" hover-class="topBarButton-hover" size="mini" bindtap="campusSelMenuShow">
+      <button class="{{isCampusSet ? 'blueView' : 'topBarButton'}}" hover-class="topBarButton-hover" size="mini" bindtap="campusSelMenuShow">
         <view>{{campusString}}</view> 
         <image class="topBarButton-icon" src="../../../image/{{campusImg}}" mode="aspectFill"></image>
       </button>
     </view>
     <view class="topBar-cell">
-      <button class="topBarButton {{isCategorySet ? 'blueView' : ''}}" hover-class="topBarButton-hover" size="mini" bindtap="categorySelMenuShow">
+      <button class="{{isCategorySet ? 'blueView' : 'topBarButton'}}" hover-class="topBarButton-hover" size="mini" bindtap="categorySelMenuShow">
         <view>{{categoryString}}</view> 
         <image class="topBarButton-icon" src="../../../image/{{categoryImg}}" mode="aspectFill"></image>
       </button>
@@ -25,11 +25,14 @@
   <view class="posterwall-topBarPicker" wx:if="{{campusSelVisible}}">
      <checkbox-group class="bl-center" bindchange="changeCampusFilter">
       <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
-        <view class="checkbox-text">{{item.name}}</view>
-        <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
-          <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
-          <image src="../../../image/check.png" mode="aspectFill"></image>
+        <view class="checkbox-box">
+          <view class="checkbox-text">{{item.name}}</view>
+          <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
+            <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
+            <image src="../../../image/check.png" mode="aspectFill"></image>
+          </view>
         </view>
+        <view class="divLine"></view>
       </label>
     </checkbox-group> 
     <view class="divLine"></view>
@@ -40,11 +43,14 @@
   <view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
     <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
       <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
-        <view class="checkbox-text">{{item.name}}</view>
-        <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
-          <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
-          <image src="../../../image/check.png" mode="aspectFill"></image>
+        <view class="checkbox-box">
+          <view class="checkbox-text">{{item.name}}</view>
+          <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
+            <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
+            <image src="../../../image/check.png" mode="aspectFill"></image>
+          </view>
         </view>
+        <view class="divLine"></view>
       </label>
     </checkbox-group> 
     <view class="divLine"></view>

@@ -15,7 +15,39 @@ Page({
             "报名人数已达上限",
             "已过报名截止时间"
         ],
-        
+        // added from main.js
+        campusSelector: {
+            0b1000: true,
+            0b0100: true,
+            0b0010: true,
+            0b0001: true
+              //"SHENZHEN": true
+          },
+          campusSel: [
+            { "value": 0b1000, "name": "东校区", "checked": true },
+            { "value": 0b0100, "name": "南校区", "checked": true },
+            { "value": 0b0010, "name": "北校区", "checked": true },
+            { "value": 0b0001, "name": "珠海校区", "checked": true }
+            // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
+          ],
+          categorySelector: {
+            0: true,
+            1: true,
+            2: true,
+            3: true,
+            4: true,
+            5: true,
+            6: true,
+          },
+          categorySel: [
+            { "value": 0, "name": "体育", "checked": true },
+            { "value": 1, "name": "公益", "checked": true },
+            { "value": 2, "name": "竞赛", "checked": true },
+            { "value": 3, "name": "演出", "checked": true },
+            { "value": 4, "name": "讲座", "checked": true },
+            { "value": 5, "name": "户外", "checked": true },
+            { "value": 6, "name": "休闲", "checked": true }
+          ],
         currentPoster: {},
 
         //json后台数据无法接收到，先用测试数据

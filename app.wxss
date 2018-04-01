@@ -14,10 +14,6 @@
     text-align: center;
 }
 
-.bl-center {
-    margin: auto 10rpx;
-}
-
 .blue-button {
     position: fixed;
     bottom: 0;
@@ -87,15 +83,19 @@
   width: 36rpx;
 }
 
+ .checkbox-box {
+   /* display: inline-block; */
+  padding: 10rpx 20rpx;
+} 
+
 .checkbox-text {
     display: inline-block;
 }
 
 .checkbox-label {
     display: inline-block;
-    width: 300rpx;
-    height: 50rpx;
-    padding: 5rpx 25rpx;
+    width: 50%;
+    height: 60rpx;
     font-size: 12pt;
 }
 
@@ -109,22 +109,50 @@
   height: 60rpx;
   margin: 10rpx;
   border-radius: 0;
-  overflow-x: hidden;/*超出部分隐藏*/
-  white-space: nowrap;/*不换行*/
-  text-overflow:ellipsis;/*超出部分文字以...显示*/
+}
+
+.blueView {
+  display: table-column;
+  width: 200rpx;
+  height: 60rpx;
+  margin: 10rpx;
+  border-radius: 0;
 }
 
 .topBarButton view {
   display: inline-block;
   height: 60rpx;
+  width: 70rpx;
   line-height: 60rpx;
   text-align: center;
-  font-size: 32rpx;
+  font-size: 10pt;
+  overflow: hidden;  
+  white-space: nowrap; 
+  text-overflow: ellipsis;
 }
 
+ /* .topBarButton text {
+  overflow: hidden;超出部分隐藏   
+   white-space: nowrap;不换行 
+  text-overflow: ellipsis;超出部分文字以...显示   
+}  */
+
 .blueView view {
+  display: inline-block;
+  height: 60rpx;
+  width: 120rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 10pt;
+  overflow: hidden;  
+  white-space: nowrap; 
+  text-overflow: ellipsis;
   color: #5074d7;
 } 
+
+.blueView image {
+  display: none;
+}
 
 .topBarButton-hover {
     border-radius: 0;
@@ -162,10 +190,10 @@ button[class="topBarButton"]::after {
     height: 38rpx;
     line-height: 38rpx;
     margin-right: 8rpx; 
-    padding: 6rpx;
-    font-size: 24rpx;
+    padding: 2rpx 6rpx; 
+    font-size: 10pt;
     color: white;
     background-color: #5074d7;
-    border-radius: 15%;
+    border-radius: 8rpx;
 }
 
