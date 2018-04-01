@@ -1,7 +1,7 @@
 /* main.wxss */
 
 .topBar {
-  height: 100rpx;
+  height: 80rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,8 +10,7 @@
 .logo {
   display: table-column;
   width: 30%;
-  height: 100rpx;
-  margin: 10rpx;
+  height: 80rpx;
 }
 
 .posterwall-icon {
@@ -19,7 +18,7 @@
   vertical-align: top;
   height: 50rpx;
   width: 50rpx;
-  margin: 15rpx 10rpx 0 10rpx;
+  margin: 15rpx 20rpx 0 20rpx;
 }
 
 .topBarButton-icon {
@@ -27,7 +26,7 @@
   vertical-align: top;
   height: 40rpx;
   width: 40rpx;
-  margin-top: 18rpx;
+  margin-top: 14rpx;
 }
 
 .posterwall-text {
@@ -35,21 +34,20 @@
     height: 80rpx;
     line-height: 80rpx;
     text-align: center;
-    font-size: 36rpx;
+    font-size: 32rpx;
 }
 
 .posters-container {
-    margin: 30rpx;
     flex: 1;
 }
 
 .single-poster {
-    margin: 25rpx auto;
     display: block;
 }
 
 .poster-info-left {
-    display: inline-block
+    display: inline-block;
+    margin: 25rpx;
 }
 
 .cover-image {
@@ -60,15 +58,27 @@
 .poster-info-right {
     display: inline-block;
     position: absolute;
-    margin-left: 20rpx;
+    margin: 25rpx;
 }
 
-.poster-info-line {
-    margin: 10rpx;
+.poster-mini-text {
+  color: grey;
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 28rpx;
+  margin: 15rpx 15rpx 15rpx 0; 
 }
 
 .poster-name {
     font-weight: bold;
+    font-size: 32rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+
+.poster-tags {
+    height: 50rpx;
+    line-height: 50rpx;
 }
 
 .campus-notifier{
@@ -82,9 +92,10 @@
   background-color: #f7f7f7;
   border: 0rpx solid #f7f7f7;
   border-radius: 0rpx;
-  line-height:80rpx;
-  height: 80rpx;
+  line-height:60rpx;
+  height: 60rpx;
   color: black;
+  font-size: 32rpx;
 }
 
 .button-blue {
@@ -93,7 +104,8 @@
   background-color: #5074d7;
   border: 0rpx solid #5074d7;
   border-radius: 0rpx;
-  line-height:80rpx;
-  height: 80rpx;
+  line-height:60rpx;
+  height: 60rpx;
   color: white;
+  font-size: 32rpx;
 }
