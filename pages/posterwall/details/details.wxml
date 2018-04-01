@@ -3,7 +3,11 @@
 <view class="details-container">
     <view class="line-container main-title">{{currentPoster.name}}</view>
     <view class="line-container poster-tags">
-        <view class="single-poster-tag" wx:for="{{currentPoster.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view> 
+        <!-- <view class="single-poster-tag" wx:for="{{currentPoster.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view>  -->
+        
+        <view class="single-poster-tag">{{campusSelector[currentPoster.campus & 1] ? "珠海校区" : ""}} {{campusSelector[currentPoster.campus & 2]? "北校区" : ""}} {{campusSelector[currentPoster.campus & 4]? "南校区" : ""}} {{campusSelector[currentPoster.campus & 8]? "东校区" : ""}}</view>
+        <view class="single-poster-tag">{{categorySel[currentPoster.type].name}}</view>
+        
     </view>
     <view class="line-container">
         <text class="entry-text">活动时间： </text>
