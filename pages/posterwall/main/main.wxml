@@ -2,19 +2,19 @@
 <view class="grid-box">
   <view class="topBar">
     <view class="logo">
-      <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image>
-      <label class="posterwall-text">中山大学</label>
+      <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image> 
+      <view class="posterwall-text">中山大学</view>
     </view>
     <view class="verticalLine"></view>
     <view class="topBar-cell">
-      <button class="topBarButton" hover-class="topBarButton-hover" size="mini" bindtap="campusSelMenuShow">
-        <span>{{campusString}}</span> 
+      <button class="topBarButton {{isCampusSet ? 'blueView' : ''}}" hover-class="topBarButton-hover" size="mini" bindtap="campusSelMenuShow">
+        <view>{{campusString}}</view> 
         <image class="topBarButton-icon" src="../../../image/{{campusImg}}" mode="aspectFill"></image>
       </button>
     </view>
     <view class="topBar-cell">
-      <button class="topBarButton" hover-class="topBarButton-hover" size="mini" bindtap="categorySelMenuShow">
-        <span>{{categoryString}}</span> 
+      <button class="topBarButton {{isCategorySet ? 'blueView' : ''}}" hover-class="topBarButton-hover" size="mini" bindtap="categorySelMenuShow">
+        <view>{{categoryString}}</view> 
         <image class="topBarButton-icon" src="../../../image/{{categoryImg}}" mode="aspectFill"></image>
       </button>
     </view>
@@ -26,10 +26,10 @@
      <checkbox-group class="bl-center" bindchange="changeCampusFilter">
       <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
         <view class="checkbox-text">{{item.name}}</view>
-        <label class="single-checkbox {{item.checked ? 'is_checked':''}}">
+        <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
           <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
-          <span>√</span>
-        </label>
+          <image src="../../../image/check.png" mode="aspectFill"></image>
+        </view>
       </label>
     </checkbox-group> 
     <view class="divLine"></view>
@@ -41,10 +41,10 @@
     <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
       <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
         <view class="checkbox-text">{{item.name}}</view>
-        <label class="single-checkbox {{item.checked ? 'is_checked':''}}">
+        <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
           <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
-          <span>√</span>
-        </label>
+          <image src="../../../image/check.png" mode="aspectFill"></image>
+        </view>
       </label>
     </checkbox-group> 
     <view class="divLine"></view>
@@ -55,7 +55,7 @@
   <view class="posters-container">
     <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{ (campusSelector[item.campus & 1] || campusSelector[item.campus & 2] || campusSelector[item.campus & 4] || campusSelector[item.campus & 8]) && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >
       <view class="poster-info-left">
-        <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
+        <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="aspectFill" binderror="loadImageErrCallback"></image>
       </view>
       <view class="poster-info-right">
         <view class="poster-info-line poster-name">{{item.name}}</view>
@@ -63,9 +63,10 @@
           <view class="single-poster-tag">{{campusSelector[item.campus & 1] ? "珠海校区" : ""}} {{campusSelector[item.campus & 2]? "北校区" : ""}} {{campusSelector[item.campus & 4]? "南校区" : ""}} {{campusSelector[item.campus & 8]? "东校区" : ""}}</view>
           <view class="single-poster-tag">{{categorySel[item.type].name}}</view>
         </view>
-        <view class="poster-info-line poster-mini-text">活动时间： {{item.startTime}} - {{item.endTime}}</view>
+        <view class="poster-info-line poster-mini-text">活动时间： {{item.startTime}}-{{item.endTime}}</view>
         <view class="poster-info-line poster-mini-text">活动地点： {{item.location}}</view>
       </view>
+      <view class="divLine"></view>
     </view>
   </view>
 </view>

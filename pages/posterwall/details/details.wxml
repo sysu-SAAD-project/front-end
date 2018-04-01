@@ -1,5 +1,5 @@
 <!--details.wxml-->
-<image src="https://sysuactivity.com/static/{{currentPoster.poster}}" mode="scaleToFill" class="posterDetails-image"></image>
+<image src="https://sysuactivity.com/static/{{currentPoster.poster}}" mode="aspectFill" class="posterDetails-image"></image>
 <view class="details-container">
     <view class="line-container main-title">{{currentPoster.name}}</view>
     <view class="line-container poster-tags">
@@ -7,7 +7,7 @@
     </view>
     <view class="line-container">
         <text class="entry-text">活动时间： </text>
-        <text class="content-text">{{currentPoster.startTime}} - {{currentPoster.endTime}}</text>
+        <text class="content-text">{{currentPoster.startTime}}-{{currentPoster.endTime}}</text>
     </view>
     <view class="line-container">
         <text class="entry-text">活动地点： </text>
@@ -32,7 +32,9 @@
         <view class="entry-text text-bl">活动详情： </view>
         <view class="content-text text-bl">{{currentPoster.detail}}</view>
         <image class="qrcode-img" src="https://sysuactivity.com/static/{{currentPoster.qrcode}}" wx:if="{{currentPoster.qrcode}}"></image>
+       
         
+        <image class="qrcode-img" src="{{currentPoster.QRcode}}" wx:if="{{currentPoster.QRcode}}"></image>
     </view>
 
   <view class="divLine"></view>

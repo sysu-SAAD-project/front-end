@@ -19,7 +19,7 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#5074d7",
-        "navigationBarTitleText": "活动Plus",
+        "navigationBarTitleText": "中大活动Plus",
         "navigationBarTextStyle": "white"
     },
     "networkTimeout": {

@@ -10,9 +10,11 @@ Page({
         campusSelVisible: false,
         campusString: "校区",
         campusImg: "down.png",
+        isCampusSet: false,
         categorySelVisible: false,
         categoryString: "类型",
         categoryImg: "down.png",
+        isCategorySet: false,
         campusSelector: {
           0b1000: true,
           0b0100: true,
@@ -59,9 +61,11 @@ Page({
           flag = true;
         }
       }
+      if (tmpString == "") tmpString = "未选中校区";
       this.setData({
         campusSelVisible: !this.data.campusSelVisible,
-        campusString: tmpString
+        campusString: tmpString,
+        isCampusSet: true
       })
       console.log(this.data.campusString);
     },
@@ -69,6 +73,7 @@ Page({
       this.setData({
         campusString: "校区",
         campusImg: "up.png",
+        isCampusSet: false,
         campusSelector: {
           0b1000: true,
           0b0100: true,
@@ -97,9 +102,11 @@ Page({
           flag = true;
         }
       }
+      if (tmpString == "") tmpString = "未选中类型";
       this.setData({
         categorySelVisible: !this.data.categorySelVisible,
-        categoryString: tmpString
+        categoryString: tmpString,
+        isCategorySet: true
       })
       console.log(this.data.categoryString);
     },
@@ -107,6 +114,7 @@ Page({
       this.setData({
         categoryString: "类型",
         categoryImg: "up.png",
+        isCategorySet: false,
         categorySelector: {
           0: true,
           1: true,
