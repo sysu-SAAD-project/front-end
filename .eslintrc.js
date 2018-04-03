@@ -29,6 +29,6 @@ module.exports = {
             "always"
         ],
         "no-undef": 0,
-        "no-redeclare": 2
+        "no-redeclare": 0
     }
 };
