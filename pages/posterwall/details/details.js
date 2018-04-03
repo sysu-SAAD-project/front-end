@@ -1,58 +1,58 @@
 // details.js
-var util = require('../../../utils/util.js')
+var util = require('../../../utils/util.js');
 
 var app = getApp();
 Page({
 
-    /**
+	/**
      * 页面的初始数据
      */
-    data: {
-        // currentPoster: null,
-        statusText: [
-            "报名该活动",
-            "您已报名",
-            "报名人数已达上限",
-            "已过报名截止时间"
-        ],
-        // added from main.js
-        campusSelector: {
-            0b1000: true,
-            0b0100: true,
-            0b0010: true,
-            0b0001: true
-              //"SHENZHEN": true
-          },
-          campusSel: [
-            { "value": 0b1000, "name": "东校区", "checked": true },
-            { "value": 0b0100, "name": "南校区", "checked": true },
-            { "value": 0b0010, "name": "北校区", "checked": true },
-            { "value": 0b0001, "name": "珠海校区", "checked": true }
-            // { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
-          ],
-          categorySelector: {
-            0: true,
-            1: true,
-            2: true,
-            3: true,
-            4: true,
-            5: true,
-            6: true,
-          },
-          categorySel: [
-            { "value": 0, "name": "体育", "checked": true },
-            { "value": 1, "name": "公益", "checked": true },
-            { "value": 2, "name": "竞赛", "checked": true },
-            { "value": 3, "name": "演出", "checked": true },
-            { "value": 4, "name": "讲座", "checked": true },
-            { "value": 5, "name": "户外", "checked": true },
-            { "value": 6, "name": "休闲", "checked": true }
-          ],
-        currentPoster: {},
+	data: {
+		// currentPoster: null,
+		statusText: [
+			'报名该活动',
+			'您已报名',
+			'报名人数已达上限',
+			'已过报名截止时间'
+		],
+		// added from main.js
+		campusSelector: {
+			0b1000: true,
+			0b0100: true,
+			0b0010: true,
+			0b0001: true
+			//"SHENZHEN": true
+		},
+		campusSel: [
+			{ 'value': 0b1000, 'name': '东校区', 'checked': true },
+			{ 'value': 0b0100, 'name': '南校区', 'checked': true },
+			{ 'value': 0b0010, 'name': '北校区', 'checked': true },
+			{ 'value': 0b0001, 'name': '珠海校区', 'checked': true }
+			// { "value": "SHENZHEN", "name": "深圳校区", "checked": true }
+		],
+		categorySelector: {
+			0: true,
+			1: true,
+			2: true,
+			3: true,
+			4: true,
+			5: true,
+			6: true,
+		},
+		categorySel: [
+			{ 'value': 0, 'name': '体育', 'checked': true },
+			{ 'value': 1, 'name': '公益', 'checked': true },
+			{ 'value': 2, 'name': '竞赛', 'checked': true },
+			{ 'value': 3, 'name': '演出', 'checked': true },
+			{ 'value': 4, 'name': '讲座', 'checked': true },
+			{ 'value': 5, 'name': '户外', 'checked': true },
+			{ 'value': 6, 'name': '休闲', 'checked': true }
+		],
+		currentPoster: {},
 
-        //json后台数据无法接收到，先用测试数据
+		//json后台数据无法接收到，先用测试数据
         
-        /*currentPoster: {
+		/*currentPoster: {
           coverImageUrl: '../../../image/sysu-icon.jpeg',
           name: '第二届毽球团体赛+趣味挑战赛',
           tag: [
@@ -81,83 +81,83 @@ Page({
         // test data
         
      */
-    },
+	},
     
-    enrollButtonTap: function(e) {
-        console.log(e);
-        var detailsUrl = '../enroll/enroll?posterId=' + e.currentTarget.dataset.posterId;
-        wx.navigateTo({
-            url: detailsUrl
-        })
-    },
+	enrollButtonTap: function() {
+		// console.log(e);
+		var detailsUrl = '../enroll/enroll?posterId=' + e.currentTarget.dataset.posterId;
+		wx.navigateTo({
+			url: detailsUrl
+		});
+	},
 
     
-     // 生命周期函数--监听页面加载
+	// 生命周期函数--监听页面加载
 
-    onLoad: function(options) {
-        console.log(options)
-        var that = this;
-        app.getPosterById(options.posterId,
-            function(thePoster) {
-              thePoster.startTime = util.startTimeFormatUtil(thePoster.startTime);
-              thePoster.endTime = util.endTimeFormatUtil(thePoster.endTime);
-                that.setData({
-                  currentPoster: thePoster
-                });
+	onLoad: function(options) {
+		// console.log(options);
+		var that = this;
+		app.getPosterById(options.posterId,
+			function(thePoster) {
+				thePoster.startTime = util.startTimeFormatUtil(thePoster.startTime);
+				thePoster.endTime = util.endTimeFormatUtil(thePoster.endTime);
+				that.setData({
+					currentPoster: thePoster
+				});
 
-            },
-            function(errMsg) {
-                console.log(errMsg);
-            }
-        )
-    },
+			},
+			function() {
+				// console.log(errMsg);
+			}
+		);
+	},
 
-    /**
+	/**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+	onReady: function() {
 
-    },
+	},
 
-    /**
+	/**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+	onShow: function() {
 
-    },
+	},
 
-    /**
+	/**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+	onHide: function() {
 
-    },
+	},
 
-    /**
+	/**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+	onUnload: function() {
 
-    },
+	},
 
-    /**
+	/**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+	onPullDownRefresh: function() {
 
-    },
+	},
 
-    /**
+	/**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+	onReachBottom: function() {
 
-    },
+	},
 
-    /**
+	/**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+	onShareAppMessage: function() {
 
-    }
-  })
+	}
+});

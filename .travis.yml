@@ -1,2 +1,2 @@
 language: JavaScript
-script: true
+script: .eslint.js
