@@ -5,3 +5,9 @@ before_script:
   - npm install -g eslint
 script: 
   - npm run lint
+
+# 不接收邮件通知
+notifications: 
+  slack:
+    on_success: never
+    on_failure: never 

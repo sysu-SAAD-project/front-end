@@ -29,6 +29,6 @@ module.exports = {
             "always"
         ],
         "no-undef": 0,
-        "no-redeclare": 1 //显示warning
+        "no-redeclare": 0
     }
 };
