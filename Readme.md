@@ -1,3 +1,4 @@
+![build status](https://travis-ci.org/sysu-SAAD-project/front-end.svg?branch=master)
 # 中大活动-小程序端说明
 
 ## 文件结构
