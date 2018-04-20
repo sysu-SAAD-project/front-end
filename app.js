@@ -1,3 +1,4 @@
+
 //app.js
 App({
 	onLaunch: function() {
@@ -33,6 +34,16 @@ App({
 	// testPosters: function() {
 	//   console.log(this.globalData.posters);
 	// },
+
+  //检查当前Token是否有效
+  checkWheatherTokenIsValid: function () { },
+	//用户微信登陆，并获得返回的Code
+	currentUserLogin: function () { },
+	//将登陆获得的Code返回给服务器
+	returnCodeToServer: function () { },
+	//保存服务器返回的Token
+	saveTokenOfCurrentUser: function () { },
+
 	/**
      * 海报数量为0时请求第0页海报
      * successCb：请求成功回调函数
