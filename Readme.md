@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 中大活动-小程序端
 
 [![Build Status](https://travis-ci.org/sysu-SAAD-project/front-end.svg?branch=dev)](https://travis-ci.org/sysu-SAAD-project/front-end)
 =======
+=======
+>>>>>>> eaefea4426c913466abdd56da95670547a6d3c68
 ![build status](https://travis-ci.org/sysu-SAAD-project/front-end.svg?branch=master)
 # 中大活动-小程序端说明
 >>>>>>> add build status
