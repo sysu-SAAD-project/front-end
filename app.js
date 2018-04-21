@@ -109,6 +109,7 @@ App({
       try {
         wx.setStorageSync('key', 'value')
       } catch (e) {
+        console.log('ERROR; an error code returned by wx.setStorageSync(): %s', e.message);
       }
     }
   },
