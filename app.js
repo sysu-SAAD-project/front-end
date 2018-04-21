@@ -40,74 +40,72 @@ App({
   checkWhetherTokenExists: function () {
     try {
       // 本地缓存中token存储key为token
-      var value = wx.getStorageSync('token')
+      var value = wx.getStorageSync('token');
+      var that = this;
       if (value) {
-        // Do something with return value
-        wx.request({
-          // 我们的服务器地址
-          url: 'https://sysuactivity/users',
-          data: {
-            token: value
-          },
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function(res) {
-            this.saveTokenOfCurrentUser(res.token);
-          }
-        })
+        // 发送当前token给服务器校验其有效性
+        //wx.request({
+        // 我们的服务器地址
+        //  url: 'https://sysuactivity/users',
+        //  data: {
+        //    token: value
+        //  },
+        //  header: {
+        //    'content-type': 'application/json' // 默认值
+        //  },
+        //  success: function(res) {
+        //    that.saveTokenOfCurrentUser(res.token);
+        //  }
+        //});
       } else {
-        console.log("本地缓存中找不到token")
-        this.currentUserLogin()
+        console.log("本地缓存中找不到token");
+        that.currentUserLogin();
       }
     } catch (e) {
       // 输出错误信息
-      console.log(e)
+      console.log(e);
     }
   },
-	//用户微信登陆，并获得返回的Code
-	currentUserLogin: function () {
+  //用户微信登陆，并获得返回的Code
+  currentUserLogin: function () {
+    var that = this;
     wx.login({
       success: function (res) {
+        console.log('当前code:' + res.code);
         if (res.code) {
-          // 向服务端发送code
-          wx.request({
-            // 我们的服务器地址
-            url: 'https://sysuactivity/users',
-            data: {
-              code: res.code
-            },
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: function(res) {
-              this.saveTokenOfCurrentUser(res.token);
-            }
-          })
+          that.returnCodeToServer(res.code);
         } else {
-          console.log('登录失败！' + res.errMsg)
+          console.log('登录失败！' + res.errMsg);
         }
       }
     });
   },
+  // 返回code给服务器
   returnCodeToServer: function (code) {
+    var that = this;
     wx.request({
-      url: 'https://sysuactivity/users',
-      data: code,
+      url: 'https://www.sysuactivity.com/users',
+      data: {
+        code: code
+      },
+      header: {
+        'content-type': 'application/json',
+        'athorization': 'token_string'
+      },
       method: 'POST',
-      success() {
-        console.log('returning code successed');
+      success: function (res) {
+        that.saveTokenOfCurrentUser(res.token);
       },
-      fail() {
-        console.log('returning code failed');
+      fail: function (res) {
+        console.log('sending code failed' + res.errMsg);
       },
-    })
+    });
   },
   //保存服务器返回的Token
   saveTokenOfCurrentUser: function (token) {
     if (token.length != 0) {
       try {
-        wx.setStorageSync('key', 'value')
+        wx.setStorageSync('key', 'value');
       } catch (e) {
         console.log('ERROR; an error code returned by wx.setStorageSync(): %s', e.message);
       }
