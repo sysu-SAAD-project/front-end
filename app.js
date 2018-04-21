@@ -90,12 +90,26 @@ App({
       }
     });
   },
-	//保存服务器返回的Token
-	saveTokenOfCurrentUser: function (token) {
-    try {
-      wx.setStorageSync('token', token)
-    } catch (e) {
-      console.log("本地保存失败")
+  returnCodeToServer: function (code) {
+    wx.request({
+      url: 'https://sysuactivity/users',
+      data: code,
+      method: 'POST',
+      success() {
+        console.log('returning code successed');
+      },
+      fail() {
+        console.log('returning code failed');
+      },
+    })
+  },
+  //保存服务器返回的Token
+  saveTokenOfCurrentUser: function (token) {
+    if (token.length != 0) {
+      try {
+        wx.setStorageSync('key', 'value')
+      } catch (e) {
+      }
     }
   },
 
