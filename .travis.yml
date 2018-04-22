@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - "6"
+  - "8"
 before_script:
   - npm install -g eslint
 script: 
+  - npm run npmRe
   - npm run lint
 
 # 不接收邮件通知
