@@ -1,6 +1,5 @@
 {
 	"scripts": {
-		"npmRe": "npm install -g npm",
 		"lint": "eslint ."
 	},
 	"dependencies": {}
