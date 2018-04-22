@@ -21,18 +21,6 @@ App({
 			});
 		}
 	},
-	// testGetMethod: function() {
-	//   wx.request({
-	//     url: 'https://sysuactivity.com/act?page=0',
-	//     method:"GET",
-	//     success(res) {
-	//       console.log("testGetMethod" + res.data);
-	//     }
-	//   })
-	// },
-	// testPosters: function() {
-	//   console.log(this.globalData.posters);
-	// },
 	/**
      * 海报数量为0时请求第0页海报
      * successCb：请求成功回调函数
@@ -91,23 +79,6 @@ App({
 	},
 
 	getPosterById: function(posterId, successCb, failCb) {
-		// var postersItem = this.globalData.posters;
-		// var findOne = false;
-		// var currentPosterItem = null;
-		// for (var i = 0, lenI = postersItem.length; i < lenI; ++i) {
-		//     // console.log(postersItem[i]);
-		//     if (postersItem[i].id == posterId) {
-		//         currentPosterItem = postersItem[i];
-		//         findOne = true;
-		//         break;
-		//     }
-		// };
-		// if (findOne) {
-		//     typeof successCb == "function" && successCb(currentPosterItem);
-		// } else {
-		//     typeof failCb == "function" && failCb("Error Msg: Poster not found");
-		// }
-
 		var url = 'https://sysuactivity.com/act/' + posterId;  
 		//测试数据库中ID只有为1，为了看到数据json是否传入，使用ID=1测试
 		wx.request({
@@ -164,7 +135,6 @@ App({
 	},
 
 	getMoreDiscussionPosts: function(successCb, failCb) {
-		// var that = this;
 		// getPosts from server
 		/* request */
 		var reqSuccess = true;
