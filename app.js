@@ -31,7 +31,7 @@ App({
       var that = this;
       if (value) {
         // 发送当前token给服务器校验其有效性
-        //wx.request({
+        // wx.request({
         // 我们的服务器地址
         //  url: 'https://sysuactivity/users',
         //  data: {
