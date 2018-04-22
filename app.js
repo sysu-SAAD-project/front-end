@@ -1,4 +1,3 @@
-
 //app.js
 App({
   onLaunch: function() {
@@ -69,15 +68,17 @@ App({
   },
   // 返回code给服务器
   returnCodeToServer: function (code) {
+    // console.log("code: " + code);
     var that = this;
+    var value = wx.getStorageSync('token');
     wx.request({
-      url: 'https://www.sysuactivity.com/users',
+      url: 'https://sysuactivity.com/users',
       data: {
         code: code
       },
       header: {
-        'content-type': 'application/json',
-        'athorization': 'token_string'
+        'Content-type': 'application/json',
+        'Authorization': value
       },
       method: 'POST',
       success: function (res) {
@@ -90,7 +91,7 @@ App({
   },
   //保存服务器返回的Token
   saveTokenOfCurrentUser: function (token) {
-    if (token.length != 0) {
+    if (token) {
       try {
         wx.setStorageSync('key', 'value');
       } catch (e) {
