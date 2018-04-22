@@ -1,3 +1,4 @@
+
 //app.js
 App({
 	onLaunch: function() {
@@ -5,6 +6,7 @@ App({
 		var logs = wx.getStorageSync('logs') || [];
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
+    this.checkWhetherTokenExists();
 	},
 	getUserInfo: function(cb) {
 		var that = this;
@@ -21,6 +23,81 @@ App({
 			});
 		}
 	},
+  //检查当前Token是否存在
+  checkWhetherTokenExists: function () {
+    try {
+      // 本地缓存中token存储key为token
+      var value = wx.getStorageSync('token');
+      var that = this;
+      if (value) {
+        // 发送当前token给服务器校验其有效性
+        //wx.request({
+        // 我们的服务器地址
+        //  url: 'https://sysuactivity/users',
+        //  data: {
+        //    token: value
+        //  },
+        //  header: {
+        //    'content-type': 'application/json' // 默认值
+        //  },
+        //  success: function(res) {
+        //    that.saveTokenOfCurrentUser(res.token);
+        //  }
+        //});
+      } else {
+        console.log("本地缓存中找不到token");
+        that.currentUserLogin();
+      }
+    } catch (e) {
+      // 输出错误信息
+      console.log(e);
+    }
+  },
+  //用户微信登陆，并获得返回的Code
+  currentUserLogin: function () {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        console.log('当前code:' + res.code);
+        if (res.code) {
+          that.returnCodeToServer(res.code);
+        } else {
+          console.log('登录失败！' + res.errMsg);
+        }
+      }
+    });
+  },
+  // 返回code给服务器
+  returnCodeToServer: function (code) {
+    var that = this;
+    wx.request({
+      url: 'https://www.sysuactivity.com/users',
+      data: {
+        code: code
+      },
+      header: {
+        'content-type': 'application/json',
+        'athorization': 'token_string'
+      },
+      method: 'POST',
+      success: function (res) {
+        that.saveTokenOfCurrentUser(res.token);
+      },
+      fail: function (res) {
+        console.log('sending code failed' + res.errMsg);
+      },
+    });
+  },
+  //保存服务器返回的Token
+  saveTokenOfCurrentUser: function (token) {
+    if (token.length != 0) {
+      try {
+        wx.setStorageSync('key', 'value');
+      } catch (e) {
+        console.log('ERROR; an error code returned by wx.setStorageSync(): %s', e.message);
+      }
+    }
+  },
 	/**
      * 海报数量为0时请求第0页海报
      * successCb：请求成功回调函数

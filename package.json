@@ -1,5 +1,6 @@
 {
-    "scripts": {
-			"lint": "eslint ."
-		}
+				"scripts": {
+								"lint": "eslint ."
+				},
+				"dependencies": {}
 }
