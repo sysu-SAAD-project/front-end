@@ -1,6 +1,8 @@
 {
 	"scripts": {
-		"lint": "eslint ."
+		"lint": "eslint . --fix"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"eslint": "^4.19.1"
+	}
 }

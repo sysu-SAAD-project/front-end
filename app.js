@@ -91,8 +91,7 @@ App({
   },
   // 报名活动相关
   userSignUpCertainActivity: function (token, userdata) {
-    var that = this;
-    var outputString = "";
+    var outputString = '';
     wx.request({
       url: 'https://sysuactivity.com/actApplys/' + string(data.actId),
       data: {
@@ -108,25 +107,25 @@ App({
         'Authorization': token,
       },
       method: 'POST',
-      sucess: function(res) {
+      success(res) {
         if (parseInt(res.statusCode) === 200) {
-          outputString = "报名填写成功"
+          outputString = '报名填写成功';
         }
         if (parseInt(res.statusCode) === 400) {
-          outputString = "请重新登录"
+          outputString = '请重新登录';
         }
         if (parseInt(res.statusCode) === 500) {
-          outputString = "服务器错误"
+          outputString = '服务器错误';
         }
       },
-      fail: function(res) {
-        console.log('sending code failed' + res.errMsg);
+      fail(res) {
+        // console.log('sending code failed' + res.errMsg);
+        outputString = res.errMsg;
       }
     });
     return outputString;
   },
   getRegistrationList: function (successCb, failCb) {
-    var that = this;
     var out = {};
     wx.request({
       url: 'https://sysuactivity.com/actApplys',
@@ -139,13 +138,13 @@ App({
           out = res.data.content;
         }
         if (parseInt(res.statusCode) === 400) {
-          out = "请重新登陆";
+          out = '请重新登陆';
         }
         if (parseInt(res.statusCode) === 500) {
-          out = "服务器错误";
+          out = '服务器错误';
         }
         if (parseInt(res.statusCode) === 204) {
-          out = "该用户未报名任何活动";
+          out = '该用户未报名任何活动';
         }
       },
       fail() {
