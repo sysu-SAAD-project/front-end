@@ -5,27 +5,37 @@
     <form bindsubmit="formSubmit">
         <view class="section">
             <view class="section__title">姓名</view>
-            <input bindblur="validateStuName" name="stu_name" placeholder="请输入姓名" />
+            <view class="input-border">
+            <input class="input" bindblur="validateStuName" name="stu_name" placeholder="请输入姓名" />
+            </view>
             <view class="blank-notify" wx:if="{{blankNotify.stu_name}}">姓名不能留空哦</view>
+            <view class="blank-notify" wx:elif="{{formatNotify.stu_name}}">注意姓名格式哦</view>
         </view>
         <view class="section">
             <view class="section__title">院系</view>
-            <input bindblur="validateStuSchool" name="stu_school" placeholder="请输入院系" />
-            <view class="blank-notify" wx:if="{{blankNotify.stu_school}}">院系不能留空哦</view>
+            <view class="input-border">
+            <picker class="input" mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+            <text>{{array[index]}}</text>
+</picker>
+        </view>
         </view>
         <view class="section">
             <view class="section__title">学号</view>
-            <input bindblur="validateStuNum" name="stu_number" type="number" placeholder="请输入学号" />
+            <view class="input-border">
+            <input class="input" bindblur="validateStuNum" name="stu_number" type="number" placeholder="请输入学号" />
+            </view>
             <view class="blank-notify" wx:if="{{blankNotify.stu_number}}">学号不能留空哦</view>
             <view class="blank-notify" wx:elif="{{formatNotify.stu_number}}">注意学号格式哦</view>
         </view>
         <view class="section">
             <view class="section__title">手机</view>
-            <input bindblur="validateStuTel" name="stu_tel" type="number" placeholder="请输入手机" />
+            <view class="input-border">
+            <input class="input" bindblur="validateStuTel" name="stu_tel" type="number" placeholder="请输入手机" />
+            </view>
             <view class="blank-notify" wx:if="{{blankNotify.stu_tel}}">手机号不能留空哦</view>
             <view class="blank-notify" wx:elif="{{formatNotify.stu_tel}}">注意手机号格式哦</view>
         </view>
-        <button formType="submit">提交</button>
+        <button class="con-button" formType="submit">提交</button>
     </form>
 </view>
 
