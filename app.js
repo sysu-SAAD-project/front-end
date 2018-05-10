@@ -1,4 +1,3 @@
-
 //app.js
 App({
   onLaunch: function() {
@@ -69,15 +68,17 @@ App({
   },
   // 返回code给服务器
   returnCodeToServer: function (code) {
+    // console.log("code: " + code);
     var that = this;
+    var value = wx.getStorageSync('token');
     wx.request({
-      url: 'https://www.sysuactivity.com/users',
+      url: 'https://sysuactivity.com/users',
       data: {
         code: code
       },
       header: {
-        'content-type': 'application/json',
-        'athorization': 'token_string'
+        'Content-type': 'application/json',
+        'Authorization': value
       },
       method: 'POST',
       success: function (res) {
@@ -88,9 +89,73 @@ App({
       },
     });
   },
+  // 报名活动相关
+  userSignUpCertainActivity: function (token, userdata) {
+    var outputString = '';
+    wx.request({
+      url: 'https://sysuactivity.com/actApplys/' + string(data.actId),
+      data: {
+        actid: userdata.actid,
+        userid: userdata.userid,
+        username: userdata.username,
+        email: userdata.email,
+        phone: userdata.phone,
+        school: userdata.school,
+      },
+      header: {
+        'Content-type': 'application/json',
+        'Authorization': token,
+      },
+      method: 'POST',
+      success(res) {
+        if (parseInt(res.statusCode) === 200) {
+          outputString = '报名填写成功';
+        }
+        if (parseInt(res.statusCode) === 400) {
+          outputString = '请重新登录';
+        }
+        if (parseInt(res.statusCode) === 500) {
+          outputString = '服务器错误';
+        }
+      },
+      fail(res) {
+        // console.log('sending code failed' + res.errMsg);
+        outputString = res.errMsg;
+      }
+    });
+    return outputString;
+  },
+  getRegistrationList: function (successCb, failCb) {
+    var out = {};
+    wx.request({
+      url: 'https://sysuactivity.com/actApplys',
+      header: {
+        'Content-type': 'application/json',
+        'Authorization': token,
+      },
+      success(res) {
+        if (parseInt(res.statusCode) === 200) {
+          out = res.data.content;
+        }
+        if (parseInt(res.statusCode) === 400) {
+          out = '请重新登陆';
+        }
+        if (parseInt(res.statusCode) === 500) {
+          out = '服务器错误';
+        }
+        if (parseInt(res.statusCode) === 204) {
+          out = '该用户未报名任何活动';
+        }
+      },
+      fail() {
+        typeof successCb == 'function' && failCb('Server Error: ');
+      }
+    });
+    return out;
+  },
   //保存服务器返回的Token
   saveTokenOfCurrentUser: function (token) {
-    if (token.length != 0) {
+    if (token) {
       try {
         wx.setStorageSync('key', 'value');
       } catch (e) {
@@ -177,7 +242,9 @@ App({
     });
 
   },
-    
+
+  // 以下是报名活动需要用到的函数
+
   // 以下是个人信息及讨论区需要用到的函数
   getPostersEnrolledByCurrentUser: function(successCb, failCb) {
     var that = this;

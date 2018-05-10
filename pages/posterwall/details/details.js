@@ -83,8 +83,8 @@ Page({
      */
   },
     
-  enrollButtonTap: function() {
-    // console.log(e);
+  enrollButtonTap: function(e) {
+    //console.log(e);
     var detailsUrl = '../enroll/enroll?posterId=' + e.currentTarget.dataset.posterId;
     wx.navigateTo({
       url: detailsUrl

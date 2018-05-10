@@ -64,11 +64,18 @@
 <view class="null-line">
 
 </view>
-<view class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
+
+<!--<view class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
     <view class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}
     </view>
-
 </view>
+-->
+
+<view class="{{'blue-button'}}" bindtap="{{'enrollButtonTap'}}" data-poster-id="{{currentPoster.posterId}}">
+    <view class="{{'button-innerText'}}">{{statusText[0]}}
+    </view>
+</view>
+
 
 <!--<view>
   <button  class="{{currentPoster.status == 0 ? 'blue-button' : 'grey-button'}}"  type="primary" disabled="{{disabled}}" bindtap="{{currentPoster.status == 0 ? 'enrollButtonTap' : ''}}" data-poster-id="{{currentPoster.posterId}}">
@@ -76,5 +83,6 @@
     <text class="{{currentPoster.status == 0 ? 'button-innerText' : 'button-innerText-error'}}">{{statusText[currentPoster.status]}}</text>
     </button>  
 </view>
---!>
+-->
+
  
