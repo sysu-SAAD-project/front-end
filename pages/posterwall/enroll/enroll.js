@@ -15,13 +15,100 @@ Page({
       'stu_tel': false
     },
     formatNotify: {
+      'stu_name': false,
       'stu_number': false,
+      'stu_school': false,
       'stu_tel': false
+    },
+    reg: {
+      'stu_name': '^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)$',
+      'stu_number': '^[1-9]\d{7}$',
+      'stu_tel': '^[1-9]\d{10}$'
     }
   },
 
-  formSubmit: function(e) {
-    // console.log(e);
+  // 检查合法性
+  validate: function(aspect, value) {
+    var formValue = value;
+    var bNotify = this.data.blankNotify;
+    var fNotify = this.data.formatNotify;
+    var reg = this.data.reg;
+    // 检查是否为空
+    if (formValue == '') {
+      bNotify[aspect] = true;
+    } else {
+      bNotify[aspect] = false;
+      // 若不为空检查是否合法
+      var thisReg = new RegExp(reg[aspect], 'gi');
+      fNotify[aspect] = !thisReg.test(formValue);
+    }
+    this.setData({
+      blankNotify: bNotify,
+      formatNotify: fNotify
+    });
+    //console.log(aspect+': ' + this.data.blankNotify[aspect]);
+    //console.log(aspect+': ' + this.data.formatNotify[aspect]);
+  },
+
+  // 检查姓名合法性
+  validateStuName: function (e) {
+    var value = e.detail.value;
+    this.validate('stu_name', value);
+  },
+
+  // 检查院系合法性
+  validateStuSchool: function (e) {
+    var value = e.detail.value;
+    var bNotify = this.data.blankNotify;
+    if (value == '') {
+      bNotify.stu_school = true;
+    } else {
+      bNotify.stu_school = false;
+    }
+    this.setData({
+      blankNotify: bNotify
+    });
+  },
+
+  // 检查学号合法性
+  validateStuNum: function (e) {
+    var value = e.detail.value;
+    this.validate('stu_number', value);
+  },
+
+  // 检查手机号合法性
+  validateStuTel: function (e) {
+    var value = e.detail.value;
+    this.validate('stu_tel', value);
+  },
+
+  // 这个是新的formSubmit
+  formSubmit: function (e) {
+    var formValue = e.detail.value;
+    var bNotify = this.data.blankNotify;
+    var fNotify = this.data.formatNotify;
+    var reg = this.data.reg;
+    // 检查表单中是否存在不合法的项
+    for (var aspect in reg) {
+      this.validate(aspect, formValue[aspect]);
+    }
+
+    var isValid = true;
+    for (var key in bNotify) {
+      if (bNotify[key] == true || fNotify[key] == true) {
+        isValid = false;
+      }
+    }
+    if (isValid) {
+      this.setData({
+        isFillingForm: !this.data.isFillingForm
+      });
+    }
+  },
+
+  // 这个是原本的formSubmit
+  /*formSubmit: function(e) {
+    console.log(e);
     var formValue = e.detail.value;
     var bNotify = this.data.blankNotify;
     for (var key in bNotify) {
@@ -53,7 +140,7 @@ Page({
         });
       }
     }
-  },
+  },*/
 
   confirmButtonTap: function() {
     wx.navigateBack({
