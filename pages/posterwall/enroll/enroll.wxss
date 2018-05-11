@@ -4,8 +4,12 @@
     margin: 20rpx 20rpx;
 }
 
+.enroll-container-success {
+    margin: 110rpx 20rpx;
+}
+
 .divLine {
-  width:  90%;
+  width:  95%;
   margin: 0 auto;
 }
 
@@ -54,18 +58,22 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin: 130rpx auto;
+    margin: 60rpx auto;
+}
+
+.success-text-container {
+    height:300rpx;
 }
 
 .main-text {
-    font-size: 20pt;
+    font-size: 16pt;
     font-weight: bold;
-    margin: 80rpx auto;
+    margin: 0rpx auto;
 }
 
 .detail-text {
     font-size: 14pt;
-    margin: 80rpx auto;
+    margin: 35rpx auto;
 }
 
 .blank-notify {
@@ -79,4 +87,9 @@
     color: white;
     font-weight: 100;
     background-color: #5074d7;
+}
+
+.successblue-button {
+    background-color: #5074d7;
+    border-radius: 5px;
 }
