@@ -81,7 +81,7 @@ Page({
     this.validate('username', value);
   },
 
-/* 暂时用不上
+  /* 暂时用不上
   // 检查院系合法性
   validateStuSchool: function (e) {
     var value = e.detail.value;

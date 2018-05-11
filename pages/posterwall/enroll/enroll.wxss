@@ -14,7 +14,7 @@
 }
 
 .section {
-    margin: 40rpx auto;
+    margin: 60rpx auto;
     position: relative;
     height: 90rpx;
 }
@@ -78,8 +78,8 @@
 
 .blank-notify {
     color: rgb(254, 67, 101);
-    font-size: 8pt;
-    margin: 0rpx 20rpx 0rpx 20rpx
+    font-size: 10pt;
+    margin: 0rpx 20rpx 0rpx 120rpx;
 }
 
 .con-button {

@@ -83,7 +83,7 @@ Page({
      */
   },
     
-  enrollButtonTap: function(e) {
+  enrollButtonTap: function() {
     // 此处使用了this获取id
     // 原先的e并没有id存在
     // 需要修改时请检查e是否正确
