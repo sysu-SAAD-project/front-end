@@ -52,9 +52,9 @@ Page({
     } else {
       bNotify[aspect] = false;
       // 若不为空检查是否合法
-      console.log(formValue)
+      //console.log(formValue)
       var thisReg = new RegExp(reg[aspect], 'g');
-      console.log(thisReg);
+      //console.log(thisReg);
       //console.log(thisReg.test(formValue));
       fNotify[aspect] = !thisReg.test(formValue);
     }
@@ -62,8 +62,8 @@ Page({
       blankNotify: bNotify,
       formatNotify: fNotify
     });
-    console.log(aspect+'BlankNotify: ' + this.data.blankNotify[aspect]);
-    console.log(aspect+'FormatNotify: ' + this.data.formatNotify[aspect]);
+    //console.log(aspect+'BlankNotify: ' + this.data.blankNotify[aspect]);
+    //console.log(aspect+'FormatNotify: ' + this.data.formatNotify[aspect]);
   },
 
   // 检查姓名合法性
@@ -103,7 +103,7 @@ Page({
   // 这个是新的formSubmit
   formSubmit: function (e) {
     var formValue = e.detail.value;
-    console.log(formValue);
+    //console.log(formValue);
     var bNotify = this.data.blankNotify;
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
@@ -118,7 +118,7 @@ Page({
         isValid = false;
       }
     }
-    console.log(isValid);
+    //console.log(isValid);
     // 若合法则提交表单
     if (isValid) {
       this.setData({
@@ -128,7 +128,7 @@ Page({
       var token = wx.getStorageSync('token');
       var sendData = formValue;
       sendData.actid = currPoster.id;
-      console.log(sendData);
+      //console.log(sendData);
       appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
@@ -188,7 +188,7 @@ Page({
         });
       },
       function() {
-        console.log(errMsg);
+        //console.log(errMsg);
       }
     );
   },
