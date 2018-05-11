@@ -41,7 +41,7 @@
 
 <view class="enroll-container-success" wx:if="{{!isFillingForm}}">
     <!--正式用的时候用个Image  -->
-    <icon class="success-icon" type="success" size="120" />
+    <icon class="success-icon" type="success" size="140" />
     <view class="success-text-container">
         <view class="main-text center">报名成功</view>
         <view class="detail-text center">您的报名信息主办方已经收到</view>
