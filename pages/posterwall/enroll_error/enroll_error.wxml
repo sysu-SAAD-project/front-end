@@ -1,9 +1,0 @@
-<!--enrol_error.wxml-->
-<icon class="fail-icon" type="warn" size="70" />
-<view class="fail-text-container">
-  <view class="main-text center">报名失败</view>
-  <view class="detail-text center">{{msg}}</view>
-</view>
-<view class="blue-button" bindtap="confirmButtonTap">
-  <view class="button-innerText">确定并返回</view>
-</view>

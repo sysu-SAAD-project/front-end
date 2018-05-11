@@ -1,7 +1,7 @@
 <!--enroll.wxml-->
+<view class="enroll-container" wx:if="{{isFillingForm}}">
 <view class="enroll-main-title">{{currentPoster.name}}</view>
 <view class="divLine"></view>
-<view class="enroll-container" wx:if="{{isFillingForm}}">
     <form bindsubmit="formSubmit">
         <view class="section">
             <view class="section__title">姓名</view>
@@ -39,14 +39,14 @@
     </form>
 </view>
 
-<view class="enroll-container" wx:if="{{!isFillingForm}}">
+<view class="enroll-container-success" wx:if="{{!isFillingForm}}">
     <!--正式用的时候用个Image  -->
-    <icon class="success-icon" type="success" size="70" />
+    <icon class="success-icon" type="success" size="140" />
     <view class="success-text-container">
         <view class="main-text center">报名成功</view>
         <view class="detail-text center">您的报名信息主办方已经收到</view>
     </view>
-    <view class="blue-button" bindtap="confirmButtonTap">
-        <view class="button-innerText">确定并返回</view>
+    <view class="successblue-button" bindtap="confirmButtonTap">
+        <view class="button-innerText">确定</view>
     </view>
 </view>
