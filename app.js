@@ -94,7 +94,7 @@ App({
     //console.log(userdata);
     var outputString = '';
     wx.request({
-      url: 'https://sysuactivity.com/actApplys/' + string(data.actId),
+      url: 'https://sysuactivity.com/actApplys/' + userdata.actid.toString(),
       data: {
         studentid: userdata.studentid,
         username: userdata.username,
