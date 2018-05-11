@@ -8,21 +8,22 @@ Page({
   data: {
     isFillingForm: true,
     currentPoster: null,
+    actid: null,
     blankNotify: {
-      'username': true,
-      'userid': true,
-      'school': true,
-      'phone': true
+      'username': false,
+      'studentid': false,
+      'school': false,
+      'phone': false
     },
     formatNotify: {
       'username': false,
-      'userid': false,
+      'studentid': false,
       'school': false,
       'phone': false
     },
     reg: {
       'username': '([a-zA-Z0-9\\u4e00-\\u9fa5\\·]{1,10})',
-      'userid': '[1-9]\\d{7}',
+      'studentid': '[1-9]\\d{7}',
       'phone': '[1-9]\\d{10}'
     },
 
@@ -52,9 +53,9 @@ Page({
     } else {
       bNotify[aspect] = false;
       // 若不为空检查是否合法
-      console.log(formValue)
+      //console.log(formValue)
       var thisReg = new RegExp(reg[aspect], 'g');
-      console.log(thisReg);
+      //console.log(thisReg);
       //console.log(thisReg.test(formValue));
       fNotify[aspect] = !thisReg.test(formValue);
     }
@@ -62,8 +63,8 @@ Page({
       blankNotify: bNotify,
       formatNotify: fNotify
     });
-    console.log(aspect+'BlankNotify: ' + this.data.blankNotify[aspect]);
-    console.log(aspect+'FormatNotify: ' + this.data.formatNotify[aspect]);
+    //console.log(aspect+'BlankNotify: ' + this.data.blankNotify[aspect]);
+    //console.log(aspect+'FormatNotify: ' + this.data.formatNotify[aspect]);
   },
 
   // 检查姓名合法性
@@ -91,7 +92,7 @@ Page({
   // 检查学号合法性
   validateStuNum: function (e) {
     var value = e.detail.value;
-    this.validate('userid', value);
+    this.validate('studentid', value);
   },
 
   // 检查手机号合法性
@@ -103,11 +104,12 @@ Page({
   // 这个是新的formSubmit
   formSubmit: function (e) {
     var formValue = e.detail.value;
-    console.log(formValue);
+    //console.log(formValue);
     var bNotify = this.data.blankNotify;
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
     var currPoster = this.data.currentPoster;
+    //console.log(currPoster);
     // 检查表单中是否存在不合法的项
     for (var aspect in reg) {
       this.validate(aspect, formValue[aspect]);
@@ -118,7 +120,6 @@ Page({
         isValid = false;
       }
     }
-    console.log(isValid);
     // 若合法则提交表单
     if (isValid) {
       this.setData({
@@ -127,8 +128,9 @@ Page({
       var appInstance = getApp();
       var token = wx.getStorageSync('token');
       var sendData = formValue;
+      console.log(formValue);
       sendData.actid = currPoster.id;
-      console.log(sendData);
+      sendData.school = '数据科学与计算机学院';
       appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
@@ -181,17 +183,20 @@ Page({
   onLoad: function(options) {
     console.log(options);
     var that = this;
+    this.setData({
+      actid: options.posterId
+    });
     app.getPosterById(options.posterId,
       function(thePoster) {
         that.setData({
           currentPoster: thePoster
         });
-        console.log(thePoster)
       },
       function() {
-        console.log(errMsg);
+        //console.log(errMsg);
       }
     );
+    console.log(options);
   },
 
   /**

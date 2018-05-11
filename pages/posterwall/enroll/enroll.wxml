@@ -22,10 +22,10 @@
         <view class="section">
             <view class="section__title">学号</view>
             <view class="input-border">
-            <input class="input" bindblur="validateStuNum" name="userid" type="number" />
+            <input class="input" bindblur="validateStuNum" name="studentid" type="number" />
             </view>
-            <view class="blank-notify" wx:if="{{blankNotify.userid}}">学号不能留空哦</view>
-            <view class="blank-notify" wx:elif="{{formatNotify.userid}}">注意学号格式哦</view>
+            <view class="blank-notify" wx:if="{{blankNotify.studentid}}">学号不能留空哦</view>
+            <view class="blank-notify" wx:elif="{{formatNotify.studentid}}">注意学号格式哦</view>
         </view>
         <view class="section">
             <view class="section__title">手机</view>

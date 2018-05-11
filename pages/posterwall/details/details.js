@@ -107,7 +107,6 @@ Page({
         that.setData({
           currentPoster: thePoster
         });
-
       },
       function() {
         // console.log(errMsg);
