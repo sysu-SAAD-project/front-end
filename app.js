@@ -91,14 +91,13 @@ App({
   },
   // 报名活动相关
   userSignUpCertainActivity: function (token, userdata) {
+    //console.log(userdata);
     var outputString = '';
     wx.request({
-      url: 'https://sysuactivity.com/actApplys/' + string(data.actId),
+      url: 'https://sysuactivity.com/actApplys/' + userdata.actid.toString(),
       data: {
-        actid: userdata.actid,
-        userid: userdata.userid,
+        studentid: userdata.studentid,
         username: userdata.username,
-        email: userdata.email,
         phone: userdata.phone,
         school: userdata.school,
       },

@@ -1,17 +1,45 @@
 /* enroll.wxss */
 
 .enroll-container {
-    margin: 20rpx 40rpx;
+    margin: 20rpx 20rpx;
+}
+
+.divLine {
+  width:  90%;
+  margin: 0 auto;
 }
 
 .section {
     margin: 40rpx auto;
     position: relative;
+    height: 90rpx;
+}
+
+.input {
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12pt;
+    margin: 0rpx 20rpx 0rpx 20rpx;
+
+}
+
+.input-border {
+    vertical-align: top;
+    display: inline-block;
+    border: 1rpx solid rgb(220,220,220);
+    width: 80%;
 }
 
 .section__title {
-    font: 16pt bold;
-    margin: 15rpx auto;
+    font-weight: bold;
+    color: rgb(105,105,105);
+    vertical-align: top;
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12pt;
+    margin: 0rpx 20rpx 0rpx 20rpx
+
 }
 
 .enroll-main-title {
@@ -41,8 +69,14 @@
 }
 
 .blank-notify {
-    position: absolute;
-    font-size: 10pt;
-    top: 0;
-    right: 0;
+    color: rgb(254, 67, 101);
+    font-size: 8pt;
+    margin: 0rpx 20rpx 0rpx 20rpx
+}
+
+.con-button {
+    top: 40rpx;
+    color: white;
+    font-weight: 100;
+    background-color: #5074d7;
 }
