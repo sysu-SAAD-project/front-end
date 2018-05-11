@@ -121,7 +121,6 @@ App({
         if (parseInt(res.statusCode) === 404) {
           outputString = '找不到服务器';
         }
-        console.log('1outputString=' + outputString);
         cb(outputString);
       },
       fail(res) {
