@@ -95,10 +95,8 @@ App({
     wx.request({
       url: 'https://sysuactivity.com/actApplys/' + string(data.actId),
       data: {
-        actid: userdata.actid,
-        userid: userdata.userid,
+        studentid: userdata.studentid,
         username: userdata.username,
-        email: userdata.email,
         phone: userdata.phone,
         school: userdata.school,
       },
