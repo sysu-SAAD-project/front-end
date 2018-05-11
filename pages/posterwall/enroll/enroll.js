@@ -9,21 +9,21 @@ Page({
     isFillingForm: true,
     currentPoster: null,
     blankNotify: {
-      'stu_name': false,
-      'stu_number': false,
-      'stu_school': false,
-      'stu_tel': false
+      'username': false,
+      'userid': false,
+      'school': false,
+      'phone': false
     },
     formatNotify: {
-      'stu_name': false,
-      'stu_number': false,
-      'stu_school': false,
-      'stu_tel': false
+      'username': false,
+      'userid': false,
+      'school': false,
+      'phone': false
     },
     reg: {
-      'stu_name': '^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)$',
-      'stu_number': '^[1-9]\d{7}$',
-      'stu_tel': '^[1-9]\d{10}$'
+      'username': '([a-zA-Z0-9\\u4e00-\\u9fa5\\·]{1,10})',
+      'userid': '[1-9]\\d{7}',
+      'phone': '[1-9]\\d{10}'
     }
   },
 
@@ -39,21 +39,24 @@ Page({
     } else {
       bNotify[aspect] = false;
       // 若不为空检查是否合法
-      var thisReg = new RegExp(reg[aspect], 'gi');
+      console.log(formValue)
+      var thisReg = new RegExp(reg[aspect], 'g');
+      console.log(thisReg);
+      //console.log(thisReg.test(formValue));
       fNotify[aspect] = !thisReg.test(formValue);
     }
     this.setData({
       blankNotify: bNotify,
       formatNotify: fNotify
     });
-    //console.log(aspect+': ' + this.data.blankNotify[aspect]);
-    //console.log(aspect+': ' + this.data.formatNotify[aspect]);
+    console.log(aspect+'BlankNotify: ' + this.data.blankNotify[aspect]);
+    console.log(aspect+'FormatNotify: ' + this.data.formatNotify[aspect]);
   },
 
   // 检查姓名合法性
   validateStuName: function (e) {
     var value = e.detail.value;
-    this.validate('stu_name', value);
+    this.validate('username', value);
   },
 
   // 检查院系合法性
@@ -61,9 +64,9 @@ Page({
     var value = e.detail.value;
     var bNotify = this.data.blankNotify;
     if (value == '') {
-      bNotify.stu_school = true;
+      bNotify.school = true;
     } else {
-      bNotify.stu_school = false;
+      bNotify.school = false;
     }
     this.setData({
       blankNotify: bNotify
@@ -73,13 +76,13 @@ Page({
   // 检查学号合法性
   validateStuNum: function (e) {
     var value = e.detail.value;
-    this.validate('stu_number', value);
+    this.validate('userid', value);
   },
 
   // 检查手机号合法性
   validateStuTel: function (e) {
     var value = e.detail.value;
-    this.validate('stu_tel', value);
+    this.validate('phone', value);
   },
 
   // 这个是新的formSubmit
@@ -88,21 +91,29 @@ Page({
     var bNotify = this.data.blankNotify;
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
+    var currPoster = this.data.currentPoster;
     // 检查表单中是否存在不合法的项
     for (var aspect in reg) {
       this.validate(aspect, formValue[aspect]);
     }
-
     var isValid = true;
     for (var key in bNotify) {
       if (bNotify[key] == true || fNotify[key] == true) {
         isValid = false;
       }
     }
+    console.log(isValid);
+    // 若合法则提交表单
     if (isValid) {
       this.setData({
         isFillingForm: !this.data.isFillingForm
       });
+      var appInstance = getApp();
+      var token = wx.getStorageSync('token');
+      var sendData = formValue;
+      sendData.actid = currPoster.id;
+      console.log(sendData);
+      appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
 
@@ -161,7 +172,7 @@ Page({
         });
       },
       function() {
-        // console.log(errMsg);
+        console.log(errMsg);
       }
     );
   },
