@@ -11,19 +11,19 @@ Page({
     actid: null,
     blankNotify: {
       'username': false,
-      'userid': false,
+      'studentid': false,
       'school': false,
       'phone': false
     },
     formatNotify: {
       'username': false,
-      'userid': false,
+      'studentid': false,
       'school': false,
       'phone': false
     },
     reg: {
       'username': '([a-zA-Z0-9\\u4e00-\\u9fa5\\·]{1,10})',
-      'userid': '[1-9]\\d{7}',
+      'studentid': '[1-9]\\d{7}',
       'phone': '[1-9]\\d{10}'
     },
 
@@ -92,7 +92,7 @@ Page({
   // 检查学号合法性
   validateStuNum: function (e) {
     var value = e.detail.value;
-    this.validate('userid', value);
+    this.validate('studentid', value);
   },
 
   // 检查手机号合法性
@@ -129,7 +129,8 @@ Page({
       var appInstance = getApp();
       var token = wx.getStorageSync('token');
       var sendData = formValue;
-      sendData.actid = actid;
+      sendData.actid = currPoster.id;
+      console.log(sendData);
       appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
