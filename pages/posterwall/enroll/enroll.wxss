@@ -1,7 +1,7 @@
 /* enroll.wxss */
 
 .enroll-container {
-    margin: 20rpx 20rpx;
+    margin: 40rpx 20rpx;
 }
 
 .enroll-container-success {
@@ -48,10 +48,10 @@
 
 .enroll-main-title {
     font-size: 16pt;
-    font-weight: bold;
+     /* font-weight: bold;  */
     color: black;
     text-align: center;
-    margin: 30rpx auto;
+    margin: 25rpx auto;
 }
 
 .success-icon {
