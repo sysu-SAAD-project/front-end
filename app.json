@@ -3,6 +3,7 @@
         "pages/posterwall/main/main",
         "pages/posterwall/enroll/enroll",
         "pages/posterwall/details/details",
+        "pages/posterwall/enroll_error/enroll_error",
 
         "pages/discussion/main/main",
         "pages/discussion/comments/comments",

@@ -130,7 +130,19 @@ Page({
       var sendData = formValue;
       sendData.actid = currPoster.id;
       sendData.school = schoolArray[i];
-      appInstance.userSignUpCertainActivity(token,sendData);
+      // adding a callback function to store outputString
+      var outputString = '';
+      appInstance.userSignUpCertainActivity(token,sendData, function(out){
+        // for debugging
+        outputString = out;
+        console.log('3outputString=' + outputString);
+        if (outputString != '报名填写成功') {
+          var detailsUrl = '../enroll_error/enroll_error?outputString=' + outputString;
+          wx.navigateTo({
+            url: detailsUrl
+          });
+        }
+      });
     }
   },
 
@@ -180,7 +192,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
   onLoad: function(options) {
-    console.log(options);
+    // console.log(options);
     var that = this;
     this.setData({
       actid: options.posterId

@@ -1,0 +1,27 @@
+/*enroll_error.wxss*/
+
+.enroll-main-title {
+  margin: 20rpx 20rpx;
+}
+
+.fail-icon {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 130rpx auto;
+}
+
+.fail-text-container {
+  margin: 20rpx 20rpx;  
+}
+
+.main-text {
+  font-size: 20pt;
+  font-weight: bold;
+  margin: 80rpx auto;
+}
+
+.detail-text {
+  font-size: 14pt;
+  margin: 80rpx auto;
+}

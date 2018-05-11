@@ -90,7 +90,8 @@ App({
     });
   },
   // 报名活动相关
-  userSignUpCertainActivity: function (token, userdata) {
+  // adding a callback function to store outputString
+  userSignUpCertainActivity: function (token, userdata, cb) {
     //console.log(userdata);
     var outputString = '';
     wx.request({
@@ -116,10 +117,17 @@ App({
         if (parseInt(res.statusCode) === 500) {
           outputString = '服务器错误';
         }
+        // for debugging
+        if (parseInt(res.statusCode) === 404) {
+          outputString = '找不到服务器';
+        }
+        console.log('1outputString=' + outputString);
+        cb(outputString);
       },
       fail(res) {
         // console.log('sending code failed' + res.errMsg);
         outputString = res.errMsg;
+        cb(outputString);
       }
     });
     return outputString;
