@@ -84,8 +84,10 @@ Page({
   },
     
   enrollButtonTap: function(e) {
-    console.log(e);
-    var detailsUrl = '../enroll/enroll?posterId=' + e.currentTarget.dataset.posterId;
+    //console.log(e);
+    //console.log(this.data.currentPoster);
+    var posterid = this.data.currentPoster.id;
+    var detailsUrl = '../enroll/enroll?posterId=' + posterid;
     wx.navigateTo({
       url: detailsUrl
     });
@@ -104,7 +106,6 @@ Page({
         that.setData({
           currentPoster: thePoster
         });
-
       },
       function() {
         // console.log(errMsg);

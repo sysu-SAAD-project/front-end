@@ -227,6 +227,7 @@ Page({
   },
 
   posterTap: function(e) {
+    //console.log(e);
     var detailsUrl = '../details/details?posterId=' + e.currentTarget.dataset.posterId;
     wx.navigateTo({
       url: detailsUrl

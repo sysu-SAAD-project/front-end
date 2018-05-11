@@ -109,6 +109,7 @@ Page({
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
     var currPoster = this.data.currentPoster;
+    //console.log(currPoster);
     // 检查表单中是否存在不合法的项
     for (var aspect in reg) {
       this.validate(aspect, formValue[aspect]);
@@ -119,9 +120,7 @@ Page({
         isValid = false;
       }
     }
-    //console.log(isValid);
     // 若合法则提交表单
-    console.log(actid);
     if (isValid) {
       this.setData({
         isFillingForm: !this.data.isFillingForm
@@ -129,8 +128,9 @@ Page({
       var appInstance = getApp();
       var token = wx.getStorageSync('token');
       var sendData = formValue;
+      console.log(formValue);
       sendData.actid = currPoster.id;
-      console.log(sendData);
+      sendData.school = '数据科学与计算机学院';
       appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
