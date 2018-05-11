@@ -7,11 +7,33 @@
 .section {
     margin: 40rpx auto;
     position: relative;
+    height: 90rpx;
+}
+
+.input {
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12pt;
+    margin: 0rpx 20rpx 0rpx 20rpx;
+
+}
+
+.input-border {
+    vertical-align: top;
+    display: inline-block;
+    border: 1rpx solid rgb(220,220,220);
 }
 
 .section__title {
-    font: 16pt bold;
-    margin: 15rpx auto;
+    font-weight: bold;
+    color: rgb(90,90,90);
+    vertical-align: top;
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 12pt;
+    margin: 0rpx 20rpx 0rpx 20rpx
+
 }
 
 .enroll-main-title {
@@ -41,8 +63,14 @@
 }
 
 .blank-notify {
-    position: absolute;
-    font-size: 10pt;
-    top: 0;
-    right: 0;
+    color: red;
+    font-size: 8pt;
+    margin: 0rpx 20rpx 0rpx 20rpx
+}
+
+.con-button {
+    top: 40rpx;
+    color: white;
+    font-weight: 100;
+    background-color: #5074d7;
 }

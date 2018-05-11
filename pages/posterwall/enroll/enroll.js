@@ -24,9 +24,22 @@ Page({
       'username': '([a-zA-Z0-9\\u4e00-\\u9fa5\\·]{1,10})',
       'userid': '[1-9]\\d{7}',
       'phone': '[1-9]\\d{10}'
-    }
+    },
+
+    array: ['数据科学与计算机学院', '工学院', '药学院', '其他'],
+    index: 0
   },
 
+  /**
+     * 监听普通picker选择器
+     */
+  listenerPickerSelected: function (e) {
+    //改变index值，通过setData()方法重绘界面
+    this.setData({
+      index: e.detail.value
+    });
+  }, 
+  
   // 检查合法性
   validate: function(aspect, value) {
     var formValue = value;
