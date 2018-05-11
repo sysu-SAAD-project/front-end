@@ -8,7 +8,6 @@ Page({
   data: {
     isFillingForm: true,
     currentPoster: null,
-    actid: null,
     blankNotify: {
       'username': false,
       'studentid': false,
@@ -104,12 +103,11 @@ Page({
   // 这个是新的formSubmit
   formSubmit: function (e) {
     var formValue = e.detail.value;
-    //console.log(formValue);
+    //console.log(e);
     var bNotify = this.data.blankNotify;
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
     var currPoster = this.data.currentPoster;
-    //console.log(currPoster);
     // 检查表单中是否存在不合法的项
     for (var aspect in reg) {
       this.validate(aspect, formValue[aspect]);
@@ -125,12 +123,13 @@ Page({
       this.setData({
         isFillingForm: !this.data.isFillingForm
       });
+      var schoolArray = this.data.array;
+      var i = this.data.index;
       var appInstance = getApp();
       var token = wx.getStorageSync('token');
       var sendData = formValue;
-      console.log(formValue);
       sendData.actid = currPoster.id;
-      sendData.school = '数据科学与计算机学院';
+      sendData.school = schoolArray[i];
       appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
@@ -197,7 +196,6 @@ Page({
         //console.log(errMsg);
       }
     );
-    console.log(options);
   },
 
   /**
