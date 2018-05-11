@@ -8,6 +8,7 @@ Page({
   data: {
     isFillingForm: true,
     currentPoster: null,
+    actid: null,
     blankNotify: {
       'username': false,
       'userid': false,
@@ -120,6 +121,7 @@ Page({
     }
     //console.log(isValid);
     // 若合法则提交表单
+    console.log(actid);
     if (isValid) {
       this.setData({
         isFillingForm: !this.data.isFillingForm
@@ -127,8 +129,7 @@ Page({
       var appInstance = getApp();
       var token = wx.getStorageSync('token');
       var sendData = formValue;
-      sendData.actid = currPoster.id;
-      //console.log(sendData);
+      sendData.actid = actid;
       appInstance.userSignUpCertainActivity(token,sendData);
     }
   },
@@ -181,16 +182,21 @@ Page({
   onLoad: function(options) {
     // console.log(options);
     var that = this;
+    this.setData({
+      actid: options.posterId
+    });
     app.getPosterById(options.posterId,
       function(thePoster) {
         that.setData({
           currentPoster: thePoster
         });
+        
       },
       function() {
         //console.log(errMsg);
       }
     );
+    console.log(options);
   },
 
   /**

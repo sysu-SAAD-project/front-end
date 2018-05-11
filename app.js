@@ -91,6 +91,7 @@ App({
   },
   // 报名活动相关
   userSignUpCertainActivity: function (token, userdata) {
+    //console.log(userdata);
     var outputString = '';
     wx.request({
       url: 'https://sysuactivity.com/actApplys/' + string(data.actId),
