@@ -9,10 +9,10 @@ Page({
     isFillingForm: true,
     currentPoster: null,
     blankNotify: {
-      'username': true,
-      'userid': true,
-      'school': true,
-      'phone': true
+      'username': false,
+      'userid': false,
+      'school': false,
+      'phone': false
     },
     formatNotify: {
       'username': false,
