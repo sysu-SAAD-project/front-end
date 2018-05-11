@@ -9,10 +9,10 @@ Page({
     isFillingForm: true,
     currentPoster: null,
     blankNotify: {
-      'username': false,
-      'userid': false,
-      'school': false,
-      'phone': false
+      'username': true,
+      'userid': true,
+      'school': true,
+      'phone': true
     },
     formatNotify: {
       'username': false,
@@ -72,6 +72,7 @@ Page({
     this.validate('username', value);
   },
 
+/* 暂时用不上
   // 检查院系合法性
   validateStuSchool: function (e) {
     var value = e.detail.value;
@@ -85,6 +86,7 @@ Page({
       blankNotify: bNotify
     });
   },
+*/
 
   // 检查学号合法性
   validateStuNum: function (e) {
@@ -101,6 +103,7 @@ Page({
   // 这个是新的formSubmit
   formSubmit: function (e) {
     var formValue = e.detail.value;
+    console.log(formValue);
     var bNotify = this.data.blankNotify;
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
