@@ -22,10 +22,14 @@ Page({
     },
     reg: {
       'username': '([a-zA-Z0-9\\u4e00-\\u9fa5\\·]{1,10})',
-      'studentid': '[1-9]\\d{7}',
-      'phone': '[1-9]\\d{10}'
+      'studentid': '[1-9](\\d{7})',
+      'phone': '[1-9](\\d{10})'
     },
-
+    inputLen: {
+      'username': 10,
+      'studentid': 8,
+      'phone': 11
+    },
     array: ['数据科学与计算机学院', '工学院', '药学院', '其他'],
     index: 0
   },
@@ -46,17 +50,22 @@ Page({
     var bNotify = this.data.blankNotify;
     var fNotify = this.data.formatNotify;
     var reg = this.data.reg;
+    var len = this.data.inputLen;
     // 检查是否为空
     if (formValue == '') {
       bNotify[aspect] = true;
     } else {
       bNotify[aspect] = false;
       // 若不为空检查是否合法
-      //console.log(formValue)
-      var thisReg = new RegExp(reg[aspect], 'g');
-      //console.log(thisReg);
-      //console.log(thisReg.test(formValue));
-      fNotify[aspect] = !thisReg.test(formValue);
+      if (formValue.length > len[aspect]) {
+        fNotify[aspect] = true;
+      } else {
+        var thisReg = new RegExp(reg[aspect]);
+        //console.log(thisReg);
+        var result = thisReg.test(formValue);
+        //console.log(result);
+        fNotify[aspect] = !result;
+      }
     }
     this.setData({
       blankNotify: bNotify,
@@ -180,7 +189,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
   onLoad: function(options) {
-    console.log(options);
+    //console.log(options);
     var that = this;
     this.setData({
       actid: options.posterId
