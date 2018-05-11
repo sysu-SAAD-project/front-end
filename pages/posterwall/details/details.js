@@ -84,10 +84,11 @@ Page({
   },
     
   enrollButtonTap: function(e) {
-    //console.log(e);
-    //console.log(this.data.currentPoster);
-    var posterid = this.data.currentPoster.id;
-    var detailsUrl = '../enroll/enroll?posterId=' + posterid;
+    // 此处使用了this获取id
+    // 原先的e并没有id存在
+    // 需要修改时请检查e是否正确
+    // console.log(this.data.currentPoster.id);
+    var detailsUrl = '../enroll/enroll?posterId=' + this.data.currentPoster.id;
     wx.navigateTo({
       url: detailsUrl
     });

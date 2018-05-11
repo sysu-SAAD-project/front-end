@@ -6,7 +6,7 @@
         <view class="section">
             <view class="section__title">姓名</view>
             <view class="input-border">
-            <input class="input" bindblur="validateStuName" name="username" placeholder="请输入姓名" />
+            <input class="input" bindblur="validateStuName" name="username" />
             </view>
             <view class="blank-notify" wx:if="{{blankNotify.username}}">姓名不能留空哦</view>
             <view class="blank-notify" wx:elif="{{formatNotify.username}}">注意姓名格式哦</view>
@@ -22,7 +22,7 @@
         <view class="section">
             <view class="section__title">学号</view>
             <view class="input-border">
-            <input class="input" bindblur="validateStuNum" name="studentid" type="number" placeholder="请输入学号" />
+            <input class="input" bindblur="validateStuNum" name="studentid" type="number" />
             </view>
             <view class="blank-notify" wx:if="{{blankNotify.studentid}}">学号不能留空哦</view>
             <view class="blank-notify" wx:elif="{{formatNotify.studentid}}">注意学号格式哦</view>
@@ -30,7 +30,7 @@
         <view class="section">
             <view class="section__title">手机</view>
             <view class="input-border">
-            <input class="input" bindblur="validateStuTel" name="phone" type="number" placeholder="请输入手机" />
+            <input class="input" bindblur="validateStuTel" name="phone" type="number" />
             </view>
             <view class="blank-notify" wx:if="{{blankNotify.phone}}">手机号不能留空哦</view>
             <view class="blank-notify" wx:elif="{{formatNotify.phone}}">注意手机号格式哦</view>
