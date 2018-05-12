@@ -4,7 +4,8 @@ var app = getApp();
 Page({
   data: {
     // currentPoster: null,
-    msg: null
+    msg: null,
+    code: null
   },
 
   confirmButtonTap: function() {
@@ -17,7 +18,8 @@ Page({
     console.log(options);
     var that = this;
     this.setData({
-      msg: options.outputString
+      msg: options.outputString,
+      code: options.rescode
     })
   },
 

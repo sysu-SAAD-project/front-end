@@ -139,17 +139,18 @@ Page({
       var sendData = formValue;
       sendData.actid = currPoster.id;
       sendData.school = schoolArray[i];
-      // adding a callback function to store outputString
-      var outputString = '';
-      appInstance.userSignUpCertainActivity(token,sendData, function(out) {
-        outputString = out;
+      // adding a callback function to store outputString and res.statuscode
+      // for debugging: adding res.statuscode
+      appInstance.userSignUpCertainActivity(token,sendData, function(out, code) {
+        var outputString = out;
+        var rescode = code;
         if (outputString != '报名填写成功') {
-          var detailsUrl = '../enroll_error/enroll_error?outputString=' + outputString;
+          var detailsUrl = '../enroll_error/enroll_error?outputString=' + outputString + '&rescode=' + rescode;
           wx.navigateTo({
             url: detailsUrl
           });
         } else {
-          var detailsUrl = '../enroll_success/enroll_success?outputString=' + outputString;
+          var detailsUrl = '../enroll_success/enroll_success?outputString=' + outputString + '&rescode=' + rescode;
           wx.navigateTo({
             url: detailsUrl
           });
