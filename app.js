@@ -121,12 +121,13 @@ App({
         if (parseInt(res.statusCode) === 404) {
           outputString = '找不到服务器';
         }
-        cb(outputString);
+        cb(outputString, res.statusCode);
       },
       fail(res) {
         // console.log('sending code failed' + res.errMsg);
         outputString = res.errMsg;
-        cb(outputString);
+        // for debugging
+        cb(outputString, res.statusCode);
       }
     });
     return outputString;
