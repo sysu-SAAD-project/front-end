@@ -141,7 +141,7 @@ Page({
       sendData.school = schoolArray[i];
       // adding a callback function to store outputString
       var outputString = '';
-      appInstance.userSignUpCertainActivity(token,sendData, function(out){
+      appInstance.userSignUpCertainActivity(token,sendData, function(out) {
         outputString = out;
         if (outputString != '报名填写成功') {
           var detailsUrl = '../enroll_error/enroll_error?outputString=' + outputString;
