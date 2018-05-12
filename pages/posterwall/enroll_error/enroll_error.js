@@ -1,5 +1,5 @@
 // enroll_error.js
-var app = getApp();
+// var app = getApp();
 
 Page({
   data: {
@@ -10,15 +10,15 @@ Page({
   confirmButtonTap: function() {
     wx.navigateBack({
       delta:1
-    })
+    });
   },
 
   onLoad: function (options) {
-    console.log(options);
-    var that = this;
+    // console.log(options);
+    // var that = this;
     this.setData({
       msg: options.outputString
-    })
+    });
   },
 
   /**
