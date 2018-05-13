@@ -70,7 +70,6 @@ App({
   returnCodeToServer: function (code) {
     // console.log("code: " + code);
     var that = this;
-    var value = wx.getStorageSync('token');
     wx.request({
       url: 'https://sysuactivity.com/users',
       data: {
@@ -78,11 +77,12 @@ App({
       },
       header: {
         'Content-type': 'application/json',
-        'Authorization': value
+        'Authorization': token_string
       },
       method: 'POST',
       success: function (res) {
-        that.saveTokenOfCurrentUser(res.token);
+
+        that.saveTokenOfCurrentUser(res.data.token);
       },
       fail: function () {
         // console.log('sending code failed' + res.errMsg);
@@ -164,7 +164,7 @@ App({
   saveTokenOfCurrentUser: function (token) {
     if (token) {
       try {
-        wx.setStorageSync('key', 'value');
+        wx.setStorageSync('token', token);
       } catch (e) {
         // console.log('ERROR; an error code returned by wx.setStorageSync(): %s', e.message);
       }
