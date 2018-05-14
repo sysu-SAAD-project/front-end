@@ -77,7 +77,7 @@ App({
       },
       header: {
         'Content-type': 'application/json',
-        'Authorization': token_string
+        // 'Authorization': token_string
       },
       method: 'POST',
       success: function (res) {
@@ -336,6 +336,32 @@ App({
     } else {
       typeof successCb == 'function' && successCb(that.globalData.postsOfCurrentUser);
     }
+  },
+
+  /**
+     * 请求用户报名的海报
+     * successCb：请求成功回调函数
+     * failCb：请求失败回调函数
+     */
+  getactApplys: function (successCb, failCb) {
+    var token = wx.getStorageSync('token');
+    // send request to Server, get data
+    wx.request({
+      url: 'https://sysuactivity.com/actApplys',
+      method: 'GET',
+      header: {
+        'Content-type': 'application/json',
+        'Authorization': token,
+      },
+      success(res) {
+        // console.log('getPosters' + res.data);
+        let str = res.data.content;
+        typeof successCb == 'function' && successCb(str);
+      },
+      fail() {
+        typeof successCb == 'function' && failCb('Server Error: cannot get applyed poster');
+      }
+    });
   },
 
   globalData: {

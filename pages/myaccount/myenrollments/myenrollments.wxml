@@ -1,53 +1,79 @@
-<!--myenrollments.wxml-->
-<view class="topBar">
+<!--main.wxml-->
+<view class="grid-box">
+  <view class="topBar">
+    <view class="logo">
+      <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image> 
+      <view class="posterwall-text">中山大学</view>
+    </view>
+    <view class="verticalLine"></view>
     <view class="topBar-cell">
-        <image class="posterwall-icon" src="../../../image/sysu-icon.jpeg" mode="aspectFill"></image>
-        <label class="posterwall-text">中山大学</label>
+      <button class="{{isCampusSet ? 'blueView' : 'topBarButton'}}" hover-class="topBarButton-hover" size="mini" bindtap="campusSelMenuShow">
+        <view>{{campusString}}</view> 
+        <image class="topBarButton-icon" src="../../../image/{{campusImg}}" mode="aspectFill"></image>
+      </button>
     </view>
     <view class="topBar-cell">
-        <button type="default" class="topBarButton" size="mini" bindtap="campusSelMenuShow">校区</button>
+      <button class="{{isCategorySet ? 'blueView' : 'topBarButton'}}" hover-class="topBarButton-hover" size="mini" bindtap="categorySelMenuShow">
+        <view>{{categoryString}}</view> 
+        <image class="topBarButton-icon" src="../../../image/{{categoryImg}}" mode="aspectFill"></image>
+      </button>
     </view>
-    <view class="topBar-cell">
-        <button type="default" class="topBarButton" size="mini" bindtap="categorySelMenuShow">类型</button>
-    </view>
-</view>
-<view class="divLine"></view>
+  </view>
 
-<view class="posterwall-topBarPicker" wx:if="{{campusSelVisible}}">
-    <checkbox-group class="bl-center" bindchange="changeCampusFilter">
-        <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
-      <view class="single-checkbox">
-        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
-      </view>
-      <view class="checkbox-text">{{item.name}}</view>
-    </label>
-    </checkbox-group>
-    <view class="divLine"></view>
-</view>
-<view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
-    <checkbox-group bindchange="changeCategoryFilter">
-        <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
-      <view class="single-checkbox">
-        <checkbox value="{{item.value}}" checked="{{item.checked}}" />
-      </view>
-      <view class="checkbox-text">{{item.name}}</view>
-    </label>
-    </checkbox-group>
-    <view class="divLine"></view>
-</view>
+  <view class="divLine" wx:if="{{!campusSelVisible && !categorySelVisible}}"></view>
 
-<view class="posters-container">
-    <view class="single-poster" wx:for="{{enrollPosters}}" wx:key="{{item.posterId}}" wx:if="{{item.status == 1 && campusSelector[item.campus] && categorySelector[item.category] }}" bindtap="posterTap" data-poster-Id="{{item.posterId}}">
-        <view class="poster-info-left">
-            <image class="cover-image" src="{{item.coverImageUrl}}" mode="scaleToFill" binderror="loadImageErrCallback"></image>
+  <view class="posterwall-topBarPicker" wx:if="{{campusSelVisible}}">
+     <checkbox-group class="bl-center" bindchange="changeCampusFilter">
+      <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
+        <view class="divLine"></view>
+        <view class="checkbox-box">
+          <view class="checkbox-line" wx:if="{{item.value % 2 == 0}}"></view>
+          <view class="checkbox-text">{{item.name}}</view>
+          <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
+            <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
+            <image src="../../../image/check.png" mode="aspectFill"></image>
+          </view>
         </view>
-        <view class="poster-info-right">
-            <view class="poster-info-line poster-name">{{item.name}}</view>
-            <view class="poster-info-line poster-tags">
-                <view class="single-poster-tag" wx:for="{{item.tag}}" wx:for-item="singleTag" wx:key="*this">{{singleTag}}</view>
-            </view>
-            <view class="poster-info-line poster-mini-text">时间： {{item.date}}</view>
-            <view class="poster-info-line poster-mini-text">地点： {{item.location}}</view>
+      </label>
+    </checkbox-group>
+    <view class='button-gray' bindtap='resetCampus'>重置</view>
+    <view class='button-blue' bindtap='setCampus' >确认</view>  
+  </view>
+
+  <view class="posterwall-topBarPicker" wx:if="{{categorySelVisible}}">
+    <checkbox-group class="bl-center" bindchange="changeCategoryFilter">
+      <label class="checkbox-label" wx:for="{{categorySel}}" wx:key="{{item.value}}">
+        <view class="divLine"></view>
+        <view class="checkbox-box">
+          <view class="checkbox-line" wx:if="{{item.value % 2 == 0}}"></view>
+          <view class="checkbox-text">{{item.name}}</view>
+          <view class="single-checkbox {{item.checked ? 'is_checked':''}}">
+            <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />
+            <image src="../../../image/check.png" mode="aspectFill"></image>
+          </view>
         </view>
+        <view class="divLine" wx:if="{{(categorySel.length % 2 == 1) && (item.value == categorySel.length - 2)}}"></view>
+      </label>
+    </checkbox-group> 
+    <view class='button-gray' bindtap='resetCategory'>重置</view>
+    <view class='button-blue' bindtap='setCategory' >确认</view>  
+  </view>
+
+  <view class="posters-container">
+    <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{ (campusSelector[item.campus & 1] || campusSelector[item.campus & 2] || campusSelector[item.campus & 4] || campusSelector[item.campus & 8]) && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >
+      <view class="poster-info-left">
+        <image class="cover-image" src="https://sysuactivity.com/static/{{item.poster}}" mode="aspectFill" binderror="loadImageErrCallback"></image>
+      </view>
+      <view class="poster-info-right">
+        <view class="poster-info-line poster-name">{{item.name}}</view>
+        <view class="poster-info-line poster-tags">
+          <view class="single-poster-tag">{{campusSelector[item.campus & 1] ? "珠海校区" : ""}} {{campusSelector[item.campus & 2]? "北校区" : ""}} {{campusSelector[item.campus & 4]? "南校区" : ""}} {{campusSelector[item.campus & 8]? "东校区" : ""}}</view>
+          <view class="single-poster-tag">{{categorySel[item.type].name}}</view>
+        </view>
+        <view class="poster-info-line poster-mini-text">活动时间： {{item.startTime}}-{{item.endTime}}</view>
+        <view class="poster-info-line poster-mini-text">活动地点： {{item.location}}</view>
+      </view>
+      <view class="divLine"></view>
     </view>
+  </view>
 </view>

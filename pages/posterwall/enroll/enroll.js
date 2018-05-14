@@ -141,7 +141,7 @@ Page({
       sendData.school = schoolArray[i];
       // adding a callback function to store outputString and res.statuscode
       // for debugging: adding res.statuscode
-      console.log(token);
+      // console.log(token);
       appInstance.userSignUpCertainActivity(token,sendData, function(out, code) {
         var outputString = out;
         var rescode = code;
