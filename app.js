@@ -112,6 +112,9 @@ App({
           outputString = '报名填写成功';
         }
         if (parseInt(res.statusCode) === 400) {
+          outputString = '提交的信息有误';
+        }
+        if (parseInt(res.statusCode) === 401) {
           outputString = '请重新登录';
         }
         if (parseInt(res.statusCode) === 500) {
