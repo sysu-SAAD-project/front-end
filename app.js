@@ -26,7 +26,7 @@ App({
   checkWhetherTokenExists: function () {
     try {
       // 本地缓存中token存储key为token
-      var value = wx.getStorageSync('token');
+      var value = this.getToken();
       var that = this;
       if (value) {
         // 发送当前token给服务器校验其有效性
@@ -91,9 +91,10 @@ App({
   },
   // 报名活动相关
   // adding a callback function to store outputString
-  userSignUpCertainActivity: function (token, userdata, cb) {
+  userSignUpCertainActivity: function (userdata, cb) {
     //console.log(userdata);
     var outputString = '';
+    var token = this.getToken();
     wx.request({
       url: 'https://sysuactivity.com/actApplys/' + userdata.actid.toString(),
       data: {
@@ -347,7 +348,7 @@ App({
      * failCb：请求失败回调函数
      */
   getactApplys: function (successCb, failCb) {
-    var token = wx.getStorageSync('token');
+    var token = this.getToken();
     // send request to Server, get data
     wx.request({
       url: 'https://sysuactivity.com/actApplys',
@@ -365,6 +366,11 @@ App({
         typeof successCb == 'function' && failCb('Server Error: cannot get applyed poster');
       }
     });
+  },
+
+  getToken: function() {
+    // return wx.getStorageSync('token');
+    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTIyMDk1NTksImlhdCI6MTUyNjI4OTU1OSwic3ViIjoib1hSb2UwYzdLRG9BVkdLT1RZa3Nfa2FWMmlRQSJ9.GfC18HinKzL3lVR8Ckwu0hCQcI0tUm5eyzh6g9ywxso';
   },
 
   globalData: {

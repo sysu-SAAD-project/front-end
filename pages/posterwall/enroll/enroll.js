@@ -135,14 +135,12 @@ Page({
       var schoolArray = this.data.array;
       var i = this.data.index;
       var appInstance = getApp();
-      var token = wx.getStorageSync('token');
       var sendData = formValue;
       sendData.actid = currPoster.id;
       sendData.school = schoolArray[i];
       // adding a callback function to store outputString and res.statuscode
       // for debugging: adding res.statuscode
-      // console.log(token);
-      appInstance.userSignUpCertainActivity(token,sendData, function(out, code) {
+      appInstance.userSignUpCertainActivity(sendData, function(out, code) {
         var outputString = out;
         var rescode = code;
         if (outputString != '报名填写成功') {
