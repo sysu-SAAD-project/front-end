@@ -363,7 +363,9 @@ App({
   },
 
   getToken: function() {
+    // 实际使用token
     // return wx.getStorageSync('token');
+    // 测试token
     return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTIyMDk1NTksImlhdCI6MTUyNjI4OTU1OSwic3ViIjoib1hSb2UwYzdLRG9BVkdLT1RZa3Nfa2FWMmlRQSJ9.GfC18HinKzL3lVR8Ckwu0hCQcI0tUm5eyzh6g9ywxso';
   },
 
