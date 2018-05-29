@@ -21,6 +21,7 @@ function formatNumber(n) {
  * 把Long类型日期还原MM-dd 00:00格式日期   
  */
 function startTimeFormatUtil(longTypeDate) {
+  if (longTypeDate.toString().indexOf(':') >= 0) return longTypeDate;
   longTypeDate -= 8 * 60 * 60 * 1000;
   var dateTypeDate = '';
   var date = new Date();
@@ -47,6 +48,7 @@ function startTimeFormatUtil(longTypeDate) {
  * 把Long类型日期还原00:00格式日期   
  */
 function endTimeFormatUtil(longTypeDate) {
+  if (longTypeDate.toString().indexOf(':') >= 0) return longTypeDate;
   longTypeDate -= 8 * 60 * 60 * 1000;
   var dateTypeDate = '';
   var date = new Date();

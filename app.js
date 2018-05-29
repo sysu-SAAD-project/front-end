@@ -181,7 +181,6 @@ App({
      */
   getPosters: function(successCb, failCb) {
     var that = this;
-    // if (that.globalData.posters.length == 0) {
     // send request to Server, get data
     wx.request({
       url: 'https://sysuactivity.com/act?page=0',
@@ -191,16 +190,12 @@ App({
         let str = res.data.content;
         typeof successCb == 'function' && successCb(str);
         that.globalData.posters = str;
-        that.globalData.totalPages = res.data.totalPages;
         that.globalData.currentPages = 1;
       },
       fail() {
         typeof successCb == 'function' && failCb('Server Error: cannot get initial poster');
       }
     });
-    // } else {
-    //   typeof successCb == 'function' && successCb(that.globalData.posters);
-    // }
   },
   /**
      * 海报数量为0时请求第0页海报
@@ -209,26 +204,25 @@ App({
      */
   getMorePosters: function(successCb, failCb) {
     var that = this;
-    if (that.globalData.currentPages < that.globalData.totalPages) {
-      // send request to Server, get data
-      wx.request({
-        url: 'https://sysuactivity.com/act?page=' + that.globalData.currentPages,
-        method: 'GET',
-        success(res) {
-          // console.log('getMorePosters' + res.data);
-          let str = res.data.content;
-          for(let item in str) {
-            that.globalData.posters.push(str[item]);
-          }
-          let old = that.globalData.posters;
-          typeof successCb == 'function' && successCb(old); 
-          that.globalData.currentPages++;
-        },
-        fail() {
-          typeof successCb == 'function' && failCb('Server Error: cannot get more posters');
+    // console.log(that.globalData.currentPages);
+    // send request to Server, get data
+    wx.request({
+      url: 'https://sysuactivity.com/act?page=' + that.globalData.currentPages,
+      method: 'GET',
+      success(res) {
+        // console.log(res.data);
+        let str = res.data.content;
+        for(let item in str) {
+          that.globalData.posters.push(str[item]);
         }
-      });
-    }
+        let old = that.globalData.posters;
+        typeof successCb == 'function' && successCb(old); 
+        that.globalData.currentPages++;
+      },
+      fail() {
+        typeof successCb == 'function' && failCb('Server Error: cannot get more posters');
+      }
+    });
   },
 
   getPosterById: function(posterId, successCb, failCb) {
