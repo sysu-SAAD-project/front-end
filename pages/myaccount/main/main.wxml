@@ -12,13 +12,13 @@
         <image class="nav-icon-right" src="../../../image/my/more.png" mode="scaleToFill"></image>
     </view>
     <view class="divLine"></view>
-    <view class="myc-navigate" bindtap="navToPostsTap">
+    <view class="myc-navigate unusable" bindtap="navToPostsTap">
         <image class="nav-icon" src="{{icons[1]}}"></image>
         <view class="nav-text">我的帖子</view>
         <image class="nav-icon-right" src="../../../image/my/more.png" mode="scaleToFill"></image>
     </view>
     <view class="divLine"></view>
-    <view class="myc-navigate" bindtap="navToMessagesTap">
+    <view class="myc-navigate unusable" bindtap="navToMessagesTap">
         <image class="nav-icon" src="{{icons[2]}}"></image>
         <view class="nav-text">我的消息</view>
         <image class="nav-icon-right" src="../../../image/my/more.png" mode="scaleToFill"></image>

@@ -30,7 +30,12 @@
 
 .myc-navigate {
     height: 40rpx;
-    margin: 25rpx auto;
+    margin: 0 auto;
+    padding: 25rpx 0;
+}
+
+.unusable {
+  color: #aaaaaa;
 }
 
 .nav-icon {
@@ -52,5 +57,5 @@
 }
 
 .list-container {
-    margin: 10rpx 30rpx;
+    padding: 10rpx 30rpx;
 }

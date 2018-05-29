@@ -43,15 +43,15 @@ Page({
   },
 
   navToPostsTap: function() {
-    wx.navigateTo({
-      url: '../myposts/myposts'
-    });
+    // wx.navigateTo({
+    //   url: '../myposts/myposts'
+    // });
   },
 
   navToMessagesTap: function() {
-    wx.navigateTo({
-      url: '../mynotifications/mynotifications'
-    });
+    // wx.navigateTo({
+    //   url: '../mynotifications/mynotifications'
+    // });
   },
 
   /**

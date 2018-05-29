@@ -242,23 +242,23 @@ Page({
      * 生命周期函数--监听页面加载
      */
   onLoad: function() {
-    var that = this;
-    if (this.data.posters.length == 0) {
-      app.getPosters(
-        function(postersData) {
-          for (var i = 0; i < postersData.length; i++) {
-            postersData[i].startTime = util.startTimeFormatUtil(postersData[i].startTime);
-            postersData[i].endTime = util.endTimeFormatUtil(postersData[i].endTime);
-          }
-          that.setData({
-            posters: postersData
-          });
-        },
-        function() {
-          // console.log(errMsg);
-        }
-      );
-    }
+    // var that = this;
+    // if (this.data.posters.length == 0) {
+    //   app.getPosters(
+    //     function(postersData) {
+    //       for (var i = 0; i < postersData.length; i++) {
+    //         postersData[i].startTime = util.startTimeFormatUtil(postersData[i].startTime);
+    //         postersData[i].endTime = util.endTimeFormatUtil(postersData[i].endTime);
+    //       }
+    //       that.setData({
+    //         posters: postersData
+    //       });
+    //     },
+    //     function() {
+    //       // console.log(errMsg);
+    //     }
+    //   );
+    // }
   },
 
   /**
@@ -309,7 +309,24 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
   onPullDownRefresh: function() {
-
+    var that = this;
+    app.getPosters(
+      function (postersData) {
+        for (var i = 0; i < postersData.length; i++) {
+          postersData[i].startTime = util.startTimeFormatUtil(postersData[i].startTime);
+          postersData[i].endTime = util.endTimeFormatUtil(postersData[i].endTime);
+        }
+        that.setData({
+          posters: postersData
+        });
+        // console.log(that.data.posters);
+        wx.stopPullDownRefresh();
+      },
+      function () {
+        // console.log(errMsg);
+        wx.stopPullDownRefresh();
+      }
+    );
   },
 
   /**

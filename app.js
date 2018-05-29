@@ -181,26 +181,26 @@ App({
      */
   getPosters: function(successCb, failCb) {
     var that = this;
-    if (that.globalData.posters.length == 0) {
-      // send request to Server, get data
-      wx.request({
-        url: 'https://sysuactivity.com/act?page=0',
-        method: 'GET',
-        success(res) {
-          // console.log('getPosters' + res.data);
-          let str = res.data.content;
-          typeof successCb == 'function' && successCb(str);
-          that.globalData.posters = str;
-          that.globalData.totalPages = res.data.totalPages;
-          that.globalData.currentPages++;
-        },
-        fail() {
-          typeof successCb == 'function' && failCb('Server Error: cannot get initial poster');
-        }
-      });
-    } else {
-      typeof successCb == 'function' && successCb(that.globalData.posters);
-    }
+    // if (that.globalData.posters.length == 0) {
+    // send request to Server, get data
+    wx.request({
+      url: 'https://sysuactivity.com/act?page=0',
+      method: 'GET',
+      success(res) {
+        // console.log(res.data);
+        let str = res.data.content;
+        typeof successCb == 'function' && successCb(str);
+        that.globalData.posters = str;
+        that.globalData.totalPages = res.data.totalPages;
+        that.globalData.currentPages = 1;
+      },
+      fail() {
+        typeof successCb == 'function' && failCb('Server Error: cannot get initial poster');
+      }
+    });
+    // } else {
+    //   typeof successCb == 'function' && successCb(that.globalData.posters);
+    // }
   },
   /**
      * 海报数量为0时请求第0页海报
@@ -351,14 +351,14 @@ App({
     var token = this.getToken();
     // send request to Server, get data
     wx.request({
-      url: 'https://sysuactivity.com/actApplys',
+      url: 'https://sysuactivity.com/actApplys?page=0',
       method: 'GET',
       header: {
         'Content-type': 'application/json',
         'Authorization': token,
       },
       success(res) {
-        // console.log('getPosters' + res.data);
+        // console.log(res.data);
         let str = res.data.content;
         typeof successCb == 'function' && successCb(str);
       },
