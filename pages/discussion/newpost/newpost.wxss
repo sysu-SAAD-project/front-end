@@ -1,23 +1,49 @@
 /* newpost.wxss */
 
-.categoryLabel {
-    margin: 15rpx;
+page {
+    background-color: rgb(240, 240, 240);
+}
+
+textarea {
+    padding-top: 20rpx;
+    padding-left: 30rpx;
+    width: 90%;
+    height: 200px;
+}
+
+.categoryView {
+    margin-left: 100rpx;
+    padding-bottom: 20rpx;
+}
+
+.category {
     display: inline-block;
+    margin-top: 10rpx;
+}
+
+.categoryLabel {
+    display: inline-block;
+    font-size: 10pt;
+    margin: 0rpx 30rpx;
 }
 
 .categoryRadio {
+    
     display: inline-block;
 }
 
 .categoryText {
     display: inline-block;
-    font-size: 10pt;
+    vertical-align: middle;
+    font-size: 15pt;
 }
 
 .imme-innerText {
-    color: white
+    color: white;
 }
 
+
 .form-container {
-    margin: 40rpx;
+    background-color: white;
+    
 }
