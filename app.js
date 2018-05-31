@@ -164,6 +164,42 @@ App({
     });
     return out;
   },
+  // 讨论区相关
+  // 发布新的帖子函数
+  userSignUpCertainDiscusstion: function (userdata, successCb, failCb) {
+    var out = {};
+    var token = wx.getStorageSync('token');
+    wx.request({
+      url: 'https://sysuactivity.com/discus',
+      header: {
+        'Content-type': 'application/json',
+        'Authorization': token,
+      },
+      data: {
+        "type": userdata.type,
+        "content": userdata.content,
+      },
+      method: 'POST',
+      success(res) {
+        if (parseInt(res.statusCode) === 200) {
+          out = '帖子发布成功';
+        }
+        if (parseInt(res.statusCode) === 400) {
+          out = '请求语意有误';
+        }
+        if (parseInt(res.statusCode) === 401) {
+          out = '请重新登录';
+        }
+        if (parseInt(res.statusCode) === 500) {
+          out = '服务器错误';
+        }
+      },
+      fail() {
+        typeof successCb == 'function' && failCb('Server Error: ');
+      }
+    });
+    return out;
+  },
   //保存服务器返回的Token
   saveTokenOfCurrentUser: function (token) {
     if (token) {
