@@ -168,7 +168,8 @@ App({
   // 发布新的帖子函数
   userSignUpCertainDiscusstion: function (userdata, successCb, failCb) {
     var out = {};
-    var token = wx.getStorageSync('token');
+    //var token = wx.getStorageSync('token');
+    var token = this.getToken();
     wx.request({
       url: 'https://sysuactivity.com/discus',
       header: {
@@ -176,7 +177,7 @@ App({
         'Authorization': token,
       },
       data: {
-        "type": userdata.type,
+        "type": userdata.distype,
         "content": userdata.content,
       },
       method: 'POST',
@@ -193,9 +194,10 @@ App({
         if (parseInt(res.statusCode) === 500) {
           out = '服务器错误';
         }
+        typeof successCb == 'function' && successCb(out);
       },
       fail() {
-        typeof successCb == 'function' && failCb('Server Error: ');
+        typeof failCB == 'function' && failCb('Server Error: ');
       }
     });
     return out;

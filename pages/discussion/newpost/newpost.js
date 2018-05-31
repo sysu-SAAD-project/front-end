@@ -1,4 +1,5 @@
 // newpost.js
+var app = getApp();
 Page({
 
   /**
@@ -30,22 +31,66 @@ Page({
     // var categoryStr = e.detail.value.category;
     var content = e.detail.value.content;
     // console.log('发布新讨论，种类为', categoryStr, '内容：', content);
-
-    // wx.request(), wx.showLoading(), wx.hideLoading(), 
-    if (content == '') {
+    var data = e.detail.value;
+    var distype = 0;
+    // 判断内容是否为空
+    if (data.content == '')
+    {
+      wx.showToast({
+        title: '内容不能为空！',
+        image: "../../../image/my/my_enroll.png"
+      })
       return;
     }
-    wx.showToast({
-      title: '成功',
-      duration: 2000,
-      complete: function() {
-        setTimeout(function() {
+    // 判断发布帖子的内容，转换为int
+    if (data.category == "teamwork")
+    {
+      distype = 2;
+    }
+    if (data.category == "question")
+    {
+      distype = 4;
+    }
+    if (data.category == "share")
+    {
+      distype = 8;
+    }
+    data.distype = distype;
+    var out = app.userSignUpCertainDiscusstion(data, 
+    function(out) {
+      wx.showToast({
+        title: out,
+        duration: 3000,
+      })
+      setTimeout(function(){
+        if (out == "帖子发布成功")
+        {
           wx.navigateBack({
-            delta: 1, // 回退前 delta(默认为1) 页面
+            delta: 1,
           });
-        }, 2300);
-      }
-    });
+        }
+      }, 2000);
+    }, 
+    function(error) {
+      wx.showToast({
+        title: error,
+        image: "../../../image/my/my_enroll.png",
+        duration: 2000,
+      })
+    })
+    // wx.request(), wx.showLoading(), wx.hideLoading(), 
+
+    // wx.showToast({
+    //   title: '成功',
+    //   duration: 2000,
+    //   complete: function() {
+    //     setTimeout(function() {
+    //       wx.navigateBack({
+    //         delta: 1, // 回退前 delta(默认为1) 页面
+    //       });
+    //     }, 2300);
+    //   }
+    // });
   },
 
   /**
