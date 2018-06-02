@@ -5,6 +5,6 @@
   <view class="main-text center">报名失败</view>
   <view class="detail-text center">{{code}}\n{{msg}}</view>
 </view>
-<view class="blue-button" bindtap="confirmButtonTap">
-  <view class="button-innerText">确定并返回</view>
+<view class="successblue-button" bindtap="confirmButtonTap">
+  <button class="con-button">确定</button>
 </view>

@@ -8,7 +8,7 @@
 }
 
 .success-text-container {
-    height:300rpx;
+    height:250rpx;
 }
 
 .main-text {
@@ -23,6 +23,17 @@
 }
 
 .successblue-button {
-    background-color: #5074d7;
     border-radius: 5px;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:14px;
+    padding-right:14px;
+}
+
+.con-button {
+    top: 40rpx;
+    color: white;
+    font-weight: 100;
+    background-color: #5074d7;
 }

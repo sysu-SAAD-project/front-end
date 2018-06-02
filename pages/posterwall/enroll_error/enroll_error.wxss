@@ -25,3 +25,19 @@
   font-size: 14pt;
   margin: 80rpx auto;
 }
+
+.fail-button {
+    border-radius: 5px;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:14px;
+    padding-right:14px;
+}
+
+.con-button {
+    top: 40rpx;
+    color: white;
+    font-weight: 100;
+    background-color: #5074d7;
+}
