@@ -177,8 +177,8 @@ App({
         'Authorization': token,
       },
       data: {
-        "type": userdata.distype,
-        "content": userdata.content,
+        'type': userdata.distype,
+        'content': userdata.content,
       },
       method: 'POST',
       success(res) {

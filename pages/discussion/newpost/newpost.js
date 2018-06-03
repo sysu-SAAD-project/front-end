@@ -1,5 +1,5 @@
 // newpost.js
-var app = getApp();
+// var app = getApp();
 Page({
 
   /**
@@ -29,7 +29,7 @@ Page({
   postButtonTap: function(e) {
     // console.log(e);
     // var categoryStr = e.detail.value.category;
-    var content = e.detail.value.content;
+    // var content = e.detail.value.content;
     // console.log('发布新讨论，种类为', categoryStr, '内容：', content);
     var data = e.detail.value;
     var distype = 0;
@@ -38,46 +38,46 @@ Page({
     {
       wx.showToast({
         title: '内容不能为空！',
-        image: "../../../image/my/my_enroll.png"
-      })
+        image: '../../../image/my/my_enroll.png'
+      });
       return;
     }
     // 判断发布帖子的内容，转换为int
-    if (data.category == "teamwork")
+    if (data.category == 'teamwork')
     {
       distype = 2;
     }
-    if (data.category == "question")
+    if (data.category == 'question')
     {
       distype = 4;
     }
-    if (data.category == "share")
+    if (data.category == 'share')
     {
       distype = 8;
     }
     data.distype = distype;
-    var out = app.userSignUpCertainDiscusstion(data, 
-    function(out) {
-      wx.showToast({
-        title: out,
-        duration: 3000,
-      })
-      setTimeout(function(){
-        if (out == "帖子发布成功")
-        {
-          wx.navigateBack({
-            delta: 1,
-          });
-        }
-      }, 2000);
-    }, 
-    function(error) {
-      wx.showToast({
-        title: error,
-        image: "../../../image/my/my_enroll.png",
-        duration: 2000,
-      })
-    })
+    // var out = app.userSignUpCertainDiscusstion(data, 
+    //   function(out) {
+    //     wx.showToast({
+    //       title: out,
+    //       duration: 3000,
+    //     });
+    //     setTimeout(function(){
+    //       if (out == '帖子发布成功')
+    //       {
+    //         wx.navigateBack({
+    //           delta: 1,
+    //         });
+    //       }
+    //     }, 2000);
+    //   }, 
+    //   function(error) {
+    //     wx.showToast({
+    //       title: error,
+    //       image: '../../../image/my/my_enroll.png',
+    //       duration: 2000,
+    //     });
+    //   });
     // wx.request(), wx.showLoading(), wx.hideLoading(), 
 
     // wx.showToast({
