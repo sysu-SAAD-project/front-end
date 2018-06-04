@@ -204,6 +204,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
   onLoad: function(options) {
+    // 也许我们可以使用后台数据库进行资料审查
+
     //console.log(options);
     var that = this;
     this.setData({
