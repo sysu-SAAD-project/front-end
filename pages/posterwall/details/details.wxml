@@ -72,7 +72,7 @@
 -->
 
 <view class="{{'blue-button'}}" bindtap="{{'enrollButtonTap'}}" data-poster-id="{{currentPoster.posterId}}">
-    <view class="{{'button-innerText'}}">{{statusText[0]}}
+    <view class="{{'button-innerText'}}">{{statusText[statusTextCode]}}
     </view>
 </view>
 
