@@ -20,7 +20,7 @@
     </view>
   </view>
 
-  <view class="divLine" wx:if="{{!campusSelVisible && !categorySelVisible}}"></view>
+  <view class="divLine fixtop" wx:if="{{!campusSelVisible && !categorySelVisible}}"></view>
 
   <view class="posterwall-topBarPicker" wx:if="{{campusSelVisible}}">
      <checkbox-group class="bl-center" bindchange="changeCampusFilter">

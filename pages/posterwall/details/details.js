@@ -15,6 +15,7 @@ Page({
       '报名人数已达上限',
       '已过报名截止时间'
     ],
+    statusTextPos: 0,
     // added from main.js
     campusSelector: {
       0b1000: true,
@@ -112,6 +113,11 @@ Page({
         // console.log(errMsg);
       }
     );
+    if (options.statusText != null) {
+      this.setData({
+        statusTextPos: options.statusText
+      });
+    }
   },
 
   /**

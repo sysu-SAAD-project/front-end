@@ -104,6 +104,12 @@
 
 .topBar {
     height: 80rpx;
+    width: 100%;
+    position: fixed;
+    top: 0rpx;
+    left: 0px;
+    z-index: 999;
+    background: white;
 }
 
 .topBarButton {
@@ -207,4 +213,10 @@ button[class="topBarButton"]::after {
 
 .bl-center {
   background-color: white;
+}
+
+.fixtop {
+  position: fixed;
+  top: 80rpx;
+  z-index: 999;
 }

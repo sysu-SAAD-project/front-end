@@ -228,7 +228,7 @@ Page({
 
   posterTap: function (e) {
     // console.log(e);
-    var detailsUrl = '../../posterwall/details/details?posterId=' + e.currentTarget.dataset.posterId;
+    var detailsUrl = '../../posterwall/details/details?posterId=' + e.currentTarget.dataset.posterId + '&statusText=1';
     wx.navigateTo({
       url: detailsUrl
     });
