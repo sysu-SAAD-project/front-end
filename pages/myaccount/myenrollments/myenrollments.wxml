@@ -20,8 +20,6 @@
     </view>
   </view>
 
-  <view class="divLine" wx:if="{{!campusSelVisible && !categorySelVisible}}"></view>
-
   <view class="posterwall-topBarPicker" wx:if="{{campusSelVisible}}">
      <checkbox-group class="bl-center" bindchange="changeCampusFilter">
       <label class="checkbox-label" wx:for="{{campusSel}}" wx:key="{{item.value}}">
@@ -58,6 +56,9 @@
     <view class='button-gray' bindtap='resetCategory'>重置</view>
     <view class='button-blue' bindtap='setCategory' >确认</view>  
   </view>
+
+  <view class="topBarBottomLine"></view>
+
   <view class="posters-container">
     <view class="single-poster" wx:for="{{posters}}" wx:key="{{item.id}}" wx:if="{{ (campusSelector[item.campus & 1] || campusSelector[item.campus & 2] || campusSelector[item.campus & 4] || campusSelector[item.campus & 8]) && categorySelector[item.type] }}" bindtap="posterTap" data-poster-Id="{{item.id}}" >
       <view class="poster-info-left">
