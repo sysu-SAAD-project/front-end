@@ -91,7 +91,7 @@ Page({
     // 原先的e并没有id存在
     // 需要修改时请检查e是否正确
     // console.log(this.data.currentPoster.id);
-    if (this.data.statusTextCode == 0) {
+    if (this.data.statusTextCode == 0 || this.data.statusTextCode == 1) {
       var detailsUrl = '../enroll/enroll?posterId=' + this.data.currentPoster.id;
       wx.navigateTo({
         url: detailsUrl
