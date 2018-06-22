@@ -1,7 +1,8 @@
 /* main.wxss */
 
 .list-container {
-    margin: 30rpx;
+    flex: 1;
+    margin-top: 100rpx;
 }
 
 .single-post {
@@ -94,4 +95,56 @@
     margin: 15rpx 12rpx;
     text-align: center;
     padding-top: 5rpx;
+}
+
+.topBar {
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 0%;
+}
+
+.topBarButton-icon {
+  display: inline-block;
+  vertical-align: top;
+  height: 40rpx;
+  width: 40rpx;
+  margin-top: 10rpx;
+}
+
+.topBarBottomLine {
+  background: #E0E3DA;
+  width: 100%;
+  height: 2rpx;
+  position: fixed;
+  top: 80rpx;
+  left: 0px;
+  z-index: 999;
+}
+
+.button-gray {
+  display: inline-block;
+  width: 50%;
+  background-color: #f7f7f7;
+  border-radius: 0rpx;
+  line-height:80rpx;
+  height: 80rpx;
+  color: grey;
+  font-size: 10pt;
+  text-align: center;
+}
+
+.button-blue {
+  display: inline-block;
+  width: 50%;
+  background-color: #5074d7;
+  border: none;
+  border-radius: 0rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  color: white;
+  font-size: 10pt;
+  text-align: center;
 }

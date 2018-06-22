@@ -8,22 +8,81 @@ Page({
   data: {
     categorySelVisible: false,
     categorySelector: {
-      'teamwork': true,
-      'question': false,
-      'share': true
+      0: true,
+      1: true,
+      2: true
     },
+    categoryString: '类型',
+    categoryImg: 'down.png',
     categorySel: [
-      { 'value': 'teamwork', 'name': '组队', 'checked': true },
-      { 'value': 'question', 'name': '问答', 'checked': false },
-      { 'value': 'share', 'name': '分享', 'checked': true }
+      { 'value': 0, 'name': '组队', 'checked': true },
+      { 'value': 1, 'name': '问答', 'checked': true },
+      { 'value': 2, 'name': '分享', 'checked': true }
     ],
     category2Name: {
-      'teamwork': '组队',
-      'question': '问答',
-      'share': '分享'
+      0: '组队',
+      1: '问答',
+      2: '分享'
     },
     posts: []
   },
+
+  setCategory: function () {
+    var categorySelItems = this.data.categorySel;
+    var tmpString = '';
+    var flag = false;
+    for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
+      if (categorySelItems[i].checked == true) {
+        if (flag == true) tmpString += ',';
+        tmpString += categorySelItems[i].name;
+        flag = true;
+      }
+    }
+    if (tmpString == '') tmpString = '未选中类型';
+
+    var categorySelectorItems = this.data.categorySelector;
+    for (var key in categorySelectorItems) {
+      for (var i = 0, lenI = categorySelItems.length; i < lenI; ++i) {
+        if (categorySelItems[i].value == key) {
+          categorySelectorItems[key] = categorySelItems[i].checked;
+          break;
+        }
+      }
+    }
+
+    this.setData({
+      categorySelVisible: !this.data.categorySelVisible,
+      categoryString: tmpString,
+      isCategorySet: true,
+      categorySelector: categorySelectorItems
+    });
+  },
+  resetCategory: function () {
+    this.setData({
+      categoryString: '类型',
+      categoryImg: 'up.png',
+      isCategorySet: false,
+      categorySelector: {
+        0: true,
+        1: true,
+        2: true,
+        3: true,
+        4: true,
+        5: true,
+        6: true,
+      },
+      categorySel: [
+        { 'value': 0, 'name': '体育', 'checked': true },
+        { 'value': 1, 'name': '公益', 'checked': true },
+        { 'value': 2, 'name': '竞赛', 'checked': true },
+        { 'value': 3, 'name': '演出', 'checked': true },
+        { 'value': 4, 'name': '讲座', 'checked': true },
+        { 'value': 5, 'name': '户外', 'checked': true },
+        { 'value': 6, 'name': '休闲', 'checked': true }
+      ]
+    });
+  },
+
   postTap: function(e) {
     // console.log(e);
     var commentsUrl = '../comments/comments?postId=' + e.currentTarget.dataset.postId;
