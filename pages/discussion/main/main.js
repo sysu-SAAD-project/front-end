@@ -137,19 +137,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    var that = this;
-    if (this.data.posts.length == 0) {
-      app.getDiscussionPosts(
-        function(postsData) {
-          that.setData({
-            posts: postsData
-          });
-        },
-        function() {
-          // console.log(errMsg);
-        }
-      );
-    }
+    
   },
 
   /**
@@ -163,7 +151,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    if (this.data.posts.length == 0) {
+      app.getDiscussionPosts(
+        function (postsData) {
+          that.setData({
+            posts: postsData
+          });
+        },
+        function () {
+          // console.log(errMsg);
+        }
+      );
+    }
   },
 
   /**
@@ -184,7 +184,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this;
+    if (this.data.posts.length == 0) {
+      app.getDiscussionPosts(
+        function (postsData) {
+          that.setData({
+            posts: postsData
+          });
+          wx.stopPullDownRefresh();
+        },
+        function () {
+          // console.log(errMsg);
+          wx.stopPullDownRefresh();
+        }
+      );
+    }
   },
 
   /**
