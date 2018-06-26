@@ -224,11 +224,15 @@ App({
       url: 'https://sysuactivity.com/act?page=0',
       method: 'GET',
       success(res) {
-        // console.log(res.data);
-        let str = res.data.content;
-        typeof successCb == 'function' && successCb(str);
-        that.globalData.posters = str;
-        that.globalData.currentPages = 1;
+        if (parseInt(res.statusCode) === 200) {
+          // console.log(res);
+          let str = res.data.content;
+          typeof successCb == 'function' && successCb(str);
+          that.globalData.posters = str;
+          that.globalData.currentPages = 1;
+        } else {
+          typeof successCb == 'function' && failCb('Error:' + parseInt(res.statusCode));
+        }
       },
       fail() {
         typeof successCb == 'function' && failCb('Server Error: cannot get initial poster');
@@ -312,7 +316,11 @@ App({
       // send request to Server, get data
       var reqSuccess = true;
       if (reqSuccess) {
-        // that.globalData.posts = 
+        // console.log(res.data);
+        let str = res.data.content;
+        typeof successCb == 'function' && successCb(str);
+        that.globalData.posters = str;
+        that.globalData.currentPages = 1;
       } else {
         typeof failCb == 'function' && failCb('Server Error Msg');
       }
@@ -415,7 +423,7 @@ App({
     postersEnrolledByCurrentUser: [],
     posts: [{
       'postId': 'post1',
-      'category': 'teamwork', // teamwork组队, question问答, share分享
+      'category': 0, // teamwork组队, question问答, share分享
       'user': {
         'userId': 'user1',
         'avatar': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=200929429,3934585499&fm=27&gp=0.jpg',
@@ -531,7 +539,7 @@ App({
     },
     {
       'postId': 'post2',
-      'category': 'question', // teamwork组队, question问答, share分享
+      'category': 1, // teamwork组队, question问答, share分享
       'user': {
         'userId': 'user1',
         'avatar': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=200929429,3934585499&fm=27&gp=0.jpg',
@@ -572,7 +580,7 @@ App({
     },
     {
       'postId': 'post3',
-      'category': 'share', // teamwork组队, question问答, share分享
+      'category': 2, // teamwork组队, question问答, share分享
       'user': {
         'userId': 'user1',
         'avatar': 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=200929429,3934585499&fm=27&gp=0.jpg',

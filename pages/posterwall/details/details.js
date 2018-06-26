@@ -8,12 +8,15 @@ Page({
      * 页面的初始数据
      */
   data: {
+    // default statusTextCode is 0
+    statusTextCode: 0,
     // currentPoster: null,
     statusText: [
       '报名该活动',
       '您已报名',
       '报名人数已达上限',
-      '已过报名截止时间'
+      '已过报名截止时间',
+      '取消报名'
     ],
     statusTextPos: 0,
     // added from main.js
@@ -89,17 +92,25 @@ Page({
     // 原先的e并没有id存在
     // 需要修改时请检查e是否正确
     // console.log(this.data.currentPoster.id);
-    var detailsUrl = '../enroll/enroll?posterId=' + this.data.currentPoster.id;
-    wx.navigateTo({
-      url: detailsUrl
-    });
+    if (this.data.statusTextCode == 0 || this.data.statusTextCode == 1) {
+      var detailsUrl = '../enroll/enroll?posterId=' + this.data.currentPoster.id;
+      wx.navigateTo({
+        url: detailsUrl
+      });
+    } else if (this.data.statusTextCode == 4) {
+      // 删除该学生在该活动中的报名条目
+    }
   },
 
     
   // 生命周期函数--监听页面加载
+  // 添加了statusTextCode，使得每次从“我报名的”页面请求进活动详情，按钮均显示为“您已报名”
 
   onLoad: function(options) {
     // console.log(options);
+    this.setData({
+      statusTextCode: options.statusTextCode == undefined ? 0 :  options.statusTextCode
+    });
     var that = this;
     app.getPosterById(options.posterId,
       function(thePoster) {

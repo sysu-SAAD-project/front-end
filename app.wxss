@@ -211,6 +211,16 @@ button[class="topBarButton"]::after {
   background-color: rgba(0,0,0,0.5);
 }
 
+.discussion-topBar-picker {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 80rpx;
+  left: 0px;
+  z-index: 999;
+  background-color: rgba(0,0,0,0.5);
+}
+
 .bl-center {
   background-color: white;
 }
